@@ -1,5 +1,5 @@
 // Exercise 1 - Moving pictures
-// Pippin Barr
+// Rose-Marie Dion
 //
 // Starter code for exercise 1.
 // It moves two pictures around on the canvas.
@@ -8,16 +8,30 @@
 
 
 // The image of a clown face
-var clownImage;
+
+var shrekImage;
+
 // The current position of the clown face
-var clownImageX;
-var clownImageY;
+var shrekImageX;
+var shrekImageY;
 
 // The transparent image of "felt" that wipes down the canvas
-var feltTextureImage;
+var swampTextureImage;
+
 // The current position of the transparent image of "felt"
-var feltTextureImageX;
-var feltTextureImageY;
+var swampTextureImageX;
+var swampTextureImageY;
+
+// The image of a the donkey
+
+var donkeyImage;
+
+// The current position of the clown face
+var donkeyImageX;
+var donkeyImageY;
+
+
+
 
 
 // preload()
@@ -25,8 +39,9 @@ var feltTextureImageY;
 // Load the two images we're using before the program starts
 
 function preload() {
-  clownImage = loadImage("assets/images/clown.png");
-  feltTextureImage = loadImage("assets/images/black-felt-texture.png");
+  shrekImage = loadImage("assets/images/shrek.png");
+  swampTextureImage = loadImage("assets/images/swamp.jpg");
+  donkeyImage = loadImage("assets/images/donkey.jpg");
 }
 
 
@@ -39,12 +54,16 @@ function setup() {
   createCanvas(640,640);
 
   // Start the clown image at the centre of the canvas
-  clownImageX = width/2;
-  clownImageY = height/2;
+  shrekImageX = width/2;
+  shrekImageY = height/2;
+
+  // Start of the donkey from left to right
+  donkeyImageX = width/2;
+  donkeyImageY = 0 - donkeyImage.height/2;
 
   // Start the felt image perfectly off screen above the canvas
-  feltTextureImageX = width/2;
-  feltTextureImageY = 0 - feltTextureImage.height/2;
+  swampTextureImageX = width/2;
+  swampTextureImageY = 0 - swampTextureImage.height/2;
 
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
@@ -59,20 +78,21 @@ function setup() {
 function draw() {
 
   // Move the felt image down by increasing its y position
-  feltTextureImageY += 1;
+  swampTextureImageY += 1;
+
 
   // Display the felt image
-  image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+  image(swampTextureImage,swampTextureImageX,swampTextureImageY);
 
   // Move the clown by moving it 1/10th of its current distance from the mouse
 
   // Calculate the distance in X and in Y
-  var xDistance = mouseX - clownImageX;
-  var yDistance = mouseY - clownImageY;
+  var xDistance = mouseX - shrekImageX;
+  var yDistance = mouseY - shrekImageY;
   // Add 1/10th of the x and y distance to the clown's current (x,y) location
-  clownImageX = clownImageX + xDistance/10;
-  clownImageY = clownImageY + yDistance/10;
+  shrekImageX = shrekImageX + xDistance/10;
+  shrekImageY = shrekImageY + yDistance/10;
 
   // Display the clown image
-  image(clownImage,clownImageX,clownImageY);
+  image(shrekImage,shrekImageX,shrekImageY);
 }
