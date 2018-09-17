@@ -1,8 +1,6 @@
 // Exercise 1 - Moving pictures
 // Rose-Marie Dion
-//
-// September 16 notes
-// Need to comment my work
+// September 16 2018
 
 
 // The image of wand
@@ -16,7 +14,7 @@ var unicornImage;
 // The current position of the unicorn
 var unicornImageX;
 var unicornImageY;
-var unicornSpeed;
+
 
 // The transparent image of a rainbow
 var rainbowTexture;
@@ -53,8 +51,9 @@ function setup() {
   rainbowTextureX = width/2;
   rainbowTextureY = 0 - rainbowTexture.height/2;
 
+
   // Change the speed of the unicornImage
-  unicornSpeed = random(1,10);
+
 
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
@@ -72,10 +71,10 @@ function draw() {
   image(rainbowTexture,rainbowTextureX,rainbowTextureY);
 
   // Move unicorn from it last position
-  unicornImageX += 6;
-
+  unicornImageX += 5;
   // Display the unicorn image
   image(unicornImage,unicornImageX,unicornImageY);
+
 
   // Calculate the distance in X and in Y
   var xDistance = mouseX - wandImageX;
