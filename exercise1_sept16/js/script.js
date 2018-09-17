@@ -45,7 +45,7 @@ function setup() {
   wandImageY = height/2;
 
   // Start the unicorn movement from the left of the canvas
-  unicornImageX = 0 - unicornImage.height/2;
+  unicornImageX = 2 - unicornImage.height/2;
   unicornImageY = width/2;
 
   // Start the rainbow image perfectly off screen above the canvas
