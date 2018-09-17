@@ -1,15 +1,13 @@
 // Exercise 1 - Moving pictures
 // Rose-Marie Dion
 //
-// Starter code for exercise 1.
-// It moves two pictures around on the canvas.
-// One moves linearly down the screen.
-// One moves toward the mouse cursor.
+// September 16 notes
+// Need to comment my work
 
 
-// The image of a clown face
+// The image of wand
 var wandImage;
-// The current position of the clown face
+// The current position of the wand
 var wandImageX;
 var wandImageY;
 
@@ -19,16 +17,13 @@ var unicornImage;
 var unicornImageX;
 var unicornImageY;
 
-// The transparent image of "felt" that wipes down the canvas
+// The transparent image of a rainbow
 var rainbowTexture;
-// The current position of the transparent image of "felt"
+// The current position of the rainbow texture
 var rainbowTextureX;
 var rainbowTextureY;
 
-
-// preload()
-//
-// Load the two images we're using before the program starts
+// preload of all the images
 
 function preload() {
   wandImage = loadImage("assets/images/wand.png");
@@ -42,18 +37,18 @@ function preload() {
 // Set up the canvas, position the images, set the image mode.
 
 function setup() {
-  // Create our canvas
+  // created a canvas of 500x500
   createCanvas(500,500);
 
-  // Start the clown image at the centre of the canvas
+  // Start the wand image at the centre of the canvas
   wandImageX = width/2;
   wandImageY = height/2;
 
   // Start the unicorn movement from the left of the canvas
   unicornImageX = 0 - unicornImage.height/2;
-  unicornImageY = width/2; 
+  unicornImageY = width/2;
 
-  // Start the felt image perfectly off screen above the canvas
+  // Start the rainbow image perfectly off screen above the canvas
   rainbowTextureX = width/2;
   rainbowTextureY = 0 - rainbowTexture.height/2;
 
@@ -63,9 +58,6 @@ function setup() {
 
 
 // draw()
-//
-// Moves the felt image linearly
-// Moves the clown face toward the current mouse location
 
 function draw() {
 
@@ -80,8 +72,6 @@ function draw() {
 
   // Display the unicorn image
   image(unicornImage,unicornImageX,unicornImageY);
-
-  // Move the clown by moving it 1/10th of its current distance from the mouse
 
   // Calculate the distance in X and in Y
   var xDistance = mouseX - wandImageX;
