@@ -28,8 +28,6 @@ var rainbowTextureX;
 var rainbowTextureY;
 
 
-// preload()
-//
 // Load the two images we're using before the program starts
 
 function preload() {
@@ -39,10 +37,6 @@ function preload() {
   rainbowTexture = loadImage("assets/images/rainbow.png");
 }
 
-
-// setup()
-//
-// Set up the canvas, position the images, set the image mode.
 
 function setup() {
   // Create our canvas
