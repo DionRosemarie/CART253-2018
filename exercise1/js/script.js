@@ -15,12 +15,11 @@ var unicornImage;
 var unicornImageX;
 var unicornImageY;
 
-
-// The transparent image of "felt" that wipes down the canvas
-var feltTextureImage;
-// The current position of the transparent image of "felt"
-var feltTextureImageX;
-var feltTextureImageY;
+// The background image of a rainbow
+var rainbowTexture;
+// The current position of the rainbow background
+var rainbowTextureX;
+var rainbowTextureY;
 
 
 // preload()
@@ -30,7 +29,7 @@ var feltTextureImageY;
 function preload() {
   clownImage = loadImage("assets/images/clown.png");
   unicornImage = loadImage("assets/images/unicorn.png");
-  feltTextureImage = loadImage("assets/images/black-felt-texture.png");
+  rainbowTexture = loadImage("assets/images/rainbow.png");
 }
 
 
@@ -50,9 +49,9 @@ function setup() {
   unicornImageX = 2 - unicornImage.height/2;
   unicornImageY = width/2;
 
-  // Start the felt image perfectly off screen above the canvas
-  feltTextureImageX = width/2;
-  feltTextureImageY = 0 - feltTextureImage.height/2;
+  // Start the rainbow image perfectly off screen above the canvas
+  rainbowTextureX = width/2;
+  rainbowTextureY = 0 - rainbowTexture.height/2;
 
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
@@ -66,11 +65,11 @@ function setup() {
 
 function draw() {
 
-  // Move the felt image down by increasing its y position
-  feltTextureImageY += 1;
+  // Move the rsinbow image down by increasing its y position
+  rainbowTextureY += 6;
 
-  // Display the felt image
-  image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+  // Display the rainbow image
+  image(rainbowTexture,rainbowTextureX,rainbowTextureY);
 
   // Move unicorn from it last position
   unicornImageX += 5;
