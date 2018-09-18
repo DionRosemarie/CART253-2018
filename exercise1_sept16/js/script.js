@@ -1,6 +1,7 @@
 // Exercise 1 - Moving pictures
 // Rose-Marie Dion
 // September 16 2018
+// September 17 : I try to do the challenge, but didn't find the way to make it.
 
 
 // The image of wand
@@ -64,10 +65,10 @@ function setup() {
 
 function draw() {
 
-  // Move the felt image down by increasing its y position
+  // Move the rsinbow image down by increasing its y position
   rainbowTextureY += 1;
 
-  // Display the felt image
+  // Display the rainbow image
   image(rainbowTexture,rainbowTextureX,rainbowTextureY);
 
   // Move unicorn from it last position
@@ -83,6 +84,6 @@ function draw() {
   wandImageX = wandImageX + xDistance/10;
   wandImageY = wandImageY + yDistance/10;
 
-  // Display the clown image
+  // Display the wand image
   image(wandImage,wandImageX,wandImageY);
 }
