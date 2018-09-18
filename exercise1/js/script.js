@@ -3,11 +3,17 @@
 // I was missing something in the last version. This is a new version of the exercise 1
 
 
-// The image of a clown face
-var clownImage;
-// The current position of the clown face
-var clownImageX;
-var clownImageY;
+// The image of wand
+var wandImage;
+// The current position of the wand
+var wandImageX;
+var wandImageY;
+
+// The image of a butterlfy
+var butterlfyImage;
+// The current position of the wand
+var butterlfyImageX;
+var butterlfyImageY;
 
 // The image of a unicorn
 var unicornImage;
@@ -27,7 +33,8 @@ var rainbowTextureY;
 // Load the two images we're using before the program starts
 
 function preload() {
-  clownImage = loadImage("assets/images/clown.png");
+  wandImage = loadImage("assets/images/wand.png");
+  butterlfyImage = loadImage("assets/images/butterlfy.png");
   unicornImage = loadImage("assets/images/unicorn.png");
   rainbowTexture = loadImage("assets/images/rainbow.png");
 }
@@ -41,9 +48,14 @@ function setup() {
   // Create our canvas
   createCanvas(640,640);
 
-  // Start the clown image at the centre of the canvas
-  clownImageX = width/2;
-  clownImageY = height/2;
+  // Start the wand image at the centre of the canvas
+  wandImageX = width/2;
+  wandImageY = height/2;
+
+  // Start the butterlfy image at the centre of the canvas
+  butterlfyImageX = width/2;
+  butterlfyImageY = height/2;
+
 
   // Start the unicorn movement from the left of the canvas
   unicornImageX = 2 - unicornImage.height/2;
@@ -76,15 +88,26 @@ function draw() {
   // Display the unicorn image
   image(unicornImage,unicornImageX,unicornImageY);
 
-  // Move the clown by moving it 1/10th of its current distance from the mouse
+  // Move the wand by moving it 1/10th of its current distance from the mouse
 
   // Calculate the distance in X and in Y
-  var xDistance = mouseX - clownImageX;
-  var yDistance = mouseY - clownImageY;
-  // Add 1/10th of the x and y distance to the clown's current (x,y) location
-  clownImageX = clownImageX + xDistance/10;
-  clownImageY = clownImageY + yDistance/10;
+  var xDistance = mouseX - wandImageX;
+  var yDistance = mouseY - wandImageY;
+  // Add 1/10th of the x and y distance to the wand's current (x,y) location
+  wandImageX = wandImageX + xDistance/5;
+  wandImageY = wandImageY + yDistance/5;
 
-  // Display the clown image
-  image(clownImage,clownImageX,clownImageY);
+  // Display the wand image
+  image(wandImage,wandImageX,wandImageY);
+
+  // Calculate the distance in X and in Y
+  var xDistance = mouseX - butterlfyImageX;
+  var yDistance = mouseY - butterlfyImageY;
+
+  // Add 1/10th of the x and y distance to the butterlfy's current (x,y) location
+  butterlfyImageX = butterlfyImageX + xDistance/100;
+  butterlfyImageY = butterlfyImageY + yDistance/100;
+
+  // Display the butterlfly image
+  image(butterlfyImage,butterlfyImageX,butterlfyImageY);
 }
