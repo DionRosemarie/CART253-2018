@@ -9,6 +9,13 @@ var clownImage;
 var clownImageX;
 var clownImageY;
 
+// The image of a unicorn
+var unicornImage;
+// The current position of the unicorn
+var unicornImageX;
+var unicornImageY;
+
+
 // The transparent image of "felt" that wipes down the canvas
 var feltTextureImage;
 // The current position of the transparent image of "felt"
@@ -22,6 +29,7 @@ var feltTextureImageY;
 
 function preload() {
   clownImage = loadImage("assets/images/clown.png");
+  unicornImage = loadImage("assets/images/unicorn.png");
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
 }
 
@@ -37,6 +45,10 @@ function setup() {
   // Start the clown image at the centre of the canvas
   clownImageX = width/2;
   clownImageY = height/2;
+
+  // Start the unicorn movement from the left of the canvas
+  unicornImageX = 2 - unicornImage.height/2;
+  unicornImageY = width/2;
 
   // Start the felt image perfectly off screen above the canvas
   feltTextureImageX = width/2;
@@ -59,6 +71,11 @@ function draw() {
 
   // Display the felt image
   image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+
+  // Move unicorn from it last position
+  unicornImageX += 5;
+  // Display the unicorn image
+  image(unicornImage,unicornImageX,unicornImageY);
 
   // Move the clown by moving it 1/10th of its current distance from the mouse
 
