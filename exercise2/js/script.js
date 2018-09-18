@@ -1,7 +1,7 @@
 /*********************************************************
 
 Exercise 2 - The Artful Dodger
-Pippin Barr
+Rose-Marie Dion
 
 Starter code for exercise 2.
 
@@ -32,6 +32,15 @@ var enemySpeedIncrease = 0.5;
 
 // How many dodges the player has made
 var dodges = 0;
+var dodgesCount;
+var dodgesFont;
+
+// preload
+
+function preload() {
+  dodgesFont = loadFont("assets/fonts/Barlow-ExtraBold.ttf")
+}
+
 
 // setup()
 //
@@ -39,6 +48,12 @@ var dodges = 0;
 function setup() {
   // Create our playing area
   createCanvas(500,500);
+
+  // Font informations
+  textFont(dodgesFont);
+  textSize(20);
+  textAlign(CENTER);
+  fill(0);
 
   // Put the avatar in the centre
   avatarX = width/2;
@@ -59,6 +74,10 @@ function setup() {
 function draw() {
   // A pink background
   background(255,220,220);
+
+  text("hello there, you need to put a number there",width/2,height/2);
+
+
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
