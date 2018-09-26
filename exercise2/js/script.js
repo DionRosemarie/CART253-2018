@@ -46,7 +46,7 @@ var dodgesFont;
 function preload() {
 dodgesFont = loadFont("assets/fonts/RobotoMono-Bold.ttf")
 spaceImage = loadImage("assets/images/fond.png");
-enemyImage = loadImage("assets/images/enemy copie.png");
+enemyImage = loadImage("assets/images/alien.png");
 avatarImage = loadImage("assets/images/avatar.png");
 }
 
@@ -72,6 +72,10 @@ function setup() {
   enemyX = 0;
   enemyY = random(0,height);
 
+  // Position of the Background
+  spaceImageX = 0;
+  spaceImageY = 0;
+
   // No stroke so it looks cleaner
   noStroke();
 }
@@ -81,8 +85,6 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A pink background
-  background(255,220,220);
 
   // Position of the number of dodges
   text(dodges, width/2, height/1);
@@ -92,9 +94,6 @@ function draw() {
   text(dodges, width/2, height/1);
   image(enemyImage,enemyX,enemyY,enemySize,enemySize);
   image(avatarImage,avatarX,avatarY,avatarSize,avatarSize);
-
-
-
 
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
@@ -179,14 +178,5 @@ function draw() {
   // Display the current number of successful in the console
   console.log(dodges);
 
-  // The player is black
-  fill(0);
-  // Draw the player as a circle
-  ellipse(avatarX,avatarY,avatarSize,avatarSize);
-
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
 
 }
