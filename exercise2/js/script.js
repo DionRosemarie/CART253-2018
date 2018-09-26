@@ -18,7 +18,7 @@ var avatarPosition = avatarX+avatarY;
 var avatarSpeedMin = 5;
 var avatarSpeedMax = 10;
 var avatarSizeMin = 75;
-var avatarSizeMax = 250;
+var avatarSizeMax = 150;
 
 // Background of the game
 var spaceImage;
@@ -38,7 +38,7 @@ var enemySize = 75;
 var enemyPosition = enemyX+enemyY;
 
 // How much bigger the enemy circle gets with each successful dodge
-var enemySizeIncrease = 5;
+var enemySizeIncrease = 25;
 
 // The speed and velocity of our enemy circle
 var enemySpeed = 5;
@@ -155,22 +155,6 @@ function draw() {
   }
 
 
- function reset(){
-    // Reset the enemy's position
-    enemyX = 0;
-    enemyY = random(0,height);
-    // Reset the enemy's size and speed
-    enemySize = random(0);
-    enemySpeed = 5;
-    // Reset the avatar's position
-    avatarX = width/2;
-    avatarY = height/2;
-    // Reset the dodge counter
-    dodges = 0;
-
-}
-
-
   // Check if the avatar has gone off the screen (cheating!)
   if (avatarX < 0 || avatarX > width || avatarY < 0 || avatarY > height) {
     // If they went off the screen they lose in the same way as above.
@@ -184,6 +168,11 @@ function draw() {
     dodges = 0;
   }
 
+  if (dodges > 5) {
+  enemySpeed +=0.5;
+      }
+
+
   // Check if the enemy has moved all the way across the screen
     if (enemyX > width) {
     // This means the player dodged so update its dodge statistic
@@ -194,16 +183,29 @@ function draw() {
     enemyX = 0;
     enemyY = random(0,height);
     // Increase the enemy's speed and size to make the game harder
-    enemySpeed = enemySpeed + enemySpeedIncrease;
-    enemySize = enemySize + enemySizeIncrease;
+    //enemySpeed = enemySpeed + enemySpeedIncrease;
+    //enemySize = enemySize + enemySizeIncrease;
 
     // Increasing the avatar's size and speed a random value
     avatarSpeed = random(avatarSpeedMin,avatarSpeedMax);
     avatarSize = random(avatarSizeMin,avatarSizeMax);
+
   }
+    // Display the current number of successful in the console
+    console.log(dodges);
+      }
 
-  // Display the current number of successful in the console
-  console.log(dodges);
+    function reset(){
+       // Reset the enemy's position
+       enemyX = 0;
+       enemyY = random(0,height);
+       // Reset the enemy's size and speed
+       enemySize = random(0);
+       enemySpeed = 5;
+       // Reset the avatar's position
+       avatarX = width/2;
+       avatarY = height/2;
+       // Reset the dodge counter
+       dodges = 0;
 
-
-}
+   }
