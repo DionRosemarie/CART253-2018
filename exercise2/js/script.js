@@ -167,7 +167,7 @@ function draw() {
     avatarY = height/2;
     dodges = 0;
   }
-
+  // After 5 successful dodges, the speed will increase really //quickly making it impossible to go higher than 5 dodges
   if (dodges > 5) {
   enemySpeed +=0.5;
       }
