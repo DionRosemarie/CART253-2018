@@ -88,7 +88,7 @@ function setup() {
 function draw() {
 
   // Position of the number of dodges
-  text(dodges, width/2, height/1);
+  
 
   // Displaying the avatar, enemy and background
   image(spaceImage,spaceImageX,spaceImageY);
@@ -124,10 +124,10 @@ function draw() {
   // I want to display the word BUSTED when the player loses
   // Position of the text
   text(currentText,width/2,height/2);
-  //If statement
-  if (dist(enemyX,enemyY,avatarX,avatarY) > enemySize/2 + avatarSize/2) {
-    currentText += "BUSTED";
-  }
+if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
+currentText += "BUSTED";
+reset();
+}
 
   // Move the avatar according to its calculated velocity
   avatarX = avatarX + avatarVX;
@@ -161,14 +161,23 @@ function draw() {
   if (avatarX < 0 || avatarX > width || avatarY < 0 || avatarY > height) {
     // If they went off the screen they lose in the same way as above.
     console.log("YOU LOSE!");
+    reset();
+  }
+
+ function reset(){
+    // Reset the enemy's position
     enemyX = 0;
     enemyY = random(0,height);
-    enemySize = 50;
+    // Reset the enemy's size and speed
+    enemySize = random(0);
     enemySpeed = 5;
+    // Reset the avatar's position
     avatarX = width/2;
     avatarY = height/2;
+    // Reset the dodge counter
     dodges = 0;
-  }
+
+}
 
   // Check if the enemy has moved all the way across the screen
   if (enemyX > width) {
