@@ -60,9 +60,9 @@ function setup() {
 
   // Font informations
   textFont(dodgesFont);
-  textSize(50);
+  textSize(100);
   textAlign(CENTER);
-  fill(0);
+  fill(95, 75, 132);
 
   // Put the avatar in the centre
   avatarX = width/2;
@@ -76,8 +76,6 @@ function setup() {
   spaceImageX = 0;
   spaceImageY = 0;
 
-  // No stroke so it looks cleaner
-  noStroke();
 }
 
 // draw()
