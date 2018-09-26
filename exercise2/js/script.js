@@ -41,6 +41,9 @@ var enemySpeedIncrease = 0.5;
 var dodges = 0;
 var dodgesFont;
 
+// My if statement need text, so i need a new variable
+var currentText = "";
+
 // preload
 
 function preload() {
@@ -116,6 +119,14 @@ function draw() {
   }
   else if (keyIsDown(DOWN_ARROW)) {
     avatarVY = avatarSpeed;
+  }
+
+  // I want to display the word BUSTED when the player loses
+  // Position of the text
+  text(currentText,width/2,height/2);
+  //If statement
+  if (dist(enemyX,enemyY,avatarX,avatarY) > enemySize/2 + avatarSize/2) {
+    currentText += "BUSTED";
   }
 
   // Move the avatar according to its calculated velocity
