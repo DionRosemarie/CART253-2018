@@ -7,17 +7,24 @@ Starter code for exercise 2.
 
 *********************************************************/
 
-// The position and size of our avatar circle
+// The position and size of our avatar
+var avatarImage;
 var avatarX;
 var avatarY;
 var avatarSize = 50;
 
-// The speed and velocity of our avatar circle
+// Background of the game
+var spaceImage;
+var spaceImageX;
+var spaceImageY;
+
+// The speed and velocity of our avatar
 var avatarSpeed = 10;
 var avatarVX = 0;
 var avatarVY = 0;
 
-// The position and size of the enemy circle
+// The position and size of the enemy
+var enemyImage;
 var enemyX;
 var enemyY;
 var enemySize = 50;
@@ -38,6 +45,9 @@ var dodgesFont;
 
 function preload() {
 dodgesFont = loadFont("assets/fonts/RobotoMono-Bold.ttf")
+spaceImage = loadImage("assets/images/fond.png");
+enemyImage = loadImage("assets/images/enemy copie.png");
+avatarImage = loadImage("assets/images/avatar.png");
 }
 
 
@@ -76,6 +86,12 @@ function draw() {
 
   // Position of the number of dodges
   text(dodges, width/2, height/1);
+
+  // Displaying the avatar, enemy and background
+  image(spaceImage,spaceImageX,spaceImageY);
+  text(dodges, width/2, height/1);
+  image(enemyImage,enemyX,enemyY,enemySize,enemySize);
+  image(avatarImage,avatarX,avatarY,avatarSize,avatarSize);
 
 
 
