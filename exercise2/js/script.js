@@ -32,13 +32,12 @@ var enemySpeedIncrease = 0.5;
 
 // How many dodges the player has made
 var dodges = 0;
-var dodgesCount;
 var dodgesFont;
 
 // preload
 
 function preload() {
-  dodgesFont = loadFont("assets/fonts/Barlow-ExtraBold.ttf")
+dodgesFont = loadFont("assets/fonts/RobotoMono-Bold.ttf")
 }
 
 
@@ -51,7 +50,7 @@ function setup() {
 
   // Font informations
   textFont(dodgesFont);
-  textSize(20);
+  textSize(50);
   textAlign(CENTER);
   fill(0);
 
@@ -75,7 +74,10 @@ function draw() {
   // A pink background
   background(255,220,220);
 
-  text("hello there, you need to put a number there",width/2,height/2);
+  // Position of the number of dodges
+  text(dodges, width/2, height/1);
+
+
 
 
 
