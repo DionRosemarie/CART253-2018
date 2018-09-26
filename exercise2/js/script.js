@@ -11,7 +11,14 @@ Starter code for exercise 2.
 var avatarImage;
 var avatarX;
 var avatarY;
-var avatarSize = 50;
+var avatarSize = 75;
+var avatarPosition = avatarX+avatarY;
+
+// The avatar maximum and minimal size and speed
+var avatarSpeedMin = 5;
+var avatarSpeedMax = 10;
+var avatarSizeMin = 75;
+var avatarSizeMax = 250;
 
 // Background of the game
 var spaceImage;
@@ -27,7 +34,9 @@ var avatarVY = 0;
 var enemyImage;
 var enemyX;
 var enemyY;
-var enemySize = 50;
+var enemySize = 75;
+var enemyPosition = enemyX+enemyY;
+
 // How much bigger the enemy circle gets with each successful dodge
 var enemySizeIncrease = 5;
 
@@ -48,20 +57,20 @@ var currentText = "";
 
 function preload() {
 dodgesFont = loadFont("assets/fonts/RobotoMono-Bold.ttf")
+// Background image
 spaceImage = loadImage("assets/images/fond.png");
+// Enemy image aka the alien
 enemyImage = loadImage("assets/images/alien.png");
+// Avtar image aka the spaceship
 avatarImage = loadImage("assets/images/avatar.png");
 }
 
 
-// setup()
-//
-// Make the canvas, position the avatar and anemy
 function setup() {
-  // Create our playing area
+  // Keeping the same size canvas
   createCanvas(500,500);
 
-  // Font informations
+  // Font informations for the number of dodges
   textFont(dodgesFont);
   textSize(100);
   textAlign(CENTER);
@@ -75,20 +84,15 @@ function setup() {
   enemyX = 0;
   enemyY = random(0,height);
 
-  // Position of the Background
+  // Position of the background
   spaceImageX = 0;
   spaceImageY = 0;
 
 }
 
-// draw()
-//
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-
-  // Position of the number of dodges
-  
 
   // Displaying the avatar, enemy and background
   image(spaceImage,spaceImageX,spaceImageY);
@@ -121,13 +125,6 @@ function draw() {
     avatarVY = avatarSpeed;
   }
 
-  // I want to display the word BUSTED when the player loses
-  // Position of the text
-  text(currentText,width/2,height/2);
-if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
-currentText += "BUSTED";
-reset();
-}
 
   // Move the avatar according to its calculated velocity
   avatarX = avatarX + avatarVX;
@@ -138,31 +135,25 @@ reset();
   // Update the enemy's position based on its velocity
   enemyX = enemyX + enemyVX;
 
+
+    // I want to display the word BUSTED when the player loses
+    // Position of the text
+    // September 25 : Can't display the text
+    text(currentText,width/2,height/2);
+    if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
+    currentText += "BUSTED";
+    reset();
+  }
+
   // Check if the enemy and avatar overlap - if they do the player loses
   // We do this by checking if the distance between the centre of the enemy
   // and the centre of the avatar is less that their combined radii
   if (dist(enemyX,enemyY,avatarX,avatarY) < enemySize/2 + avatarSize/2) {
     // Tell the player they lost
     console.log("YOU LOSE!");
-    // Reset the enemy's position
-    enemyX = 0;
-    enemyY = random(0,height);
-    // Reset the enemy's size and speed
-    enemySize = 50;
-    enemySpeed = 5;
-    // Reset the avatar's position
-    avatarX = width/2;
-    avatarY = height/2;
-    // Reset the dodge counter
-    dodges = 0;
-  }
-
-  // Check if the avatar has gone off the screen (cheating!)
-  if (avatarX < 0 || avatarX > width || avatarY < 0 || avatarY > height) {
-    // If they went off the screen they lose in the same way as above.
-    console.log("YOU LOSE!");
     reset();
   }
+
 
  function reset(){
     // Reset the enemy's position
@@ -179,8 +170,22 @@ reset();
 
 }
 
+
+  // Check if the avatar has gone off the screen (cheating!)
+  if (avatarX < 0 || avatarX > width || avatarY < 0 || avatarY > height) {
+    // If they went off the screen they lose in the same way as above.
+    console.log("YOU LOSE!");
+    enemyX = 0;
+    enemyY = random(0,height);
+    enemySize = random(10);
+    enemySpeed = random;
+    avatarX = width/2;
+    avatarY = height/2;
+    dodges = 0;
+  }
+
   // Check if the enemy has moved all the way across the screen
-  if (enemyX > width) {
+    if (enemyX > width) {
     // This means the player dodged so update its dodge statistic
     dodges = dodges + 1;
     // Tell them how many dodges they have made
@@ -191,6 +196,10 @@ reset();
     // Increase the enemy's speed and size to make the game harder
     enemySpeed = enemySpeed + enemySpeedIncrease;
     enemySize = enemySize + enemySizeIncrease;
+
+    // Increasing the avatar's size and speed a random value
+    avatarSpeed = random(avatarSpeedMin,avatarSpeedMax);
+    avatarSize = random(avatarSizeMin,avatarSizeMax);
   }
 
   // Display the current number of successful in the console
