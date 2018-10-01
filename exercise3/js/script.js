@@ -109,10 +109,12 @@ function setup() {
       image(decoyImage10,x,y);
     }
   }
-  // Position for the reference image of the target
+
+// Position for the reference image of the target
     referenceImageX = 150;
     referenceImageY = 150;
     image(referenceImage,referenceImageX,referenceImageY);
+
   // Once we've displayed all decoys, we choose a location for the target
   targetX = random(0,width);
   targetY = random(0,height);
