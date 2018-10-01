@@ -16,6 +16,14 @@ var targetY;
 var targetImage;
 var targetImagePosition;
 
+
+// Adding new variables to make winning more exciting
+var targetImagevx;
+var targetImagevy;
+var targetSpeedChange = 1;
+var maxspeed = 6;
+
+
 // Image of Maggie as a reference for the user
 var referenceImage;
 var referenceImageX;
@@ -70,6 +78,11 @@ function setup() {
   background(244, 220, 66);
   imageMode(CENTER);
 
+
+// Setting up the variables for the moving challenge
+  targetImagevx = 0;
+  targetImagevy = 0;
+
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
     // Choose a random location for this decoy
@@ -113,7 +126,7 @@ function setup() {
   }
 
 // Position for the reference image of the target
-    referenceImageX = 150;
+    referenceImageX = 175;
     referenceImageY = 150;
     image(referenceImage,referenceImageX,referenceImageY);
 // Identifying the position of the reference image and target image
@@ -142,6 +155,11 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+    vx += random(-speedChange,speedChange);
+    vy += random(-speedChange,speedChange);
+    x += vx;
+    y += vy;
 
 // This is the loop for the 3rd challenge, but the target can get over the reference image
 // I will need to check that after
