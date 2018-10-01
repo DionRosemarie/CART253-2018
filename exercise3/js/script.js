@@ -14,11 +14,13 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 var targetX;
 var targetY;
 var targetImage;
+var targetImagePosition;
 
 // Image of Maggie as a reference for the user
 var referenceImage;
 var referenceImageX;
 var referenceImageY;
+var referenceImagtePosition;
 
 // The ten decoy images
 var decoyImage1;
@@ -114,6 +116,9 @@ function setup() {
     referenceImageX = 150;
     referenceImageY = 150;
     image(referenceImage,referenceImageX,referenceImageY);
+// Identifying the position of the reference image and target image
+    referenceImagePosition= referenceImageX + referenceImageY;
+    targetImagePosition= targetX + targetY;
 
   // Once we've displayed all decoys, we choose a location for the target
   targetX = random(0,width);
@@ -137,6 +142,12 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
+// This is the loop for the 3rd challenge, but the target can get over the reference image
+// I will need to check that after
+    while (targetImagePosition === random) {
+      targetImagePosition !== referenceImagtePosition;
+    }
 
   }
 }
