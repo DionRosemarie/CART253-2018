@@ -11,6 +11,9 @@ body {
   margin: 0;
 }
 
-/*img {
-  top: 600px;
+img {
+  position: absolute;
+  width: 200px;
+  height: 103px;
+  align: bottom;
 }
