@@ -38,18 +38,18 @@ var gameOver = false;
 //
 // Loads the target and decoy images before the program starts
 function preload() {
-  targetImage = loadImage("assets/images/animals-target.png");
+  targetImage = loadImage("assets/images/target.png");
 
-  decoyImage1 = loadImage("assets/images/animals-01.png");
-  decoyImage2 = loadImage("assets/images/animals-02.png");
-  decoyImage3 = loadImage("assets/images/animals-03.png");
-  decoyImage4 = loadImage("assets/images/animals-04.png");
-  decoyImage5 = loadImage("assets/images/animals-05.png");
-  decoyImage6 = loadImage("assets/images/animals-06.png");
-  decoyImage7 = loadImage("assets/images/animals-07.png");
-  decoyImage8 = loadImage("assets/images/animals-08.png");
-  decoyImage9 = loadImage("assets/images/animals-09.png");
-  decoyImage10 = loadImage("assets/images/animals-10.png");
+  decoyImage1 = loadImage("assets/images/pers1.png");
+  decoyImage2 = loadImage("assets/images/pers2.png");
+  decoyImage3 = loadImage("assets/images/pers3.png");
+  decoyImage4 = loadImage("assets/images/pers4.png");
+  decoyImage5 = loadImage("assets/images/pers5.png");
+  decoyImage6 = loadImage("assets/images/pers6.png");
+  decoyImage7 = loadImage("assets/images/pers7.jpg");
+  decoyImage8 = loadImage("assets/images/pers8.png");
+  decoyImage9 = loadImage("assets/images/pers9.png");
+  decoyImage10 = loadImage("assets/images/pers10.png");
 }
 
 // setup()
@@ -58,7 +58,7 @@ function preload() {
 // of decoys in random positions, then the target
 function setup() {
   createCanvas(windowWidth,windowHeight);
-  background("#ffff00");
+  background(244, 220, 66);
   imageMode(CENTER);
 
   // Use a for loop to draw as many decoys as we need
