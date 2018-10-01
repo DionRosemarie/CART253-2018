@@ -15,6 +15,11 @@ var targetX;
 var targetY;
 var targetImage;
 
+// Image of Maggie as a reference for the user
+var referenceImage;
+var referenceImageX;
+var referenceImageY;
+
 // The ten decoy images
 var decoyImage1;
 var decoyImage2;
