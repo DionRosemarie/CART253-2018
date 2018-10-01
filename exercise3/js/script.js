@@ -46,7 +46,7 @@ function preload() {
   decoyImage4 = loadImage("assets/images/pers4.png");
   decoyImage5 = loadImage("assets/images/pers5.png");
   decoyImage6 = loadImage("assets/images/pers6.png");
-  decoyImage7 = loadImage("assets/images/pers7.jpg");
+  decoyImage7 = loadImage("assets/images/pers7.png");
   decoyImage8 = loadImage("assets/images/pers8.png");
   decoyImage9 = loadImage("assets/images/pers9.png");
   decoyImage10 = loadImage("assets/images/pers10.png");
