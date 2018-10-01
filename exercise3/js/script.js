@@ -44,6 +44,7 @@ var gameOver = false;
 // Loads the target and decoy images before the program starts
 function preload() {
   targetImage = loadImage("assets/images/target.png");
+  referenceImage = loadImage("assets/images/r_target.png");
 
   decoyImage1 = loadImage("assets/images/pers1.png");
   decoyImage2 = loadImage("assets/images/pers2.png");
@@ -62,6 +63,7 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
+
   createCanvas(windowWidth,windowHeight);
   background(244, 220, 66);
   imageMode(CENTER);
@@ -107,7 +109,10 @@ function setup() {
       image(decoyImage10,x,y);
     }
   }
-
+  // Position for the reference image of the target
+    referenceImageX = 150;
+    referenceImageY = 150;
+    image(referenceImage,referenceImageX,referenceImageY);
   // Once we've displayed all decoys, we choose a location for the target
   targetX = random(0,width);
   targetY = random(0,height);
@@ -130,6 +135,7 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+
   }
 }
 
