@@ -122,11 +122,11 @@ function preload() {
 // Ellipse behing the image of Maggie in the donut. It more easy for the eyes with the ellipse behind
       noStroke();
       fill(244,220, 66);
-      rectMode(CORNERS)
-      rect(windowWidth-275,0,275,0);
+      rectMode(CORNERS);
+      rect(windowWidth,windowHeight-300,1000,0);
 
 // Displaying the image of maggie in a donut
-      image(referenceImage,width * 0.9, height / 4);
+      image(referenceImage,windowWidth-150,windowHeight-480,275,275);
 
 // Information for the speed of the target when the user wins
       targetImageVx = targetSpeed;
@@ -139,7 +139,7 @@ function preload() {
       strokeWeight(4);
       stroke(0);
       fill(226, 74, 171);
-      text("CLICK ON HER!",windowWidth-275,0,275,0);
+      text("CLICK ON HER!",windowWidth-280,windowHeight-480,275,275);
 
 
 // Identifying the position of the reference image and target image
