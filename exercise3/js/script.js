@@ -16,9 +16,6 @@ var targetY;
 var targetImage;
 var targetImagePosition;
 
-
-
-
 // Adding new variables to make winning more exciting
 var targetImageVx;
 var targetImageVy;
@@ -75,7 +72,6 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
-
   createCanvas(windowWidth,windowHeight);
   background(244, 220, 66);
   imageMode(CENTER);
@@ -162,23 +158,23 @@ function draw() {
 
 
 // Movement part for the target when the player win
-    targetX = targetX + targetImageVx;
+    targetX = targetX - targetImageVx;
     targetY = targetY + targetImageVy;
-    targetImageVx = targetImageVx + targetImageAx;
     targetImageVy = targetImageVy + targetImageAx;
+    targetImageVx = targetImageVx + targetImageAx;
     image(targetImage,targetX,targetY);
 
 // Wrapping for the target
-    if (targetX + targetImage < 0) {
+    if (targetX + targetImagePosition < 0) {
     targetX += width;
 }
-    else if (targetX - targetImage > width) {
+    else if (targetX - targetImagePosition > width) {
     targetX -= width;
 }
-    if (targetY + targetImage < 0) {
+    if (targetY + targetImagePosition < 0) {
     targetY += height;
 }
-    else if (targetY - targetImage > height) {
+    else if (targetY - targetImagePosition > height) {
     targety -= height;
 }
 
