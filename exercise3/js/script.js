@@ -28,6 +28,9 @@ var referenceImage;
 var referenceImageX;
 var referenceImageY;
 var referenceImagePosition;
+var ellipsePositionX;
+var ellipsePositionY;
+var ellipsePosition;
 
 // The ten decoy images
 var decoyImage1;
@@ -76,6 +79,8 @@ function setup() {
   background(244, 220, 66);
   imageMode(CENTER);
 
+
+
 // Setting up the variables for the moving challenge
   targetImagevx = 0;
   targetImagevy = 0;
@@ -121,6 +126,10 @@ function setup() {
       image(decoyImage10,x,y);
     }
 
+    noStroke();
+    fill(244, 220, 66);
+    ellipse(width*0.8,height/4,300,300);
+
     image(referenceImage,width*0.8,height/4);
 
     targetImageVx = targetSpeed;
@@ -128,11 +137,13 @@ function setup() {
   }
 
 // Position for the reference image of the target
-
+    ellipsePositionX = width*0.8;
+    ellipsePositionY = height/4;
 
 // Identifying the position of the reference image and target image
     referenceImagePosition= referenceImageX + referenceImageY;
     targetImagePosition= targetX + targetY;
+    ellipsePosition= ellipsePositionX + ellipsePositionY;
 
   // Once we've displayed all decoys, we choose a location for the target
   targetX = random(0,width);
@@ -181,7 +192,7 @@ function draw() {
 // This is the loop for the 3rd challenge, but the target can get over the reference image
 // I will need to check that after
     while (targetImagePosition === random) {
-      targetImagePosition !== referenceImagtePosition;
+      targetImagePosition !== ellipsePosition;
     }
 
   }
