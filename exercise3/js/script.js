@@ -19,8 +19,8 @@ var targetImagePosition;
 // Adding new variables to make winning more exciting
 var targetImageVx;
 var targetImageVy;
-var targetSpeed = 5;
-var targetImageAx = 5;
+var targetSpeed = 2;
+var targetImageAx = 0.5;
 
 
 // Image of Maggie as a reference for the user
@@ -57,6 +57,7 @@ var gameOver = false;
 function preload() {
   targetImage = loadImage("assets/images/target.png");
   referenceImage = loadImage("assets/images/r_target.png");
+  targetText = loadFont("assets/fonts/Simpsonfont DEMO.otf");
 
   decoyImage1 = loadImage("assets/images/pers1.png");
   decoyImage2 = loadImage("assets/images/pers2.png");
@@ -75,128 +76,112 @@ function preload() {
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth, windowHeight);
   background(244, 220, 66);
   imageMode(CENTER);
 
-
-
-// Setting up the variables for the moving challenge
+  // Setting up the variables for the moving challenge
   targetImagevx = 0;
   targetImagevy = 0;
 
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
     // Choose a random location for this decoy
-    var x = random(0,width);
-    var y = random(0,height);
+    var x = random(0, width);
+    var y = random(0, height);
     // Generate a random number we can use for probability
     var r = random();
     // Use the random number to display one of the ten decoy
     // images, each with a 10% chance of being shown
     // We'll talk more about this nice quality of random soon enough
     if (r < 0.1) {
-      image(decoyImage1,x,y);
-    }
-    else if (r < 0.2) {
-      image(decoyImage2,x,y);
-    }
-    else if (r < 0.3) {
-      image(decoyImage3,x,y);
-    }
-    else if (r < 0.4) {
-      image(decoyImage4,x,y);
-    }
-    else if (r < 0.5) {
-      image(decoyImage5,x,y);
-    }
-    else if (r < 0.6) {
-      image(decoyImage6,x,y);
-    }
-    else if (r < 0.7) {
-      image(decoyImage7,x,y);
-    }
-    else if (r < 0.8) {
-      image(decoyImage8,x,y);
-    }
-    else if (r < 0.9) {
-      image(decoyImage9,x,y);
-    }
-    else if (r < 1.0) {
-      image(decoyImage10,x,y);
+      image(decoyImage1, x, y);
+    } else if (r < 0.2) {
+      image(decoyImage2, x, y);
+    } else if (r < 0.3) {
+      image(decoyImage3, x, y);
+    } else if (r < 0.4) {
+      image(decoyImage4, x, y);
+    } else if (r < 0.5) {
+      image(decoyImage5, x, y);
+    } else if (r < 0.6) {
+      image(decoyImage6, x, y);
+    } else if (r < 0.7) {
+      image(decoyImage7, x, y);
+    } else if (r < 0.8) {
+      image(decoyImage8, x, y);
+    } else if (r < 0.9) {
+      image(decoyImage9, x, y);
+    } else if (r < 1.0) {
+      image(decoyImage10, x, y);
     }
 
     noStroke();
     fill(244, 220, 66);
-    ellipse(width*0.8,height/4,300,300);
-
-    image(referenceImage,width*0.8,height/4);
+    ellipse(width * 0.8, height / 4, 325, 325);
+    image(referenceImage, width * 0.8, height / 4);
 
     targetImageVx = targetSpeed;
     targetImageVy = -targetSpeed;
   }
 
-// Position for the reference image of the target
-    ellipsePositionX = width*0.8;
-    ellipsePositionY = height/4;
+  // Position for the reference image of the target
+  ellipsePositionX = width * 0.8;
+  ellipsePositionY = height / 4;
 
-// Identifying the position of the reference image and target image
-    referenceImagePosition= referenceImageX + referenceImageY;
-    targetImagePosition= targetX + targetY;
-    ellipsePosition= ellipsePositionX + ellipsePositionY;
+  // Identifying the position of the reference image and target image
+  referenceImagePosition = referenceImageX + referenceImageY;
+  targetImagePosition = targetX + targetY;
+  ellipsePosition = ellipsePositionX + ellipsePositionY;
 
   // Once we've displayed all decoys, we choose a location for the target
-  targetX = random(0,width);
-  targetY = random(0,height);
+  targetX = random(0, width);
+  targetY = random(0, height);
   // And draw it (this means it will always be on top)
-  image(targetImage,targetX,targetY);
+  image(targetImage, targetX, targetY);
+
+  while (targetImagePosition === random) {
+    targetImagePosition !== ellipsePosition;
+  }
 }
 
 function draw() {
+
   if (gameOver) {
+
     // Prepare our typography
     textFont("Helvetica");
     textSize(100);
-    textAlign(CENTER,CENTER);
+    textAlign(CENTER, CENTER);
     noStroke();
     fill(random(255));
-    background(244, 220, 66);
+    background(random(0, 255), random(0, 255), random(0, 255));
     // Tell them they won!
-    text("YOU WINNED!",width/2,height/2);
-
-
+    text("YOU WINNED!", width / 2, height / 2);
     noFill();
     stroke(random(255));
     strokeWeight(10);
 
 
-// Movement part for the target when the player win
+    // Wrapping for the target
+    // The variables were not right so we changed it
+    if (targetX + targetImage.width/2 < 0) {
+      targetX += width;
+    } else if (targetX - targetImage.width/2 > width) {
+      targetX -= width;
+    }
+    if (targetY + targetImage.height/2 < 0) {
+      targetY += height;
+    } else if (targetY - targetImage.height/2 > height) {
+      targetY -= height;
+    }
+
+    // Movement part for the target when the player win
     targetX = targetX - targetImageVx;
     targetY = targetY + targetImageVy;
     targetImageVy = targetImageVy + targetImageAx;
     targetImageVx = targetImageVx + targetImageAx;
-    image(targetImage,targetX,targetY);
-
-// Wrapping for the target
-    if (targetX + targetImagePosition < 0) {
-    targetX += width;
-}
-    else if (targetX - targetImagePosition > width) {
-    targetX -= width;
-}
-    if (targetY + targetImagePosition < 0) {
-    targetY += height;
-}
-    else if (targetY - targetImagePosition > height) {
-    targety -= height;
-}
-
-// This is the loop for the 3rd challenge, but the target can get over the reference image
-// I will need to check that after
-    while (targetImagePosition === random) {
-      targetImagePosition !== ellipsePosition;
-    }
-
+    image(targetImage, targetX, targetY);
   }
 }
 
@@ -205,9 +190,9 @@ function draw() {
 // Checks if the player clicked on the target and if so tells them they won
 function mousePressed() {
   // Check if the mouse is in the x range of the target
-  if (mouseX > targetX - targetImage.width/2 && mouseX < targetX + targetImage.width/2) {
+  if (mouseX > targetX - targetImage.width / 2 && mouseX < targetX + targetImage.width / 2) {
     // Check if the mouse is also in the y range of the target
-    if (mouseY > targetY - targetImage.height/2 && mouseY < targetY + targetImage.height/2) {
+    if (mouseY > targetY - targetImage.height / 2 && mouseY < targetY + targetImage.height / 2) {
       gameOver = true;
     }
   }
