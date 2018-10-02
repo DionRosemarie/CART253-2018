@@ -17,11 +17,12 @@ var targetImage;
 var targetImagePosition;
 
 
+
 // Adding new variables to make winning more exciting
 var targetImageVx;
 var targetImageVy;
-var targetSpeed = 10;
-var maxspeed = 6;
+var targetSpeed = 5;
+var targetImageAx = 5;
 
 
 // Image of Maggie as a reference for the user
@@ -162,6 +163,7 @@ function draw() {
 // Movement part for the target when the player win
     targetX = targetX + targetImageVx;
     targetY = targetY + targetImageVy;
+    targetImageVx = targetImageVx + targetImageAx;
     image(targetImage,targetX,targetY);
 
 // This is the loop for the 3rd challenge, but the target can get over the reference image
