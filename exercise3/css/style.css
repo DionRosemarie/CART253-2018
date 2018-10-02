@@ -11,6 +11,8 @@ body {
   margin: 0;
 }
 
+/* This is the information for the reference image*/
+
 img {
     position: absolute;
     top: 15px;

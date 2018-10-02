@@ -25,9 +25,10 @@ var maxspeed = 6;
 
 
 // Image of Maggie as a reference for the user
-//var referenceImage;
-//var referenceImageY;
-//var referenceImagtePosition;
+var referenceImage;
+var referenceImageX;
+var referenceImageY;
+var referenceImagePosition;
 
 // The ten decoy images
 var decoyImage1;
@@ -53,7 +54,7 @@ var gameOver = false;
 // Loads the target and decoy images before the program starts
 function preload() {
   targetImage = loadImage("assets/images/target.png");
-  //referenceImage = loadImage("assets/images/r_target.png");
+  referenceImage = loadImage("assets/images/r_target.png");
 
   decoyImage1 = loadImage("assets/images/pers1.png");
   decoyImage2 = loadImage("assets/images/pers2.png");
@@ -76,7 +77,6 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
   background(244, 220, 66);
   imageMode(CENTER);
-
 
 // Setting up the variables for the moving challenge
   targetImagevx = 0;
@@ -122,14 +122,15 @@ function setup() {
     else if (r < 1.0) {
       image(decoyImage10,x,y);
     }
+
+    image(referenceImage,width*0.8,height/4);
   }
 
 // Position for the reference image of the target
-    //referenceImageX = 175;
-    //referenceImageY = 150;
-    //image(referenceImage,referenceImageX,referenceImageY);
+
+
 // Identifying the position of the reference image and target image
-    //referenceImagePosition= referenceImageX + referenceImageY;
+    referenceImagePosition= referenceImageX + referenceImageY;
     targetImagePosition= targetX + targetY;
 
   // Once we've displayed all decoys, we choose a location for the target
