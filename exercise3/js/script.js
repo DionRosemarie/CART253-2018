@@ -19,7 +19,7 @@ var targetImagePosition;
 // Adding new variables to make winning more exciting
 var targetImageVx;
 var targetImageVy;
-var targetSpeed = 2;
+var targetSpeed = 1;
 var targetImageAx = 0.5;
 
 
@@ -80,6 +80,8 @@ function setup() {
   background(244, 220, 66);
   imageMode(CENTER);
 
+
+
   // Setting up the variables for the moving challenge
   targetImagevx = 0;
   targetImagevy = 0;
@@ -139,6 +141,14 @@ function setup() {
   targetY = random(0, height);
   // And draw it (this means it will always be on top)
   image(targetImage, targetX, targetY);
+
+  textFont("Barlow");
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  strokeWeight(4);
+  stroke(0);
+  fill(226, 74, 171);
+  text("CLICK ON HER!",windowWidth* 0.8,290);
 
   while (targetImagePosition === random) {
     targetImagePosition !== ellipsePosition;
