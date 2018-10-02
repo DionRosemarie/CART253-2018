@@ -18,6 +18,7 @@ var targetImagePosition;
 
 
 
+
 // Adding new variables to make winning more exciting
 var targetImageVx;
 var targetImageVy;
@@ -148,7 +149,7 @@ function draw() {
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
-    textSize(128);
+    textSize(100);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
@@ -164,7 +165,22 @@ function draw() {
     targetX = targetX + targetImageVx;
     targetY = targetY + targetImageVy;
     targetImageVx = targetImageVx + targetImageAx;
+    targetImageVy = targetImageVy + targetImageAx;
     image(targetImage,targetX,targetY);
+
+// Wrapping for the target
+    if (targetX + targetImage < 0) {
+    targetX += width;
+}
+    else if (targetX - targetImage > width) {
+    targetX -= width;
+}
+    if (targetY + targetImage < 0) {
+    targetY += height;
+}
+    else if (targetY - targetImage > height) {
+    targety -= height;
+}
 
 // This is the loop for the 3rd challenge, but the target can get over the reference image
 // I will need to check that after
