@@ -160,8 +160,10 @@ function draw() {
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
+    background(244, 220, 66);
     // Tell them they won!
     text("YOU WINNED!",width/2,height/2);
+
 
     noFill();
     stroke(random(255));
