@@ -1,11 +1,9 @@
 /******************************************************************************
 Where's Sausage Dog?
 by Pippin Barr
-
 An algorithmic version of a Where's Wally searching game where you
 need to click on the sausage dog you're searching for in amongst all
 the visual noise of other animals.
-
 Animal images from:
 https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal-icon-set/
 ******************************************************************************/
@@ -46,7 +44,7 @@ var decoyImage10;
 
 // The number of decoys to show on the screen, randomly
 // chosen from the decoy images
-var numDecoys = 100;
+var numDecoys = 500;
 
 // Keep track of whether they've won
 var gameOver = false;
@@ -80,11 +78,11 @@ function setup() {
   background(244, 220, 66);
   imageMode(CENTER);
 
-
-
   // Setting up the variables for the moving challenge
   targetImagevx = 0;
   targetImagevy = 0;
+
+  numDecoys=random(25,500);
 
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
@@ -97,25 +95,25 @@ function setup() {
     // images, each with a 10% chance of being shown
     // We'll talk more about this nice quality of random soon enough
     if (r < 0.1) {
-      image(decoyImage1, x, y);
+      image(decoyImage1, x, y, 80,90);
     } else if (r < 0.2) {
-      image(decoyImage2, x, y);
+      image(decoyImage2, x, y,80,90);
     } else if (r < 0.3) {
-      image(decoyImage3, x, y);
+      image(decoyImage3, x, y,80,90);
     } else if (r < 0.4) {
-      image(decoyImage4, x, y);
+      image(decoyImage4, x, y,80,90);
     } else if (r < 0.5) {
-      image(decoyImage5, x, y);
+      image(decoyImage5, x, y,80,90);
     } else if (r < 0.6) {
-      image(decoyImage6, x, y);
+      image(decoyImage6, x, y,80,90);
     } else if (r < 0.7) {
-      image(decoyImage7, x, y);
+      image(decoyImage7, x, y,80,90);
     } else if (r < 0.8) {
-      image(decoyImage8, x, y);
+      image(decoyImage8, x, y,80,90);
     } else if (r < 0.9) {
-      image(decoyImage9, x, y);
+      image(decoyImage9, x, y,80,90);
     } else if (r < 1.0) {
-      image(decoyImage10, x, y);
+      image(decoyImage10, x, y,80,90);
     }
 
     noStroke();
@@ -148,7 +146,7 @@ function setup() {
   strokeWeight(4);
   stroke(0);
   fill(226, 74, 171);
-  text("CLICK ON HER!",windowWidth* 0.8,290);
+  text("CLICK ON HER!", windowWidth * 0.8, 290);
 
   while (targetImagePosition === random) {
     targetImagePosition !== ellipsePosition;
@@ -175,14 +173,14 @@ function draw() {
 
     // Wrapping for the target
     // The variables were not right so we changed it
-    if (targetX + targetImage.width/2 < 0) {
+    if (targetX + targetImage.width / 2 < 0) {
       targetX += width;
-    } else if (targetX - targetImage.width/2 > width) {
+    } else if (targetX - targetImage.width / 2 > width) {
       targetX -= width;
     }
-    if (targetY + targetImage.height/2 < 0) {
+    if (targetY + targetImage.height / 2 < 0) {
       targetY += height;
-    } else if (targetY - targetImage.height/2 > height) {
+    } else if (targetY - targetImage.height / 2 > height) {
       targetY -= height;
     }
 
