@@ -55,7 +55,6 @@ var gameOver = false;
 function preload() {
   targetImage = loadImage("assets/images/target.png");
   referenceImage = loadImage("assets/images/r_target.png");
-  targetText = loadFont("assets/fonts/Simpsonfont DEMO.otf");
 
   decoyImage1 = loadImage("assets/images/pers1.png");
   decoyImage2 = loadImage("assets/images/pers2.png");
@@ -73,19 +72,20 @@ function preload() {
 //
 // Creates the canvas, sets basic modes, draws correct number
 // of decoys in random positions, then the target
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(244, 220, 66);
-  imageMode(CENTER);
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+    background(244, 220, 66);
+    imageMode(CENTER);
 
   // Setting up the variables for the moving challenge
-  targetImagevx = 0;
-  targetImagevy = 0;
+    targetImagevx = 0;
+    targetImagevy = 0;
 
-  numDecoys=random(25,500);
+  // Changing the number of decoys on the screen
+    numDecoys = random(25, 500);
 
   // Use a for loop to draw as many decoys as we need
-  for (var i = 0; i < numDecoys; i++) {
+    for (var i = 0; i < numDecoys; i++) {
     // Choose a random location for this decoy
     var x = random(0, width);
     var y = random(0, height);
@@ -94,70 +94,78 @@ function setup() {
     // Use the random number to display one of the ten decoy
     // images, each with a 10% chance of being shown
     // We'll talk more about this nice quality of random soon enough
+    // Changed the size of the decoys and to make them smaller
     if (r < 0.1) {
-      image(decoyImage1, x, y, 80,90);
+      image(decoyImage1, x, y, 80, 90);
     } else if (r < 0.2) {
-      image(decoyImage2, x, y,80,90);
+      image(decoyImage2, x, y, 80, 90);
     } else if (r < 0.3) {
-      image(decoyImage3, x, y,80,90);
+      image(decoyImage3, x, y, 80, 90);
     } else if (r < 0.4) {
-      image(decoyImage4, x, y,80,90);
+      image(decoyImage4, x, y, 80, 90);
     } else if (r < 0.5) {
-      image(decoyImage5, x, y,80,90);
+      image(decoyImage5, x, y, 80, 90);
     } else if (r < 0.6) {
-      image(decoyImage6, x, y,80,90);
+      image(decoyImage6, x, y, 80, 90);
     } else if (r < 0.7) {
-      image(decoyImage7, x, y,80,90);
+      image(decoyImage7, x, y, 80, 90);
     } else if (r < 0.8) {
-      image(decoyImage8, x, y,80,90);
+      image(decoyImage8, x, y, 80, 90);
     } else if (r < 0.9) {
-      image(decoyImage9, x, y,80,90);
+      image(decoyImage9, x, y, 80, 90);
     } else if (r < 1.0) {
-      image(decoyImage10, x, y,80,90);
+      image(decoyImage10, x, y, 80, 90);
     }
 
-    noStroke();
-    fill(244, 220, 66);
-    ellipse(width * 0.8, height / 4, 325, 325);
-    image(referenceImage, width * 0.8, height / 4);
-
-    targetImageVx = targetSpeed;
-    targetImageVy = -targetSpeed;
   }
 
-  // Position for the reference image of the target
-  ellipsePositionX = width * 0.8;
-  ellipsePositionY = height / 4;
+// Ellipse behing the image of Maggie in the donut. It more easy for the eyes with the ellipse behind
+      noStroke();
+      fill(244,220, 66);
+      rect(width*0.6, height*0,500,325);
 
-  // Identifying the position of the reference image and target image
-  referenceImagePosition = referenceImageX + referenceImageY;
-  targetImagePosition = targetX + targetY;
-  ellipsePosition = ellipsePositionX + ellipsePositionY;
+// Displaying the image of maggie in a donut
+      image(referenceImage,width * 0.8, height / 4);
 
-  // Once we've displayed all decoys, we choose a location for the target
-  targetX = random(0, width);
-  targetY = random(0, height);
-  // And draw it (this means it will always be on top)
-  image(targetImage, targetX, targetY);
+// Information for the speed of the target when the user wins
+      targetImageVx = targetSpeed;
+      targetImageVy = -targetSpeed;
 
-  textFont("Barlow");
-  textSize(20);
-  textAlign(CENTER, CENTER);
-  strokeWeight(4);
-  stroke(0);
-  fill(226, 74, 171);
-  text("CLICK ON HER!", windowWidth * 0.8, 290);
+// Position for the reference image of the target
+      ellipsePositionX = width * 0.8;
+      ellipsePositionY = height / 4;
 
-  while (targetImagePosition === random) {
-    targetImagePosition !== ellipsePosition;
-  }
+// Informations for the text under Maggie in the donut
+      textFont("Barlow");
+      textSize(20);
+      textAlign(CENTER, CENTER);
+      strokeWeight(4);
+      stroke(0);
+      fill(226, 74, 171);
+      text("CLICK ON HER!", windowWidth * 0.8, 290);
+
+
+// Identifying the position of the reference image and target image
+      referenceImagePosition = referenceImageX + referenceImageY;
+      targetImagePosition = targetX + targetY;
+      ellipsePosition = ellipsePositionX + ellipsePositionY;
+
+// Once we've displayed all decoys, we choose a location for the target
+      targetX = random(0, width);
+      targetY = random(0, height);
+
+// And draw it (this means it will always be on top)
+      image(targetImage, targetX, targetY);
+
+// While loop so the target can't go under the reference image (Maggie in a donut)
+      while (targetImagePosition === random) {
+      targetImagePosition !== ellipsePosition;
+   }
 }
 
 function draw() {
-
-  if (gameOver) {
-
-    // Prepare our typography
+    if (gameOver) {
+// Prepare our typography
     textFont("Helvetica");
     textSize(100);
     textAlign(CENTER, CENTER);
@@ -170,9 +178,8 @@ function draw() {
     stroke(random(255));
     strokeWeight(10);
 
-
-    // Wrapping for the target
-    // The variables were not right so we changed it
+// Wrapping for the target
+// The variables were not right so we changed it
     if (targetX + targetImage.width / 2 < 0) {
       targetX += width;
     } else if (targetX - targetImage.width / 2 > width) {
@@ -184,7 +191,7 @@ function draw() {
       targetY -= height;
     }
 
-    // Movement part for the target when the player win
+// Movement part for the target when the player win
     targetX = targetX - targetImageVx;
     targetY = targetY + targetImageVy;
     targetImageVy = targetImageVy + targetImageAx;
