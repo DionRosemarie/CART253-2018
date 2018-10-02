@@ -25,10 +25,9 @@ var maxspeed = 6;
 
 
 // Image of Maggie as a reference for the user
-var referenceImage;
-var referenceImageX;
-var referenceImageY;
-var referenceImagtePosition;
+//var referenceImage;
+//var referenceImageY;
+//var referenceImagtePosition;
 
 // The ten decoy images
 var decoyImage1;
@@ -54,7 +53,7 @@ var gameOver = false;
 // Loads the target and decoy images before the program starts
 function preload() {
   targetImage = loadImage("assets/images/target.png");
-  referenceImage = loadImage("assets/images/r_target.png");
+  //referenceImage = loadImage("assets/images/r_target.png");
 
   decoyImage1 = loadImage("assets/images/pers1.png");
   decoyImage2 = loadImage("assets/images/pers2.png");
@@ -126,11 +125,11 @@ function setup() {
   }
 
 // Position for the reference image of the target
-    referenceImageX = 175;
-    referenceImageY = 150;
-    image(referenceImage,referenceImageX,referenceImageY);
+    //referenceImageX = 175;
+    //referenceImageY = 150;
+    //image(referenceImage,referenceImageX,referenceImageY);
 // Identifying the position of the reference image and target image
-    referenceImagePosition= referenceImageX + referenceImageY;
+    //referenceImagePosition= referenceImageX + referenceImageY;
     targetImagePosition= targetX + targetY;
 
   // Once we've displayed all decoys, we choose a location for the target
@@ -156,10 +155,21 @@ function draw() {
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-    vx += random(-speedChange,speedChange);
-    vy += random(-speedChange,speedChange);
-    x += vx;
-    y += vy;
+// Try again to change the velocity after winning
+//    x = x + vx;
+//    y = y + vy;
+
+//    targetImagevx += random(-speedChange,speedChange);
+//    targetImagevy += random(-speedChange,speedChange);
+//    x += vx;
+//    y += vy;
+
+// Try to move the target when the person won
+    //if (mouseX > targetX - targetImage.width/2 && mouseX < targetX + targetImage.width/2) {
+    //x = x + targetImagevx
+    //y = y + targetImagevy
+    //targetImage(x,y,50,50);
+  //}
 
 // This is the loop for the 3rd challenge, but the target can get over the reference image
 // I will need to check that after

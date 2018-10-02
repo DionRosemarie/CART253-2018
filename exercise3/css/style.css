@@ -12,8 +12,9 @@ body {
 }
 
 img {
-  position: absolute;
-  width: 200px;
-  height: 103px;
-  align: bottom;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 275px;
+    height: 275px;
 }
