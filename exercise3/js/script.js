@@ -18,9 +18,9 @@ var targetImagePosition;
 
 
 // Adding new variables to make winning more exciting
-var targetImagevx;
-var targetImagevy;
-var targetSpeedChange = 1;
+var targetImageVx;
+var targetImageVy;
+var targetSpeed = 10;
 var maxspeed = 6;
 
 
@@ -124,6 +124,9 @@ function setup() {
     }
 
     image(referenceImage,width*0.8,height/4);
+
+    targetImageVx = targetSpeed;
+    targetImageVy = -targetSpeed;
   }
 
 // Position for the reference image of the target
@@ -154,23 +157,12 @@ function draw() {
     noFill();
     stroke(random(255));
     strokeWeight(10);
-    ellipse(targetX,targetY,targetImage.width,targetImage.height);
 
-// Try again to change the velocity after winning
-//    x = x + vx;
-//    y = y + vy;
 
-//    targetImagevx += random(-speedChange,speedChange);
-//    targetImagevy += random(-speedChange,speedChange);
-//    x += vx;
-//    y += vy;
-
-// Try to move the target when the person won
-    //if (mouseX > targetX - targetImage.width/2 && mouseX < targetX + targetImage.width/2) {
-    //x = x + targetImagevx
-    //y = y + targetImagevy
-    //targetImage(x,y,50,50);
-  //}
+// Movement part for the target when the player win
+    targetX = targetX + targetImageVx;
+    targetY = targetY + targetImageVy;
+    image(targetImage,targetX,targetY);
 
 // This is the loop for the 3rd challenge, but the target can get over the reference image
 // I will need to check that after
