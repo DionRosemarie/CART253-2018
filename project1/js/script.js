@@ -212,10 +212,10 @@ function movePrey() {
   }
 
   // Update prey position based on velocity
+  // There is a glitch in the game when the player touch the prey
+  // Should check that later
   preyX = width * noise(preyVX);
   preyY = height * noise(preyVY);
-  //tx += 0.01;
-  //ty += 0.01;
   preyVX += 0.01;
   preyVY += 0.01;
 
