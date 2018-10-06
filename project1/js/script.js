@@ -16,7 +16,7 @@ var gameOver = false;
 // Player position, size, velocity
 var playerX;
 var playerY;
-var playerRadius = 25;
+var playerRadius = 50;
 var playerVX = 0;
 var playerVY = 0;
 var playerMaxSpeed = 2;
@@ -25,6 +25,8 @@ var playerHealth;
 var playerMaxHealth = 255;
 // Player fill color
 var playerFill = 50;
+// Player fill color
+var playerSize;
 
 // Prey position, size, velocity
 var preyX;
@@ -44,6 +46,8 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
+
+
 // setup()
 //
 // Sets up the basic elements of the game
@@ -54,6 +58,7 @@ function setup() {
 
   setupPrey();
   setupPlayer();
+
 }
 
 // setupPrey()
@@ -97,6 +102,7 @@ function draw() {
 
     drawPrey();
     drawPlayer();
+
   }
   else {
     showGameOver();
@@ -182,6 +188,9 @@ function checkEating() {
     playerHealth = constrain(playerHealth + eatHealth,0,playerMaxHealth);
     // Reduce the prey health
     preyHealth = constrain(preyHealth - eatHealth,0,preyMaxHealth);
+    // Changing the size of the player each time he eats the prey
+    // playerRadius gets smaller each time the player wins to make it more difficult
+    playerRadius-=0.5;
 
     // Check if the prey died
     if (preyHealth === 0) {
@@ -192,6 +201,7 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten++;
+
     }
   }
 }
