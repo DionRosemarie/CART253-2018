@@ -202,18 +202,22 @@ function movePrey() {
   // Change the prey's velocity at random intervals
   // random() will be < 0.05 5% of the time, so the prey
   // will change direction on 5% of frames
-  if (random() < 0.05) {
+  if (noise() < 0.05) {
     // Set velocity based on random values to get a new direction
     // and speed of movement
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVX = map(noise(),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVY = map(noise(),0,1,-preyMaxSpeed,preyMaxSpeed);
   }
 
   // Update prey position based on velocity
-  preyX += preyVX;
-  preyY += preyVY;
+  preyX = width * noise(preyVX);
+  preyY = height * noise(preyVY);
+  //tx += 0.01;
+  //ty += 0.01;
+  preyVX += 0.01;
+  preyVY += 0.01;
 
   // Screen wrapping
   if (preyX < 0) {
