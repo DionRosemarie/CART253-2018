@@ -109,7 +109,7 @@ function draw() {
 function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
-    playerVX = -playerMaxSpeed;
+    playerVX =- playerMaxSpeed;
   }
   else if (keyIsDown(RIGHT_ARROW)) {
     playerVX = playerMaxSpeed;
@@ -120,7 +120,7 @@ function handleInput() {
 
   // Check for vertical movement
   if (keyIsDown(UP_ARROW)) {
-    playerVY = -playerMaxSpeed;
+    playerVY =-playerMaxSpeed;
   }
   else if (keyIsDown(DOWN_ARROW)) {
     playerVY = playerMaxSpeed;
@@ -128,6 +128,7 @@ function handleInput() {
   else {
     playerVY = 0;
   }
+
 }
 
 // movePlayer()
