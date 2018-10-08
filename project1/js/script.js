@@ -134,9 +134,9 @@ function handleInput() {
   else {
     playerVY = 0;
   }
-
+ // Ability to sprint
   if (keyIsDown(SHIFT)) {
-    playerMaxSpeed=10;
+    playerMaxSpeed=6;
   }
   else {
     playerMaxSpeed=2;
@@ -208,10 +208,18 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten++;
+    }
+  }
+  // Changing the playerHealth when he sprints
+  if (keyIsDown(SHIFT)) {
+    playerHealth-=2;
+    }
+  else {
+    playerHealth= constrain(playerHealth + eatHealth,0,playerMaxHealth);
 
     }
   }
-}
+
 
 // movePrey()
 //
