@@ -135,6 +135,13 @@ function handleInput() {
     playerVY = 0;
   }
 
+  if (keyIsDown(SHIFT)) {
+    playerMaxSpeed=10;
+  }
+  else {
+    playerMaxSpeed=2;
+  }
+
 }
 
 // movePlayer()
@@ -259,7 +266,7 @@ function drawPrey() {
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
   fill(playerFill,playerHealth);
-  ellipse(playerX,playerY,playerRadius*2);
+  ellipse(playerX,playerY,playerRadius);
 }
 
 // showGameOver()
