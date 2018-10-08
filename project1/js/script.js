@@ -16,7 +16,7 @@ var gameOver = false;
 // Player position, size, velocity
 var playerX;
 var playerY;
-var playerRadius = 50;
+var playerRadius = 25;
 var playerVX = 0;
 var playerVY = 0;
 var playerMaxSpeed = 2;
@@ -31,7 +31,7 @@ var playerSize;
 // Prey position, size, velocity
 var preyX;
 var preyY;
-var preyRadius = 25;
+var preyRadius = 50;
 var preyVX;
 var preyVY;
 var preyMaxSpeed = 4;
@@ -52,7 +52,7 @@ var preyEaten = 0;
 //
 // Sets up the basic elements of the game
 function setup() {
-  createCanvas(500,500);
+  createCanvas(500, 500);
 
   noStroke();
 
@@ -65,8 +65,8 @@ function setup() {
 //
 // Initialises prey's position, velocity, and health
 function setupPrey() {
-  preyX = width/5;
-  preyY = height/2;
+  preyX = width / 5;
+  preyY = height / 2;
   preyVX = -preyMaxSpeed;
   preyVY = preyMaxSpeed;
   preyHealth = preyMaxHealth;
@@ -76,8 +76,8 @@ function setupPrey() {
 //
 // Initialises player position and health
 function setupPlayer() {
-  playerX = 4*width/5;
-  playerY = height/2;
+  playerX = 4 * width / 5;
+  playerY = height / 2;
   playerHealth = playerMaxHealth;
 }
 
@@ -89,7 +89,7 @@ function setupPlayer() {
 // displays the two agents.
 // When the game is over, shows the game over screen.
 function draw() {
-  background(100,100,200);
+  background(100, 100, 200);
 
   if (!gameOver) {
     handleInput();
@@ -103,8 +103,7 @@ function draw() {
     drawPrey();
     drawPlayer();
 
-  }
-  else {
+  } else {
     showGameOver();
   }
 }
@@ -115,31 +114,26 @@ function draw() {
 function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
-    playerVX =- playerMaxSpeed;
-  }
-  else if (keyIsDown(RIGHT_ARROW)) {
+    playerVX = -playerMaxSpeed;
+  } else if (keyIsDown(RIGHT_ARROW)) {
     playerVX = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVX = 0;
   }
 
   // Check for vertical movement
   if (keyIsDown(UP_ARROW)) {
-    playerVY =-playerMaxSpeed;
-  }
-  else if (keyIsDown(DOWN_ARROW)) {
+    playerVY = -playerMaxSpeed;
+  } else if (keyIsDown(DOWN_ARROW)) {
     playerVY = playerMaxSpeed;
-  }
-  else {
+  } else {
     playerVY = 0;
   }
- // Ability to sprint
+  // Ability to sprint
   if (keyIsDown(SHIFT)) {
-    playerMaxSpeed=6;
-  }
-  else {
-    playerMaxSpeed=2;
+    playerMaxSpeed = 6;
+  } else {
+    playerMaxSpeed = 2;
   }
 
 }
@@ -156,15 +150,13 @@ function movePlayer() {
   // Wrap when player goes off the canvas
   if (playerX < 0) {
     playerX += width;
-  }
-  else if (playerX > width) {
+  } else if (playerX > width) {
     playerX -= width;
   }
 
   if (playerY < 0) {
     playerY += height;
-  }
-  else if (playerY > height) {
+  } else if (playerY > height) {
     playerY -= height;
   }
 }
@@ -175,7 +167,7 @@ function movePlayer() {
 // Check if the player is dead
 function updateHealth() {
   // Reduce player health, constrain to reasonable range
-  playerHealth = constrain(playerHealth - 0.5,0,playerMaxHealth);
+  playerHealth = constrain(playerHealth - 0.5, 0, playerMaxHealth);
   // Check if the player is dead
   if (playerHealth === 0) {
     // If so, the game is over
@@ -188,22 +180,24 @@ function updateHealth() {
 // Check if the player overlaps the prey and updates health of both
 function checkEating() {
   // Get distance of player to prey
-  var d = dist(playerX,playerY,preyX,preyY);
+  var d = dist(playerX, playerY, preyX, preyY);
   // Check if it's an overlap
   if (d < playerRadius + preyRadius) {
     // Increase the player health
-    playerHealth = constrain(playerHealth + eatHealth,0,playerMaxHealth);
+    playerHealth = constrain(playerHealth + eatHealth, 0, playerMaxHealth);
     // Reduce the prey health
-    preyHealth = constrain(preyHealth - eatHealth,0,preyMaxHealth);
+    preyHealth = constrain(preyHealth - eatHealth, 0, preyMaxHealth);
     // Changing the size of the player each time he eats the prey
-    // playerRadius gets smaller each time the player wins to make it more difficult
-    playerRadius-=0.5;
+    // playerRadius gets bigger each time the player wins
+    playerRadius += 0.5;
+    // playerRadius gets bigger each time the player wins
+    preyRadius -= 0.5;
 
     // Check if the prey died
     if (preyHealth === 0) {
       // Move the "new" prey to a random position
-      preyX = random(0,width);
-      preyY = random(0,height);
+      preyX = random(0, width);
+      preyY = random(0, height);
       // Give it full health
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
@@ -212,13 +206,13 @@ function checkEating() {
   }
   // Changing the playerHealth when he sprints
   if (keyIsDown(SHIFT)) {
-    playerHealth-=2;
-    }
-  else {
-    playerHealth= constrain(playerHealth + eatHealth,0,playerMaxHealth);
+    playerHealth -= 2;
+  } else {
+    playerHealth = constrain(playerHealth + eatHealth, 0, playerMaxHealth);
 
-    }
   }
+
+}
 
 
 // movePrey()
@@ -233,8 +227,8 @@ function movePrey() {
     // and speed of movement
     // Use map() to convert from the 0-1 range of the random() function
     // to the appropriate range of velocities for the prey
-    preyVX = map(noise(),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(noise(),0,1,-preyMaxSpeed,preyMaxSpeed);
+    preyVX = map(noise(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
+    preyVY = map(noise(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
   }
 
   // Update prey position based on velocity
@@ -248,15 +242,13 @@ function movePrey() {
   // Screen wrapping
   if (preyX < 0) {
     preyX += width;
-  }
-  else if (preyX > width) {
+  } else if (preyX > width) {
     preyX -= width;
   }
 
   if (preyY < 0) {
     preyY += height;
-  }
-  else if (preyY > height) {
+  } else if (preyY > height) {
     preyY -= height;
   }
 }
@@ -265,16 +257,16 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-  fill(preyFill,preyHealth);
-  ellipse(preyX,preyY,preyRadius*2);
+  fill(preyFill, preyHealth);
+  ellipse(preyX, preyY, preyRadius * 2);
 }
 
 // drawPlayer()
 //
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
-  fill(playerFill,playerHealth);
-  ellipse(playerX,playerY,playerRadius);
+  fill(playerFill, playerHealth);
+  ellipse(playerX, playerY, playerRadius);
 }
 
 // showGameOver()
@@ -282,10 +274,10 @@ function drawPlayer() {
 // Display text about the game being over!
 function showGameOver() {
   textSize(32);
-  textAlign(CENTER,CENTER);
+  textAlign(CENTER, CENTER);
   fill(0);
   var gameOverText = "GAME OVER\n";
   gameOverText += "You ate " + preyEaten + " prey\n";
   gameOverText += "before you died."
-  text(gameOverText,width/2,height/2);
+  text(gameOverText, width / 2, height / 2);
 }
