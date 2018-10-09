@@ -1,13 +1,9 @@
 /******************************************************
-
 Game - Chaser
 Pippin Barr
-
 A simple game of cat and mouse.
-
 Physics-based movement, keyboard controls, health/stamina,
 sprinting, random movement, screen wrap.
-
 ******************************************************/
 
 // Track whether the game is over
@@ -26,12 +22,12 @@ var playerMaxHealth = 255;
 // Player fill color
 var playerFill = 50;
 // Player fill color
-var playerSize;
+var playerPosition=playerX+playerY;
 
 // Prey position, size, velocity
 var preyX;
 var preyY;
-var preyRadius = 50;
+var preyRadius = 25;
 var preyVX;
 var preyVY;
 var preyMaxSpeed = 4;
@@ -45,6 +41,8 @@ var preyFill = 200;
 var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
+var tx=0;
+var ty=100;
 
 
 
@@ -189,9 +187,12 @@ function checkEating() {
     preyHealth = constrain(preyHealth - eatHealth, 0, preyMaxHealth);
     // Changing the size of the player each time he eats the prey
     // playerRadius gets bigger each time the player wins
-    playerRadius += 0.5;
+    //playerRadius += 0.5;
     // playerRadius gets bigger each time the player wins
-    preyRadius -= 0.5;
+    //preyRadius- 1;
+
+
+
 
     // Check if the prey died
     if (preyHealth === 0) {
@@ -219,25 +220,15 @@ function checkEating() {
 //
 // Moves the prey based on random velocity changes
 function movePrey() {
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
-  // will change direction on 5% of frames
-  if (noise() < 0.05) {
-    // Set velocity based on random values to get a new direction
-    // and speed of movement
-    // Use map() to convert from the 0-1 range of the random() function
-    // to the appropriate range of velocities for the prey
-    preyVX = map(noise(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-    preyVY = map(noise(), 0, 1, -preyMaxSpeed, preyMaxSpeed);
-  }
+  preyVX = map(noise(tx),0,1,-preyMaxSpeed,preyMaxSpeed);
+  preyVY = map(noise(ty),0,1,-preyMaxSpeed,preyMaxSpeed);
 
-  // Update prey position based on velocity
-  // There is a glitch in the game when the player touch the prey
-  // Should check that later
-  preyX = width * noise(preyVX);
-  preyY = height * noise(preyVY);
-  preyVX += 0.01;
-  preyVY += 0.01;
+
+    // Update prey position based on velocity
+    preyX += preyVX;
+    preyY += preyVY;
+    tx += 0.05;
+    ty += 0.05;
 
   // Screen wrapping
   if (preyX < 0) {
