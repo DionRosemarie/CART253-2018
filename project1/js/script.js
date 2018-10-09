@@ -46,6 +46,11 @@ var preyEaten = 0;
 var tx=0;
 var ty=100;
 
+var titleImage;
+var titleImageX;
+var titleImageY;
+var titleImagePosition;
+
 
 
 // setup()
@@ -55,6 +60,8 @@ function setup() {
   createCanvas(500, 500);
   floorX=0;
   floorY=0;
+  titleImageX=15;
+  titleImageY=15;
 
   noStroke();
 
@@ -67,6 +74,7 @@ function preload(){
 floor = loadImage("assets/images/floor.jpg");
 playerImage = loadImage("assets/images/player.png");
 preyImage = loadImage("assets/images/prey.png");
+titleImage = loadImage("assets/images/title.png");
 }
 // setupPrey()
 //
@@ -98,6 +106,7 @@ function setupPlayer() {
 function draw() {
   image(floor,floorX,floorY);
   image(playerImage,playerX,playerY);
+  image(titleImage,titleImageX,titleImageY,200,78);
 
   if (!gameOver) {
     handleInput();
