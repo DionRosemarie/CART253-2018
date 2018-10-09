@@ -13,7 +13,9 @@ var gameOver = false;
 var playerImage;
 var playerX;
 var playerY;
-var playerSize = 50;
+var playerSize = 35;
+var playerSizeMin=50;
+var playerSizeMax=100;
 var playerVX = 0;
 var playerVY = 0;
 var playerMaxSpeed = 2;
@@ -25,19 +27,22 @@ var playerFill = 50;
 // Player fill color
 var playerPosition=playerX+playerY;
 
+
 // Prey position, size, velocity
 var preyImage;
 var preyX;
 var preyY;
-var preySize = 100;
+var preySize = 50;
+var preySizeMin = 25;
+var preySizeMax = 100;
 var preyVX;
 var preyVY;
 var preyMaxSpeed = 4;
 // Prey health
 var preyHealth;
-var preyMaxHealth = 100;
+var preyMaxHealth = 200;
 // Prey fill color
-var preyFill = 200;
+
 
 // Amount of health obtained per frame of "eating" the prey
 var eatHealth = 10;
@@ -75,6 +80,8 @@ floor = loadImage("assets/images/floor.jpg");
 playerImage = loadImage("assets/images/player.png");
 preyImage = loadImage("assets/images/prey.png");
 titleImage = loadImage("assets/images/title.png");
+gameoverImage = loadImage("assets/images/gameover.png");
+gameoverFont = loadFont("assets/fonts/FunSized.ttf");
 }
 // setupPrey()
 //
@@ -105,7 +112,6 @@ function setupPlayer() {
 // When the game is over, shows the game over screen.
 function draw() {
   image(floor,floorX,floorY);
-  image(playerImage,playerX,playerY);
   image(titleImage,titleImageX,titleImageY,200,78);
 
   if (!gameOver) {
@@ -208,9 +214,6 @@ function checkEating() {
     // playerRadius gets bigger each time the player wins
     //playerRadius += 0.5;
     // playerRadius gets bigger each time the player wins
-    //preyRadius- 1;
-
-
 
 
     // Check if the prey died
@@ -223,14 +226,16 @@ function checkEating() {
       // Track how many prey were eaten
       preyEaten++;
     }
+
   }
   // Changing the playerHealth when he sprints
   if (keyIsDown(SHIFT)) {
-    playerHealth -= 2;
+    playerHealth -= 5;
   } else {
     playerHealth = constrain(playerHealth + eatHealth, 0, playerMaxHealth);
 
   }
+
 
 }
 
@@ -267,27 +272,33 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
-  fill(preyHealth);
-  image(preyImage,preyX, preyY, preySize);
+  push();
+  tint(255,map(preyHealth,0,100,0,255));
+  image(preyImage,preyX, preyY, preySize*2);
+  pop();
 }
 
 // drawPlayer()
 //
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
-  fill(playerHealth);
-  image(playerImage,playerX, playerY,playerSize);
+  push();
+  tint(255,playerHealth);
+  image(playerImage,playerX, playerY,playerSize*2);
+  pop();
 }
 
 // showGameOver()
 //
 // Display text about the game being over!
 function showGameOver() {
+  image(gameoverImage,75,90,350,350)
+  textFont(gameoverFont);
   textSize(32);
   textAlign(CENTER, CENTER);
   fill(0);
   var gameOverText = "GAME OVER\n";
   gameOverText += "You ate " + preyEaten + " prey\n";
-  gameOverText += "before you died."
+  gameOverText += "before you died"
   text(gameOverText, width / 2, height / 2);
 }
