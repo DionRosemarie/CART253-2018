@@ -27,8 +27,8 @@ var playerFill = 50;
 // Player fill color
 var playerPosition=playerX+playerY;
 
-var exempleSound = new Audio ("assets/sounds/cartoon-bite-sound-effect.mp4");
-
+var eatSound = new Audio ("assets/sounds/cartoon-bite-sound-effect.mp4");
+var failSound = new Audio ("assets/sounds/Failure.mp3");
 
 // Prey position, size, velocity
 var preyImage;
@@ -84,7 +84,8 @@ preyImage = loadImage("assets/images/prey.png");
 titleImage = loadImage("assets/images/title.png");
 gameoverImage = loadImage("assets/images/gameover.png");
 gameoverFont = loadFont("assets/fonts/FunSized.ttf");
-exempleSound = new Audio("assets/sounds/cartoon-bite-sound-effect.mp4");
+eatSound = new Audio("assets/sounds/cartoon-bite-sound-effect.mp4");
+failSound = new Audio("assets/sounds/Failure.mp3");
 }
 // setupPrey()
 //
@@ -217,7 +218,7 @@ function checkEating() {
     // playerRadius gets bigger each time the player wins
     //playerRadius += 0.5;
     // playerRadius gets bigger each time the player wins
-    exempleSound.play();
+    eatSound.play();
 
     // Check if the prey died
     if (preyHealth === 0) {
@@ -304,4 +305,5 @@ function showGameOver() {
   gameOverText += "You ate " + preyEaten + " prey\n";
   gameOverText += "before you died"
   text(gameOverText, width / 2, height / 2);
+  failSound.play();
 }
