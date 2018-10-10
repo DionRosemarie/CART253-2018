@@ -27,6 +27,7 @@ var playerFill = 50;
 // Player fill color
 var playerPosition=playerX+playerY;
 
+// variables for the sounds
 var eatSound = new Audio ("assets/sounds/cartoon-bite-sound-effect.mp4");
 var failSound = new Audio ("assets/sounds/Failure.mp3");
 
@@ -43,28 +44,26 @@ var preyMaxSpeed = 4;
 // Prey health
 var preyHealth;
 var preyMaxHealth = 200;
-// Prey fill color
-
 
 // Amount of health obtained per frame of "eating" the prey
 var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
+// variables for the movement of the prey
 var tx=0;
 var ty=100;
-
+// variables for the title in the corner of the game
 var titleImage;
 var titleImageX;
 var titleImageY;
 var titleImagePosition;
-
-
 
 // setup()
 //
 // Sets up the basic elements of the game
 function setup() {
   createCanvas(500, 500);
+  // informations for the background and the title
   floorX=0;
   floorY=0;
   titleImageX=15;
@@ -78,12 +77,15 @@ function setup() {
 }
 
 function preload(){
+// informations for the images
 floor = loadImage("assets/images/floor.jpg");
 playerImage = loadImage("assets/images/player.png");
 preyImage = loadImage("assets/images/prey.png");
 titleImage = loadImage("assets/images/title.png");
 gameoverImage = loadImage("assets/images/gameover.png");
+obstacleImage = loadImage("assets/images/obstacle.png");
 gameoverFont = loadFont("assets/fonts/FunSized.ttf");
+// informations for the sounds
 eatSound = new Audio("assets/sounds/cartoon-bite-sound-effect.mp4");
 failSound = new Audio("assets/sounds/Failure.mp3");
 }
@@ -97,7 +99,6 @@ function setupPrey() {
   preyVY = preyMaxSpeed;
   preyHealth = preyMaxHealth;
 }
-
 // setupPlayer()
 //
 // Initialises player position and health
@@ -108,14 +109,11 @@ function setupPlayer() {
 }
 
 // draw()
-//
-// While the game is active, checks input
-// updates positions of prey and player,
-// checks health (dying), checks eating (overlaps)
-// displays the two agents.
-// When the game is over, shows the game over screen.
+
 function draw() {
+  // displaying the background
   image(floor,floorX,floorY);
+  // displaying the title
   image(titleImage,titleImageX,titleImageY,200,78);
 
   if (!gameOver) {
@@ -129,6 +127,7 @@ function draw() {
 
     drawPrey();
     drawPlayer();
+    //drawObstacle();
 
   } else {
     showGameOver();
@@ -136,8 +135,7 @@ function draw() {
 }
 
 // handleInput()
-//
-// Checks arrow keys and adjusts player velocity accordingly
+
 function handleInput() {
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
@@ -156,7 +154,7 @@ function handleInput() {
   } else {
     playerVY = 0;
   }
-  // Ability to sprint
+  // Ability to sprint for the prey
   if (keyIsDown(SHIFT)) {
     playerMaxSpeed = 10;
   } else {
@@ -167,7 +165,6 @@ function handleInput() {
 
 // movePlayer()
 //
-// Updates player position based on velocity,
 // wraps around the edges.
 function movePlayer() {
   // Update position
@@ -190,8 +187,6 @@ function movePlayer() {
 
 // updateHealth()
 //
-// Reduce the player's health (every frame)
-// Check if the player is dead
 function updateHealth() {
   // Reduce player health, constrain to reasonable range
   playerHealth = constrain(playerHealth - 0.5, 0, playerMaxHealth);
@@ -214,11 +209,9 @@ function checkEating() {
     playerHealth = constrain(playerHealth + eatHealth, 0, playerMaxHealth);
     // Reduce the prey health
     preyHealth = constrain(preyHealth - eatHealth, 0, preyMaxHealth);
-    // Changing the size of the player each time he eats the prey
-    // playerRadius gets bigger each time the player wins
-    //playerRadius += 0.5;
-    // playerRadius gets bigger each time the player wins
+    // sounds when the player eats the prey
     eatSound.play();
+
 
     // Check if the prey died
     if (preyHealth === 0) {
@@ -306,4 +299,5 @@ function showGameOver() {
   gameOverText += "before you died"
   text(gameOverText, width / 2, height / 2);
   failSound.play();
+  failSound.pause();
 }
