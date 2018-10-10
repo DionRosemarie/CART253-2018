@@ -299,5 +299,5 @@ function showGameOver() {
   gameOverText += "before you died"
   text(gameOverText, width / 2, height / 2);
   failSound.play();
-  failSound.pause();
+
 }
