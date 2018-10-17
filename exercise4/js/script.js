@@ -291,11 +291,20 @@ function handleBallOffScreen() {
     // If it went off either side, reset it to the centre
     ball.x = width/2;
     ball.y = height/2;
-    // NOTE that we don't change its velocity here so it just
-    // carries on moving with the same velocity after its
-    // position is reset.
-    // This is where we would count points etc!
   }
+  /////////////////// NEW CODE //////////////////////////////
+  if (ballRight < 0){
+    playerRightScore = playerRightScore+1
+    console.log(playerRightScore + " POINT FOR PLAYER 2")
+  }
+
+  if (ballLeft > width){
+    playerLeftScore = playerLeftScore+1
+    console.log(playerLeftScore + " POINT FOR PLAYER 1")
+  }
+  resetBall();
+
+/////////////////// END NEW CODE ///////////////////////////
 }
 
 // displayBall()
