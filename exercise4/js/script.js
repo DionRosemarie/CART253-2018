@@ -68,12 +68,19 @@ var rightPaddle = {
 
 // A variable to hold the beep sound we will play on bouncing
 var beepSFX;
+var sadSFX;
 
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
+  sadSFX = new Audio("assets/sounds/sad.mp3");
+  myFont = loadFont("assets/fonts/ChakraPetch-Light.ttf");
+  heartImage = loadImage("assets/images/heart.png");
+  heartBrokenImage = loadImage("assets/images/heartbroken.png");
+  heartTextureImage = loadImage("assets/images/heartTexture.png");
+  ballImage = loadImage("assets/images/ball.png");
 }
 
 // setup()
