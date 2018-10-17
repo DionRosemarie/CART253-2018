@@ -387,8 +387,8 @@ function updateScore() {
   push();
   textFont(myFont);
   textSize(20);
-  fill(80);
-  text("SO MUCH LOVE IN THE AIR",200,380);
+  fill(70);
+  text("SO MUCH LOVE IN THE AIR",205,380);
   pop();
 
   }
@@ -423,7 +423,8 @@ function endGame() {
   background(0);
   fill(255);
   image(heartBrokenImage, 290, 100);
-  var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n\n";
+  var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n";
+  gameOverText += "it's not you, it's me, it's over\n\n";
   gameOverText += "PLAYER 1 SCORED " + playerLeftScore + " POINT\n";
   gameOverText += "PLAYER 2 SCORED " + playerRightScore + " POINT \n";
   text(gameOverText, width / 2, height / 2);
