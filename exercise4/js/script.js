@@ -355,7 +355,7 @@ function updateScore() {
   pop();
 
   for (var i = 0; i < playerLeftScore; i++) {
-    var scoreWidth = map(playerLeftScore, 0, 3, 0, 100);
+    var scoreWidth = map(playerLeftScore, 0, 2, 0, 100);
     push();
     fill(255, 0, 0);
     rect(0, 0, scoreWidth, 20);
@@ -368,7 +368,7 @@ function updateScore() {
   }
 
   for (var i = 0; i < playerRightScore; i++) {
-    var scoreWidth = map(playerRightScore, 0, 3, 0, 100);
+    var scoreWidth = map(playerRightScore, 0, 2, 0, 100);
     push();
     fill(255, 0, 0);
     rect(width - 0, 0, scoreWidth, 20);
@@ -382,7 +382,7 @@ function updateScore() {
   // To make the game more difficult, the player go to the next level
   // The ball is now more difficult to see  with all the hearts going around
   var scoreTotal = playerRightScore + playerLeftScore;
-  if (scoreTotal > 2) {
+  if (scoreTotal > 5) {
   image(heartTextureImage, random(0, 600), random(0, 600));
   push();
   textFont(myFont);
