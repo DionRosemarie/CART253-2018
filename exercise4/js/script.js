@@ -307,6 +307,19 @@ function handleBallOffScreen() {
 /////////////////// END NEW CODE ///////////////////////////
 }
 
+////////////////////// NEW CODE ///////////////////////////
+
+function resetBall() {
+  var ballLeft = ball.x - ball.size/2;
+  var ballRight = ball.x + ball.size/2;
+
+  if (ballRight < 0 || ballRight > width){
+    ball.vx = -ball.vx;
+    ball.vy = random(-ball.speed,ball.speed);
+  }
+/////////////////// END NEW CODE ///////////////////////////
+}
+
 // displayBall()
 //
 // Draws ball on screen based on its properties
