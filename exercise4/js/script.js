@@ -373,7 +373,7 @@ function updateScore(){
 //
 // Draws ball on screen based on its properties
 function displayBall() {
-  rect(ball.x,ball.y,ball.size,ball.size);
+  image(ballImage,ball.x,ball.y,ball.size,ball.size);
 }
 
 // displayPaddle(paddle)
