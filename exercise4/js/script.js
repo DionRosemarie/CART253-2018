@@ -382,3 +382,22 @@ function displayBall() {
 function displayPaddle(paddle) {
   rect(paddle.x,paddle.y,paddle.w,paddle.h);
 }
+
+
+////////////////////// NEW CODE  //////////////////////////
+function resetGame() {
+  push();
+  textFont(myFont);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  background(0);
+  fill(255);
+  image(heartBrokenImage,290,100);
+  var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n\n";
+  gameOverText += "PLAYER 1 SCORED " + playerLeftScore + " POINT\n";
+  gameOverText += "PLAYER 2 SCORED " + playerRightScore + " POINT \n";
+  text(gameOverText, width / 2, height / 2);
+  pop();
+  sadSFX.play();
+}
+////////////////////// END NEW CODE  ///////////////////////
