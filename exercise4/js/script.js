@@ -31,9 +31,9 @@ var heartTextureImage;
 var ballImage;
 
 // variables to update the score for player 1
-var playerLeftScore=0;
+var playerLeftScore = 0;
 // variables to update the score for player 2
-var playerRightScore=0;
+var playerRightScore = 0;
 
 // PADDLES
 
@@ -75,14 +75,14 @@ var rightPaddle = {
 
 // A variable to hold the beep sound we will play on bouncing
 var beepSFX;
-var sadSFX;
+var endGameSFX;
 
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
-  sadSFX = new Audio("assets/sounds/sad.mp3");
+  endGameSFX = new Audio("assets/sounds/sad.mp3");
   myFont = loadFont("assets/fonts/ChakraPetch-Light.ttf");
   heartImage = loadImage("assets/images/heart.png");
   heartBrokenImage = loadImage("assets/images/heartbroken.png");
@@ -97,7 +97,7 @@ function preload() {
 // and velocities.
 function setup() {
   // Create canvas and set drawing modes
-  createCanvas(640,480);
+  createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
   fill(fgColor);
@@ -112,19 +112,19 @@ function setup() {
 function setupPaddles() {
   // Initialise the left paddle
   leftPaddle.x = paddleInset;
-  leftPaddle.y = height/2;
+  leftPaddle.y = height / 2;
 
   // Initialise the right paddle
   rightPaddle.x = width - paddleInset;
-  rightPaddle.y = height/2;
+  rightPaddle.y = height / 2;
 }
 
 // setupBall()
 //
 // Sets the position and velocity of the ball
 function setupBall() {
-  ball.x = width/2;
-  ball.y = height/2;
+  ball.x = width / 2;
+  ball.y = height / 2;
   ball.vx = ball.speed;
   ball.vy = ball.speed;
 }
@@ -135,44 +135,46 @@ function setupBall() {
 function draw() {
   // Fill the background
   background(bgColor);
-  image(heartImage,220,155);
+  // display the heart in the background of the screen
+  image(heartImage, 220, 155);
 
 
   ////////////////// NEW CODE ///////////////////
-  if (!gameOver){
-  // Handle input
-  // Notice how we're using the SAME FUNCTION to handle the input
-  // for the two paddles!
-  handleInput(leftPaddle);
-  handleInput(rightPaddle);
+  // We are now able to end the game
+  if (!gameOver) {
+    // Handle input
+    // Notice how we're using the SAME FUNCTION to handle the input
+    // for the two paddles!
+    handleInput(leftPaddle);
+    handleInput(rightPaddle);
 
-  // Update positions of all objects
-  // Notice how we're using the SAME FUNCTION to handle the input
-  // for all three objects!
-  updatePosition(leftPaddle);
-  updatePosition(rightPaddle);
-  updatePosition(ball);
+    // Update positions of all objects
+    // Notice how we're using the SAME FUNCTION to handle the input
+    // for all three objects!
+    updatePosition(leftPaddle);
+    updatePosition(rightPaddle);
+    updatePosition(ball);
 
-  resetBall();
+    resetBall();
 
-  updateScore();
+    updateScore();
 
-  // Handle collisions
-  handleBallWallCollision();
-  handleBallPaddleCollision(leftPaddle);
-  handleBallPaddleCollision(rightPaddle);
+    // Handle collisions
+    handleBallWallCollision();
+    handleBallPaddleCollision(leftPaddle);
+    handleBallPaddleCollision(rightPaddle);
 
-  // Handle the ball going off screen
-  handleBallOffScreen();
+    // Handle the ball going off screen
+    handleBallOffScreen();
 
-  // Display the paddles and ball
-  displayPaddle(leftPaddle);
-  displayPaddle(rightPaddle);
-  displayBall();
-}
-  else {
-      resetGame();
-    }
+    // Display the paddles and ball
+    displayPaddle(leftPaddle);
+    displayPaddle(rightPaddle);
+    displayBall();
+  } else {
+    endGame();
+  }
+
 }
 ////////////////// END NEW CODE ///////////////////
 
@@ -204,8 +206,7 @@ function handleInput(paddle) {
   else if (keyIsDown(paddle.downKeyCode)) {
     // Move down
     paddle.vy = paddle.speed;
-  }
-  else {
+  } else {
     // Otherwise stop moving
     paddle.vy = 0;
   }
@@ -230,10 +231,10 @@ function updatePosition(object) {
 function handleBallWallCollision() {
 
   // Calculate edges of ball for clearer if statement below
-  var ballTop = ball.y - ball.size/2;
-  var ballBottom = ball.y + ball.size/2;
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballTop = ball.y - ball.size / 2;
+  var ballBottom = ball.y + ball.size / 2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Check for ball colliding with top and bottom
   if (ballTop < 0 || ballBottom > height) {
@@ -252,16 +253,16 @@ function handleBallWallCollision() {
 function handleBallPaddleCollision(paddle) {
 
   // Calculate edges of ball for clearer if statements below
-  var ballTop = ball.y - ball.size/2;
-  var ballBottom = ball.y + ball.size/2;
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballTop = ball.y - ball.size / 2;
+  var ballBottom = ball.y + ball.size / 2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Calculate edges of paddle for clearer if statements below
-  var paddleTop = paddle.y - paddle.h/2;
-  var paddleBottom = paddle.y + paddle.h/2;
-  var paddleLeft = paddle.x - paddle.w/2;
-  var paddleRight = paddle.x + paddle.w/2;
+  var paddleTop = paddle.y - paddle.h / 2;
+  var paddleBottom = paddle.y + paddle.h / 2;
+  var paddleLeft = paddle.x - paddle.w / 2;
+  var paddleRight = paddle.x + paddle.w / 2;
 
   // First check it is in the vertical range of the paddle
   if (ballBottom > paddleTop && ballTop < paddleBottom) {
@@ -283,121 +284,131 @@ function handleBallPaddleCollision(paddle) {
 function handleBallOffScreen() {
 
   // Calculate edges of ball for clearer if statement below
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Check for ball going off the sides
   if (ballRight < 0 || ballLeft > width) {
     // If it went off either side, reset it to the centre
-    ball.x = width/2;
-    ball.y = height/2;
+    ball.x = width / 2;
+    ball.y = height / 2;
   }
   /////////////////// NEW CODE //////////////////////////////
-  if (ballRight < 0){
-    playerRightScore = playerRightScore+1
+  // We are keeping track of the score now in the javascript console
+  if (ballRight < 0) {
+    playerRightScore = playerRightScore + 1
     console.log(playerRightScore + " POINT FOR PLAYER 2")
   }
 
-  if (ballLeft > width){
-    playerLeftScore = playerLeftScore+1
+  if (ballLeft > width) {
+    playerLeftScore = playerLeftScore + 1
     console.log(playerLeftScore + " POINT FOR PLAYER 1")
   }
+
+  // This is the function to reset the ball position after each point
   resetBall();
 
-/////////////////// END NEW CODE ///////////////////////////
+  /////////////////// END NEW CODE ///////////////////////////
 }
 
 ////////////////////// NEW CODE ///////////////////////////
 
 function resetBall() {
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
-  if (ballRight < 0 || ballRight > width){
+  // Positioning the ball depending which player won
+  if (ballRight < 0 || ballRight > width) {
     ball.vx = -ball.vx;
-    ball.vy = random(-ball.speed,ball.speed);
+    ball.vy = random(-ball.speed, ball.speed);
   }
-/////////////////// END NEW CODE ///////////////////////////
+  /////////////////// END NEW CODE ///////////////////////////
 }
 
 ////////////////////// NEW CODE ////////////////////////////
+// This function display the score on the screen without numbers
 
-function updateScore(){
+function updateScore() {
 
-  fill(255,255,255);
+  fill(255, 255, 255);
   textFont(myFont);
   textSize(20);
-  text("PLAYER 1",40,40);
-  text("PLAYER 2",515,40);
+  text("PLAYER 1", 40, 40);
+  text("PLAYER 2", 515, 40);
   push();
-  fill(50,50,50);
+  fill(50, 50, 50);
   textSize(35);
-  text("YOU ARE THE PING TO MY PONG",70,460);
+  text("YOU ARE THE PING TO MY PONG", 70, 460);
   pop();
 
-  for (var i=0; i<playerLeftScore; i++) {
-    var scoreWidth = map(playerLeftScore,0,3,0,100);
+  for (var i = 0; i < playerLeftScore; i++) {
+    var scoreWidth = map(playerLeftScore, 0, 3, 0, 100);
     push();
-    fill(255,0,0);
-    rect(0,0,scoreWidth,20);
+    fill(255, 0, 0);
+    rect(0, 0, scoreWidth, 20);
     pop();
 
   }
 
   if (playerLeftScore > 2) {
-    gameOver=true;
+    gameOver = true;
   }
 
-  for (var i=0; i<playerRightScore; i++) {
-    var scoreWidth = map(playerRightScore,0,3,0,100);
+  for (var i = 0; i < playerRightScore; i++) {
+    var scoreWidth = map(playerRightScore, 0, 3, 0, 100);
     push();
-    fill(255,0,0);
-    rect(width-0,0,scoreWidth,20);
+    fill(255, 0, 0);
+    rect(width - 0, 0, scoreWidth, 20);
     pop();
 
   }
   if (playerRightScore > 2) {
-    gameOver=true;
+    gameOver = true;
   }
 
-  var scoreTotal = playerRightScore+playerLeftScore;
+  // To make the game more difficult, the player go to the next level
+  // The ball is now more difficult to see  with all the hearts going around
+  var scoreTotal = playerRightScore + playerLeftScore;
   if (scoreTotal > 6) {
-  image(heartTextureImage,random(0,600),random(0,600));
+    image(heartTextureImage, random(0, 600), random(0, 600));
 
   }
 
 }
-///////////////////////// END NEW CODE ////////////////
+///////////////////////// END NEW CODE /////////////////////////////////////
 
 // displayBall()
 //
 // Draws ball on screen based on its properties
 function displayBall() {
-  image(ballImage,ball.x,ball.y,ball.size,ball.size);
+  // Displaying the ball as an image now
+  image(ballImage, ball.x, ball.y, ball.size, ball.size);
 }
 
 // displayPaddle(paddle)
 //
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
-  rect(paddle.x,paddle.y,paddle.w,paddle.h);
+  rect(paddle.x, paddle.y, paddle.w, paddle.h);
 }
 
 
-////////////////////// NEW CODE  //////////////////////////
-function resetGame() {
+///////////////////////////////// NEW CODE  //////////////////////////////
+// This is the function for the end of the game
+
+function endGame() {
   push();
   textFont(myFont);
   textSize(20);
   textAlign(CENTER, CENTER);
   background(0);
   fill(255);
-  image(heartBrokenImage,290,100);
+  image(heartBrokenImage, 290, 100);
   var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n\n";
   gameOverText += "PLAYER 1 SCORED " + playerLeftScore + " POINT\n";
   gameOverText += "PLAYER 2 SCORED " + playerRightScore + " POINT \n";
   text(gameOverText, width / 2, height / 2);
   pop();
-  sadSFX.play();
+  endGameSFX.play();
 }
 ////////////////////// END NEW CODE  ///////////////////////
