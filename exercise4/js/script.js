@@ -21,7 +21,15 @@ var ball = {
   speed: 5
 }
 
+// variables for the images in for the game
+var heartImage;
+var heartBrokenImage;
+var heartTextureImage;
+var ballImage;
+
+
 // PADDLES
+
 
 // How far in from the walls the paddles should be drawn on x
 var paddleInset = 50;
