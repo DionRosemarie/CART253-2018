@@ -320,6 +320,55 @@ function resetBall() {
 /////////////////// END NEW CODE ///////////////////////////
 }
 
+////////////////////// NEW CODE ////////////////////////////
+
+function updateScore(){
+
+  fill(255,255,255);
+  textFont(myFont);
+  textSize(20);
+  text("PLAYER 1",40,40);
+  text("PLAYER 2",515,40);
+  push();
+  fill(50,50,50);
+  textSize(35);
+  text("YOU ARE THE PING TO MY PONG",70,460);
+  pop();
+
+  for (var i=0; i<playerLeftScore; i++) {
+    var scoreWidth = map(playerLeftScore,0,3,0,100);
+    push();
+    fill(255,0,0);
+    rect(0,0,scoreWidth,20);
+    pop();
+
+  }
+
+  if (playerLeftScore > 2) {
+    gameOver=true;
+  }
+
+  for (var i=0; i<playerRightScore; i++) {
+    var scoreWidth = map(playerRightScore,0,3,0,100);
+    push();
+    fill(255,0,0);
+    rect(width-0,0,scoreWidth,20);
+    pop();
+
+  }
+  if (playerRightScore > 2) {
+    gameOver=true;
+  }
+
+  var scoreTotal = playerRightScore+playerLeftScore;
+  if (scoreTotal > 6) {
+  image(heartTextureImage,random(0,600),random(0,600));
+
+  }
+
+}
+///////////////////////// END NEW CODE ////////////////
+
 // displayBall()
 //
 // Draws ball on screen based on its properties
