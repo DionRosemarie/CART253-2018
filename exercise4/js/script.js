@@ -21,12 +21,19 @@ var ball = {
   speed: 5
 }
 
+// variable to end the game
+var gameOver = false;
+
 // variables for the images in for the game
 var heartImage;
 var heartBrokenImage;
 var heartTextureImage;
 var ballImage;
 
+// variables to update the score for player 1
+var playerLeftScore=0;
+// variables to update the score for player 2
+var playerRightScore=0;
 
 // PADDLES
 
@@ -128,7 +135,11 @@ function setupBall() {
 function draw() {
   // Fill the background
   background(bgColor);
+  image(heartImage,220,155);
 
+
+  ////////////////// NEW CODE ///////////////////
+  if (!gameOver){
   // Handle input
   // Notice how we're using the SAME FUNCTION to handle the input
   // for the two paddles!
@@ -141,6 +152,10 @@ function draw() {
   updatePosition(leftPaddle);
   updatePosition(rightPaddle);
   updatePosition(ball);
+
+  resetBall();
+
+  updateScore();
 
   // Handle collisions
   handleBallWallCollision();
@@ -155,7 +170,11 @@ function draw() {
   displayPaddle(rightPaddle);
   displayBall();
 }
-
+  else {
+      resetGame();
+    }
+}
+////////////////// END NEW CODE ///////////////////
 
 // handleInput(paddle)
 //
