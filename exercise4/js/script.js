@@ -104,7 +104,10 @@ function setup() {
 
   setupPaddles();
   setupBall();
+
+
 }
+
 
 // setupPaddles()
 //
@@ -137,6 +140,16 @@ function draw() {
   background(bgColor);
   // display the heart in the background of the screen
   image(heartImage, 220, 155);
+
+  push();
+  textFont(myFont);
+  textSize(12);
+  fill(80);
+  text("PRESS W TO GO UP\n",40, 65);
+  text("PRESS S TO GO DOWN\n",40,80);
+  text("PRESS UP ARROW TO GO UP\n",450,65);
+  text("PRESS DOWN ARROW TO GO DOWN\n",410,80);
+  pop();
 
 
   ////////////////// NEW CODE ///////////////////
@@ -350,7 +363,7 @@ function updateScore() {
 
   }
 
-  if (playerLeftScore > 2) {
+  if (playerLeftScore > 10) {
     gameOver = true;
   }
 
@@ -362,15 +375,21 @@ function updateScore() {
     pop();
 
   }
-  if (playerRightScore > 2) {
+  if (playerRightScore > 10) {
     gameOver = true;
   }
 
   // To make the game more difficult, the player go to the next level
   // The ball is now more difficult to see  with all the hearts going around
   var scoreTotal = playerRightScore + playerLeftScore;
-  if (scoreTotal > 6) {
-    image(heartTextureImage, random(0, 600), random(0, 600));
+  if (scoreTotal > 2) {
+  image(heartTextureImage, random(0, 600), random(0, 600));
+  push();
+  textFont(myFont);
+  textSize(20);
+  fill(80);
+  text("SO MUCH LOVE IN THE AIR",200,380);
+  pop();
 
   }
 
