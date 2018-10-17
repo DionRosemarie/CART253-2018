@@ -1,5 +1,5 @@
 // Pong
-// by Pippin Barr
+// by Rose-Marie Dion
 //
 // A primitive implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
