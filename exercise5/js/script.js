@@ -13,6 +13,11 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
+var score;
+var leftScore;
+var rightScore;
+var endGame;
+var gameOver = false;
 
 // setup()
 //
