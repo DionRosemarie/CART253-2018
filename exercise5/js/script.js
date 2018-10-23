@@ -53,22 +53,35 @@ function preload() {
 // and displays everything.
 function draw() {
   background(0);
+  image(heartImage, 220, 155);
 
-  leftPaddle.handleInput();
-  rightPaddle.handleInput();
-
-  ball.update();
-  leftPaddle.update();
-  rightPaddle.update();
 
   if (ball.isOffScreen()) {
     ball.reset();
   }
 
-  ball.handleCollision(leftPaddle);
-  ball.handleCollision(rightPaddle);
+  if (!gameOver) {
 
-  ball.display();
-  leftPaddle.display();
-  rightPaddle.display();
+    leftPaddle.handleInput();
+    rightPaddle.handleInput();
+
+    ball.update();
+    leftPaddle.update();
+    rightPaddle.update();
+    score.update();
+
+
+    ball.handleCollision(leftPaddle);
+    ball.handleCollision(rightPaddle);
+
+    ball.display();
+    leftPaddle.display();
+    rightPaddle.display();
+    score.display();
+
+
+  } else {
+    endGame.display(score.leftScore, score.rightScore);
+  }
+
 }
