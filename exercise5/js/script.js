@@ -31,6 +31,20 @@ function setup() {
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+
+  score = new Score();
+
+  endGame = new endGame();
+}
+
+function preload() {
+  beepSFX = new Audio("assets/sounds/beep.wav");
+  endGameSFX = new Audio("assets/sounds/sad.mp3");
+  myFont = loadFont("assets/fonts/ChakraPetch-Light.ttf");
+  heartImage = loadImage("assets/images/heart.png");
+  heartBrokenImage = loadImage("assets/images/heartbroken.png");
+  heartTextureImage = loadImage("assets/images/heartTexture.png");
+  ballImage = loadImage("assets/images/ball.png");
 }
 
 // draw()
