@@ -1,7 +1,7 @@
-function endGame() {
-}
+//////////////// NEW CODE ///////////////////
+function endGame() {}
 
-endGame.prototype.display = function(leftScore,rightScore) {
+endGame.prototype.display = function(leftScore, rightScore) {
   push();
   textFont(myFont);
   textSize(20);
@@ -17,3 +17,5 @@ endGame.prototype.display = function(leftScore,rightScore) {
   pop();
   endGameSFX.play();
 }
+
+//////////////// END NEW CODE ///////////////////

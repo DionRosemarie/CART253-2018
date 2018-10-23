@@ -1,5 +1,4 @@
-// RIGHT SCORE MANAGER
-
+//////////////// NEW CODE ///////////////////
 function Score(x, y) {
   this.x = x;
   this.y = y;
@@ -40,7 +39,7 @@ Score.prototype.display = function() {
   text("PLAYER 2", 515, 40);
   push();
 
-// Changing the difficulty of the game
+  // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
   if (this.scoreTotal > 5) {
     image(heartTextureImage, random(0, 600), random(0, 600));
@@ -77,3 +76,4 @@ Score.prototype.display = function() {
   }
 
 }
+/////////////// END NEW CODE ///////////////////
