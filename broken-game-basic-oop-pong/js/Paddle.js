@@ -62,5 +62,6 @@ Paddle.prototype.update = function() {
 // there is 2 ( instead of one
 Paddle.prototype.display = function() {
 //////////////////////// FIXED /////////////////////////////////
-  rectangle(this.x,this.y,this.w,this.h);
+// it is suppose to be written rect and not rectangle
+  rect(this.x,this.y,this.w,this.h);
 }
