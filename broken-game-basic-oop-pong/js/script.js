@@ -29,6 +29,8 @@ function setup() {
   // Create a ball
   ball = new Ball(width/2,height/2,50,50,10,50);
   // Create the right paddle with UP and DOWN as controls
+  //////////////////////// FIXED /////////////////////////////////
+  // Suppose to be the DOWN_ARROW first
   rightPaddle = new Paddle(width-50,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
@@ -51,8 +53,9 @@ function draw() {
   ball.update;
   leftPaddle.update();
   rightPaddle.update();
-
-  if (ball.isOffTheScreen())
+////////////////////////////// FIXED /////////////////////////////////
+// It is suppose to be isOffScreen and not isOffTheScreen
+  if (ball.isOffScreen())
     reset();
   }
 
