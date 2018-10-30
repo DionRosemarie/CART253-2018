@@ -57,7 +57,7 @@ function draw() {
 // It is suppose to be isOffScreen and not isOffTheScreen
 // There was a bracket missing
   if (ball.isOffScreen()) {
-    reset();
+    ball.reset();
   }
 
   ball.handleCollision(leftPaddle);
