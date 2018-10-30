@@ -94,7 +94,9 @@ Ball.prototype.handleCollision = function(paddle) {
 // reset()
 //
 // Set position back to the middle of the screen
-Ball.prototype.rest = function () {
+/////////////////////////////////// FIXED ///////////////////////////
+// It is suppose to be written with a "e"
+Ball.prototype.reset = function () {
   this.x = width/2;
   this.y = height/2;
 }
