@@ -55,8 +55,7 @@ function draw() {
   rightPaddle.update();
 ////////////////////////////// FIXED /////////////////////////////////
 // It is suppose to be isOffScreen and not isOffTheScreen
-// There was a bracket missing
-  if (ball.isOffScreen()) {
+  if (ball.isOffScreen())
     ball.reset();
   }
 
