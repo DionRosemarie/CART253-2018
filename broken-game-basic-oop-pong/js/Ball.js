@@ -68,7 +68,9 @@ Ball.prototype.display = function () {
 // It is missing a , to work
 // The ball now have a color
   fill(255);
-  rect(this.x,this.y);
+  //////////////////////// FIXED ////////////////////////////////
+  // There was missing this.size to display the ball
+  rect(this.x,this.y, this.size,this.size);
 }
   //////////////////////// FIXED /////////////////////////////////
 // handleCollision(paddle)
