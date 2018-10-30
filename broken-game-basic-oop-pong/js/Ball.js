@@ -47,7 +47,8 @@ Ball.prototype.isOffScreen = function () {
   // Check for going off screen and reset if so
   //////////////////////// FIXED /////////////////////////////////
   // It was written iff instead of if
-  if (this.x ++ this.size < 0 && this.x > width) {
+  // I needed to add a + to make the statement work
+  if (this.x +++ this.size < 0 && this.x > width) {
     return true;
   }
   //////////////////////// FIXED /////////////////////////////////
