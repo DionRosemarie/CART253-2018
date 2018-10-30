@@ -57,8 +57,9 @@ Paddle.prototype.handleInput = function() {
 Paddle.prototype.update = function() {
   this.y += this.vy;
 ///////////////////////////// FIXED ////////////////////////
-// Height was not written in the correct way 
-  this.y = constraint(this.y,0,height-this.h);
+// Height was not written in the correct way
+// constrain was not written in the correct way
+  this.y = constrain(this.y,0,height-this.h);
 }
 
 // display()
