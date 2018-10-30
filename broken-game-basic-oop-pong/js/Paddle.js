@@ -20,7 +20,10 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.yv = 0;
   this.w = w;
   this.h = h;
-  this.speed = speeed;
+//////////////////////// FIXED /////////////////////////////////
+// speed had a ReferenceError because it was written with three "e"
+  this.speed = speed;
+//////////////////////// FIXED /////////////////////////////////
   this.downKey = downKey;
   this.upKey = upKey;
 }
