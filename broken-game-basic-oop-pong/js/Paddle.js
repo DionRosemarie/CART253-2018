@@ -37,11 +37,14 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 // there is missing letters in the word prototype
 Paddle.prototype.handleInput = function() {
 //////////////////////// FIXED /////////////////////////////////
-  if (keyDown(upKey)) {
+  if (keyDown(this.downkey)) {
+    this.vy = this.speed;
+  }
+  else if (keyDown(this.upkey)) {
     this.vy = -this.speed;
   }
-  else if (keyDown(downKey)) {
-    this.vy = -this.speed;
+  else {
+    this.vy = 0;
   }
 }
 
