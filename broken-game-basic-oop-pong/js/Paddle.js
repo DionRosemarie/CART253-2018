@@ -49,7 +49,8 @@ Paddle.prototype.update = function() {
 
 //////////////////////// FIXED /////////////////////////////////
 // display is written with a "o" instead of a "a"
-Paddle.prototype.disploy = function()) {
+// there is 2 ( instead of one
+Paddle.prototype.display = function() {
 //////////////////////// FIXED /////////////////////////////////
   rectangle(this.x,this.y,this.w,this.h);
 }
