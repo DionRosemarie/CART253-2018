@@ -10,7 +10,10 @@
 
 // Sets the properties with the provided arguments or defaults
 //////////////////////// FIXED /////////////////////////////////
-function Pladdle(x,y,w,h,speed,downKey,upKey) {
+//////////////////////// FIXED /////////////////////////////////
+// The ReferenceError is because paddle is not written correctly
+function Paddle(x,y,w,h,speed,downKey,upKey) {
+//////////////////////// FIXED /////////////////////////////////
   this.x = x;
   this.y = y;
   this.xv = 0;
