@@ -7,7 +7,7 @@
 // Ball constructor
 //
 // Sets the properties with the provided arguments
-function Ball(x,y,vx,vy,size,speed) {
+function Ball(x, y, vx, vy, size, speed) {
   this.x = x;
   this.y = y;
   this.vx = vx;
@@ -24,19 +24,19 @@ function Ball(x,y,vx,vy,size,speed) {
 
 //////////////////////// FIXED /////////////////////////////////
 // It was written faction instead of function
-Ball.prototype.updated = function () {
-//////////////////////// FIXED /////////////////////////////////
+Ball.prototype.updated = function() {
+  //////////////////////// FIXED /////////////////////////////////
   // Update position with velocity
   // it is suppose to be += and not only =
   this.x += this.vx;
   this.y += this.vy;
 
   // Constrain y position to be on screen
-  this.y = constrain(this.y,0,height-this.size);
+  this.y = constrain(this.y, 0, height - this.size);
 
   // Check for touching upper or lower edge and reverse velocity if so
-//////////////////////// FIXED   /////////////////////////////////
-// It is suppose to be === to make the statement work
+  //////////////////////// FIXED   /////////////////////////////////
+  // It is suppose to be === to make the statement work
   if (this.y === 0 || this.y + this.size === height) {
     this.vy = -this.vy;
   }
@@ -46,11 +46,10 @@ Ball.prototype.updated = function () {
 //
 // Checks if the ball has moved off the screen and, if so, returns true.
 // Otherwise it returns false.
-Ball.prototype.isOffScreen = function () {
+Ball.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
   //////////////////////// FIXED /////////////////////////////////
   // It was written iff instead of if
-  // I needed to add a + to make the statement work
   if (this.x + this.size < 0 || this.x > width) {
     return true;
   }
@@ -63,24 +62,24 @@ Ball.prototype.isOffScreen = function () {
 // display()
 //
 // Draw the ball as a rectangle on the screen
-Ball.prototype.display = function () {
-///////////////////////// FIXED /////////////////////////////////
-// It is missing a , to work
-// The ball now have a color
+Ball.prototype.display = function() {
+  ///////////////////////// FIXED /////////////////////////////////
+  // It is missing a , to work
+  // The ball now have a color
   fill(255);
   //////////////////////// FIXED ////////////////////////////////
   // There was missing this.size to display the ball
-  rect(this.x,this.y, this.size,this.size);
+  rect(this.x, this.y, this.size, this.size);
 }
-  //////////////////////// FIXED /////////////////////////////////
+//////////////////////// FIXED /////////////////////////////////
 // handleCollision(paddle)
 //
 // Check if this ball overlaps the paddle passed as an argument
 // and if so reverse x velocity to bounce
 
-  //////////////////////// FIXED /////////////////////////////////
-  // there is a e missing in the word prototype
-  // there is two ( instead of one
+//////////////////////// FIXED /////////////////////////////////
+// there is a e missing in the word prototype
+// there is two ( instead of one
 Ball.prototype.handleCollision = function(paddle) {
   //////////////////////// FIXED /////////////////////////////////
   // Check if the ball overlaps the paddle on x axis
@@ -91,7 +90,7 @@ Ball.prototype.handleCollision = function(paddle) {
       this.x -= this.vx;
       this.y -= this.vy;
       // Reverse x velocity to bounce
-      this.vx = this.vx;
+      this.vx = -this.vx;
     }
   }
 }
@@ -101,7 +100,7 @@ Ball.prototype.handleCollision = function(paddle) {
 // Set position back to the middle of the screen
 /////////////////////////////////// FIXED ///////////////////////////
 // It is suppose to be written with a "e"
-Ball.prototype.reset = function () {
-  this.x = width/2;
-  this.y = height/2;
+Ball.prototype.reset = function() {
+  this.x = width / 2;
+  this.y = height / 2;
 }
