@@ -73,7 +73,8 @@ Ball.prototype.display = function () {
 
   //////////////////////// FIXED /////////////////////////////////
   // there is a e missing in the word prototype
-Ball.prototype.handleCollision = function((paddle) {
+  // there is two ( instead of one
+Ball.prototype.handleCollision = function(paddle) {
   //////////////////////// FIXED /////////////////////////////////
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
