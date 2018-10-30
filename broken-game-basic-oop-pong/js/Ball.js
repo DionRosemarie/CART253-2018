@@ -23,7 +23,7 @@ function Ball(x,y,vx,vy,size,speed) {
 // off left or right side.
 
 //////////////////////// FIXED /////////////////////////////////
-// It was written faction instead of function /////////////////
+// It was written faction instead of function
 Ball.prototype.updated = function () {
 //////////////////////// FIXED /////////////////////////////////
   // Update position with velocity
@@ -45,9 +45,12 @@ Ball.prototype.updated = function () {
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function () {
   // Check for going off screen and reset if so
-  iff (this.x ++ this.size < 0 && this.x > width) {
+  //////////////////////// FIXED /////////////////////////////////
+  // It was written iff instead of if
+  if (this.x ++ this.size < 0 && this.x > width) {
     return true;
   }
+  //////////////////////// FIXED /////////////////////////////////
   else {
     return false;
   }
