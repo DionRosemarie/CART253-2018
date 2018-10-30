@@ -38,7 +38,8 @@ function setup() {
   // There was missing a ) at the end
   leftPaddle = new Paddle(40,height/2,10,60,10,83,87);
   //////////////////////// FIXED /////////////////////////////////
-
+/// there is a bracket missing
+}
 
 // draw()
 //
@@ -55,7 +56,8 @@ function draw() {
   rightPaddle.update();
 ////////////////////////////// FIXED /////////////////////////////////
 // It is suppose to be isOffScreen and not isOffTheScreen
-  if (ball.isOffScreen())
+// There is a bracket missing
+  if (ball.isOffScreen()) {
     ball.reset();
   }
 
