@@ -29,7 +29,7 @@ function Pladdle(x,y,w,h,speed,downKey,upKey) {
 
 //////////////////////// FIXED /////////////////////////////////
 // there is missing letters in the word prototype
-Paddle.proto.handleInput = function() {
+Paddle.prototype.handleInput = function() {
 //////////////////////// FIXED /////////////////////////////////
   if (keyDown(upKey)) {
     this.vy = -this.speed;
