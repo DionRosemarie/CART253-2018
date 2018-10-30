@@ -17,7 +17,7 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
   this.x = x;
   this.y = y;
   //////////////////////// FIXED /////////////////////////////////
-// the the vx and vy were written xv and yv 
+// the the vx and vy were written xv and yv
   this.vx = 0;
   this.vy = 0;
   this.w = w;
@@ -56,7 +56,9 @@ Paddle.prototype.handleInput = function() {
 // Constrain the resulting position to be within the canvas
 Paddle.prototype.update = function() {
   this.y += this.vy;
-  this.y = constraint(this.y,0,hight-this.h);
+///////////////////////////// FIXED ////////////////////////
+// Height was not written in the correct way 
+  this.y = constraint(this.y,0,height-this.h);
 }
 
 // display()
