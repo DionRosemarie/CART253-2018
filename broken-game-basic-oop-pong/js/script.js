@@ -25,7 +25,7 @@ function setup() {
 // create was not correctly written
   createCanvas(640,480);
 //////////////////////// FIXED /////////////////////////////////
-  noStroke();
+// noStroke(); was there for no reason
   // Create a ball
   ball = new Ball(width/2,height/2,50,50,10,50);
   // Create the right paddle with UP and DOWN as controls
