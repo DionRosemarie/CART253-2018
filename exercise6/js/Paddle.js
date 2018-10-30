@@ -40,6 +40,7 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 Paddle.prototype.handleInput = function() {
 //////////////////////// FIXED /////////////////////////////////
 // it was not the good variables
+// There were words missing and capitals missing for the key variables
   if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
   }
