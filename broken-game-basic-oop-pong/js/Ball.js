@@ -63,6 +63,8 @@ Ball.prototype.isOffScreen = function () {
 Ball.prototype.display = function () {
 ///////////////////////// FIXED /////////////////////////////////
 // It is missing a , to work
+// The ball now have a color
+  fill(255);
   rect(this.x,this.y);
 }
   //////////////////////// FIXED /////////////////////////////////
