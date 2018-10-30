@@ -16,8 +16,10 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 //////////////////////// FIXED /////////////////////////////////
   this.x = x;
   this.y = y;
-  this.xv = 0;
-  this.yv = 0;
+  //////////////////////// FIXED /////////////////////////////////
+// the the vx and vy were written xv and yv 
+  this.vx = 0;
+  this.vy = 0;
   this.w = w;
   this.h = h;
 //////////////////////// FIXED /////////////////////////////////
@@ -37,6 +39,7 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 // there is missing letters in the word prototype
 Paddle.prototype.handleInput = function() {
 //////////////////////// FIXED /////////////////////////////////
+// it was not the good variables
   if (keyDown(this.downkey)) {
     this.vy = this.speed;
   }
