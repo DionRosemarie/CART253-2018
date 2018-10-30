@@ -27,7 +27,7 @@ function setup() {
 //////////////////////// FIXED /////////////////////////////////
 // noStroke(); was there for no reason
   // Create a ball
-  ball = new Ball(width/2,height/2,50,50,10,50);
+  ball = new Ball(width/2,height/2,5,5,10,5);
   // Create the right paddle with UP and DOWN as controls
   //////////////////////// FIXED /////////////////////////////////
   // Suppose to be the DOWN_ARROW first
