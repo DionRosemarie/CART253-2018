@@ -24,7 +24,8 @@ function Ball(x, y, vx, vy, size, speed) {
 
 //////////////////////// FIXED /////////////////////////////////
 // It was written faction instead of function
-Ball.prototype.updated = function() {
+// ball.update was not considere like a function because it was not written in the right way 
+Ball.prototype.update = function() {
   //////////////////////// FIXED /////////////////////////////////
   // Update position with velocity
   // it is suppose to be += and not only =
