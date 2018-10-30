@@ -46,6 +46,10 @@ Paddle.prototype.update = function() {
 // display()
 //
 // Draw the paddle as a rectangle on the screen
+
+//////////////////////// FIXED /////////////////////////////////
+// display is written with a "o" instead of a "a"
 Paddle.prototype.disploy = function()) {
+//////////////////////// FIXED /////////////////////////////////
   rectangle(this.x,this.y,this.w,this.h);
 }
