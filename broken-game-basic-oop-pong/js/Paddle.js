@@ -40,10 +40,10 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 Paddle.prototype.handleInput = function() {
 //////////////////////// FIXED /////////////////////////////////
 // it was not the good variables
-  if (keyDown(this.downkey)) {
+  if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
   }
-  else if (keyDown(this.upkey)) {
+  else if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
   }
   else {
