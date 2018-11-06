@@ -13,7 +13,7 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
-
+var state = "TITLE";
 // setup()
 //
 // Creates the ball and paddles
@@ -54,15 +54,15 @@ function draw() {
   rightPaddle.display();
 
   switch (state) {
-    case "START"
+    case "START":
     displayStart();
     break;
 
-    case "GAME"
+    case "GAME":
     displayGame();
     break;
 
-    case "END GAME"
+    case "END GAME":
     displayEndGame();
     break;
   }
