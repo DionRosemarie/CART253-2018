@@ -26,17 +26,17 @@ Score.prototype.display = function() {
   //textFont(myFont);
   textSize(15);
   fill(80);
-  text("PRESS UP ARROW TO GO UP\n", windowWidth-132, 85);
-  text("PRESS DOWN ARROW TO GO DOWN\n", windowWidth-155, 103);
-  text("PRESS W TO GO UP\n", 100, 85);
-  text("PRESS S TO GO DOWN\n", 110, 103);
+  text("PRESS UP ARROW TO GO UP\n", windowWidth-230, 85);
+  text("PRESS DOWN ARROW TO GO DOWN\n", windowWidth-288, 103);
+  text("PRESS W TO GO UP\n", 40, 85);
+  text("PRESS S TO GO DOWN\n", 40, 103);
   pop();
 
   fill(255, 255, 255);
   //textFont(myFont);
   textSize(20);
-  text("PLAYER 1", 75, 55);
-  text("PLAYER 2", windowWidth-80, 55);
+  text("PLAYER 1", 40, 55);
+  text("PLAYER 2", windowWidth-120, 55);
   push();
 
   // Changing the difficulty of the game
