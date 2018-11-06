@@ -123,10 +123,15 @@ function displayEndGame() {
   image(heartBrokenImage, windowWidth / 2, windowHeight / 2);
   var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n";
   gameOverText += "it's not you, it's me, it's over\n\n";
+  textSize(15);
   var gameOverTextScore = "PLAYER 1 SCORED " + score.leftScore + " POINT\n";
-  gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n";
+  gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n\nFOR A SECOND CHANCE TO LOVE, PRESS SPACE KEY";
   text(gameOverText, windowWidth / 2, windowHeight/4);
-  text(gameOverTextScore, windowWidth/2,3*windowHeight/4);
+  text(gameOverTextScore, windowWidth/2,3*windowHeight/4.5);
   saxSFX.pause();
   endGameSFX.play();
+
+  if (keyIsPressed && key === ' ') {
+    state = "START";
+  }
 }
