@@ -95,7 +95,6 @@ function displayGame() {
   rightPaddle.handleInput();
 
   ball.update();
-  meanBall.update();
   leftPaddle.update();
   rightPaddle.update();
   score.update();
@@ -109,16 +108,21 @@ function displayGame() {
 
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
-  meanBall.handleCollision(leftPaddle);
-  meanBall.handleCollision(rightPaddle);
+
 
   ball.display();
-  meanBall.display();
   leftPaddle.display();
   rightPaddle.display();
   score.display();
 
-  if (score.leftScore === 6 || score.rightScore === 6) {
+  if (score.leftScore > 10 || score.rightScore > 10) {
+   meanBall.update();
+   meanBall.display();
+   meanBall.handleCollision(leftPaddle);
+   meanBall.handleCollision(rightPaddle);
+  }
+  
+  if (score.leftScore === 15 || score.rightScore === 15) {
    state = "GAME OVER";
  }
 }
