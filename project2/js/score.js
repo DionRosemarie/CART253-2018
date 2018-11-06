@@ -20,6 +20,7 @@ Score.prototype.update = function() {
 
 Score.prototype.display = function() {
   // Displaying the text of the player 2
+  push();
   textFont(myFont);
   textSize(10);
   fill(80);
@@ -34,7 +35,8 @@ Score.prototype.display = function() {
   textSize(20);
   text("PLAYER 1", 40, 55);
   text("PLAYER 2", windowWidth-120, 55);
-  // push();
+  pop();
+  
 
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;

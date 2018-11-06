@@ -15,36 +15,40 @@ var leftPaddle;
 var rightPaddle;
 var score;
 var state = "START";
-var meanBall;
+var meanBalls = [];
+var numMeanBall = 3;
 
 
-function preload(){
-beepSFX = new Audio("assets/sounds/beep.wav");
-endGameSFX = new Audio("assets/sounds/sad.mp3");
-saxSFX = new Audio("assets/sounds/saxSound.mp3");
-myFont = loadFont("assets/font/ChakraPetch-Light.ttf");
-heartImage = loadImage("assets/images/heart.png");
-heartBrokenImage = loadImage("assets/images/heartbroken.png");
-heartTextureImage = loadImage("assets/images/heartTexture.png");
-ballImage = loadImage("assets/images/ball.png");
-breakUpBall = loadImage("assets/images/breakUp.png");
+function preload() {
+  beepSFX = new Audio("assets/sounds/beep.wav");
+  endGameSFX = new Audio("assets/sounds/sad.mp3");
+  saxSFX = new Audio("assets/sounds/saxSound.mp3");
+  myFont = loadFont("assets/font/ChakraPetch-Light.ttf");
+  heartImage = loadImage("assets/images/heart.png");
+  heartBrokenImage = loadImage("assets/images/heartbroken.png");
+  heartTextureImage = loadImage("assets/images/heartTexture.png");
+  ballImage = loadImage("assets/images/ball.png");
+  breakUpBall = loadImage("assets/images/breakUp.png");
 }
 // setup()
 //
 // Creates the ball and paddles
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth, windowHeight);
   // Create a ball
-  ball = new Ball(width/2,height/2,5,5,20,5);
+  ball = new Ball(width / 2, height / 2, 5, 5, 20, 5);
 
-  meanBall = new meanBall(width/2,height/2,5,5,40,5);
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,100,10,DOWN_ARROW,UP_ARROW);
+  rightPaddle = new Paddle(windowWidth - 50, windowHeight / 2, 10, 100, 10, DOWN_ARROW, UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(40,windowHeight/2,10,100,10,83,87);
+  leftPaddle = new Paddle(40, windowHeight / 2, 10, 100, 10, 83, 87);
 
   score = new Score();
+
+  for (var i = 0; i < numMeanBall; i++) {
+    meanBalls.push(new meanBall(width / 2, height / 2, 5, 5, 40, 5));
+  }
 }
 
 // draw()
@@ -59,38 +63,39 @@ function draw() {
 
   switch (state) {
     case "START":
-    displayStart();
-    break;
+      displayStart();
+      break;
 
     case "GAME":
-    displayGame();
-    break;
+      displayGame();
+      break;
 
     case "GAME OVER":
-    displayEndGame();
-    break;
+      displayEndGame();
+      break;
   }
 }
 
-  function displayStart() {
-    push();
-    textAlign(CENTER);
-    textSize(20);
-    textFont(myFont);
-    fill(250);
-    text("MY HEART MAKE A FEW PING PONG\nWHEN I SEE YOU",windowWidth/2,windowHeight/4.5);
-    textSize(10);
-    text("PRESS SPACE TO PLAY",windowWidth/2,3*windowHeight/4);
-    imageMode(CENTER);
-    image(heartImage, windowWidth / 2, windowHeight/2,random(200,225),random(200,225));
-    pop();
+function displayStart() {
+  push();
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(250);
+  text("MY HEART MAKE A FEW PING PONG\nWHEN I SEE YOU", windowWidth / 2, windowHeight / 4.5);
+  textSize(10);
+  text("PRESS SPACE TO PLAY", windowWidth / 2, 3 * windowHeight / 4);
+  imageMode(CENTER);
+  image(heartImage, windowWidth / 2, windowHeight / 2, random(200, 225), random(200, 225));
+  pop();
 
-    if (keyIsPressed && key === ' ') {
-      state = "GAME";
-    }
+  if (keyIsPressed && key === ' ') {
+    state = "GAME";
   }
+}
 
 function displayGame() {
+
   leftPaddle.handleInput();
   rightPaddle.handleInput();
 
@@ -103,33 +108,37 @@ function displayGame() {
     ball.reset();
   }
 
-
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
-
 
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
   score.display();
 
-  if (score.leftScore > 5 || score.rightScore > 5) {
-    if (meanBall.isOffScreen()) {
-      meanBall.reset();
+  if (score.leftScore > 1 || score.rightScore > 1) {
+  console.log("check");
+    for (var i = 0; i < meanBalls.length; i++) {
+
+      meanBalls[i].update();
+      if (meanBalls[i].isOffScreen()) {
+        meanBalls[i].reset();
+      }
+
+      meanBalls[i].display();
+      meanBalls[i].handleCollision(leftPaddle);
+      meanBalls[i].handleCollision(rightPaddle);
     }
-   meanBall.update();
-   meanBall.display();
-   meanBall.handleCollision(leftPaddle);
-   meanBall.handleCollision(rightPaddle);
+
   }
 
-  if (score.leftScore === 1|| score.rightScore === 10) {
-   state = "GAME OVER";
- }
+  if (score.leftScore === 5 || score.rightScore === 5) {
+    state = "GAME OVER";
+  }
 }
 
 function displayEndGame() {
-  // push();
+  push();
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -142,19 +151,16 @@ function displayEndGame() {
   textSize(15);
   var gameOverTextScore = "PLAYER 1 SCORED " + score.leftScore + " POINT\n";
   gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n\nFOR A SECOND CHANCE TO LOVE, PRESS B";
-  text(gameOverText, windowWidth / 2, windowHeight/4);
-  text(gameOverTextScore, windowWidth/2,3*windowHeight/4.5);
+  text(gameOverText, windowWidth / 2, windowHeight / 4);
+  text(gameOverTextScore, windowWidth / 2, 3 * windowHeight / 4.5);
   saxSFX.pause();
   endGameSFX.play();
+  pop();
 
   if (keyIsPressed && key === 'b') {
-    score.leftScore=0;
-    score.rightScore=0;
-    rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,100,10,DOWN_ARROW,UP_ARROW);
-    // Create the left paddle with W and S as controls
-    // Keycodes 83 and 87 are W and S respectively
-    leftPaddle = new Paddle(40,windowHeight/2,10,100,10,83,87);
-endGameSFX.pause();
     state = "GAME";
+    score.leftScore = 0;
+    score.rightScore = 0;
+    endGameSFX.pause();
   }
 }

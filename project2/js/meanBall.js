@@ -10,8 +10,8 @@
 function meanBall(x,y,vx,vy,size,speed) {
   this.x = x;
   this.y = y;
-  this.vx = vx;
-  this.vy = vy;
+  this.vx = random(0,vx);
+  this.vy = random(0,vy);
   this.size = size;
   this.speed = speed;
   this.image = breakUpBall;
