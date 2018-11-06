@@ -48,7 +48,7 @@ Score.prototype.display = function() {
     textSize(25);
     fill(70);
     textAlign(CENTER);
-    text("SO MUCH LOVE IN THE AIR", windowWidth/2, windowHeight/1.5);
+    text("SO MUCH LOVE IN THE AIR", windowWidth/2, 1.5*windowHeight/2);
     pop();
   }
 
