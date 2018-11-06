@@ -15,6 +15,16 @@ var leftPaddle;
 var rightPaddle;
 var score;
 var state = "START";
+
+function preload(){
+beepSFX = new Audio("assets/sounds/beep.wav");
+endGameSFX = new Audio("assets/sounds/sad.mp3");
+myFont = loadFont("assets/font/ChakraPetch-Light.ttf");
+heartImage = loadImage("assets/images/heart.png");
+heartBrokenImage = loadImage("assets/images/heartbroken.png");
+heartTextureImage = loadImage("assets/images/heartTexture.png");
+ballImage = loadImage("assets/images/ball.png");
+}
 // setup()
 //
 // Creates the ball and paddles
@@ -57,6 +67,7 @@ function draw() {
     push();
     textAlign(CENTER);
     textSize(20);
+    textFont(myFont);
     fill(250);
     text("YOU ARE THE PING TO MY PONG",width/2,height/2);
     textSize(10);
@@ -98,6 +109,7 @@ function displayEndGame() {
   push();
   textAlign(CENTER);
   textSize(20);
+  textFont(myFont);
   fill(255);
   text("YOUR PING WANS'T ENOUGH FOR MY PONG",width/2,height/2);
 }

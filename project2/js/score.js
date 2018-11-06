@@ -23,7 +23,7 @@ Score.prototype.update = function() {
 Score.prototype.display = function() {
   // Displaying the text of the player 2
   push();
-  //textFont(myFont);
+  textFont(myFont);
   textSize(15);
   fill(80);
   text("PRESS UP ARROW TO GO UP\n", windowWidth-230, 85);
@@ -33,7 +33,7 @@ Score.prototype.display = function() {
   pop();
 
   fill(255, 255, 255);
-  //textFont(myFont);
+  textFont(myFont);
   textSize(20);
   text("PLAYER 1", 40, 55);
   text("PLAYER 2", windowWidth-120, 55);
@@ -42,9 +42,9 @@ Score.prototype.display = function() {
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
   if (this.scoreTotal > 1) {
-    //image(heartTextureImage, random(0,windowWidth), random(0, windowHeight));
+    image(heartTextureImage, random(0,windowWidth), random(0, windowHeight));
     push();
-    //textFont(myFont);
+    textFont(myFont);
     textSize(25);
     fill(70);
     textAlign(CENTER);
