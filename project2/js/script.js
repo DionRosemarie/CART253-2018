@@ -48,6 +48,7 @@ function draw() {
     displayEndGame();
     break;
   }
+}
 
   function displayStart() {
     push();
@@ -82,6 +83,4 @@ function displayGame() {
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
-}
-
 }
