@@ -35,8 +35,8 @@ Paddle.prototype.handleInput = function() {
 }
 
 Paddle.prototype.sizeReduce = function() {
-    this.h = this.h/2;
-    this.w = this.w/2;
+    this.h = this.h-20;
+
 
 }
 
