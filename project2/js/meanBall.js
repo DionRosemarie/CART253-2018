@@ -75,13 +75,6 @@ meanBall.prototype.handleCollision = function(paddle) {
       this.vx = -this.vx;
       rightPaddle.sizeReduce();
       leftPaddle.sizeReduce();
-      push();
-      textFont(myFont);
-      textSize(25);
-      fill(70);
-      textAlign(CENTER);
-      text("LOOK OUT FOR THE BREAKUP\n YOU WON'T BE ABLE TO CATCH THE LOVE",windowWidth / 2, 400);
-      pop();
     }
     }
   }
