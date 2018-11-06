@@ -16,6 +16,7 @@ var rightPaddle;
 var score;
 var state = "START";
 
+
 function preload(){
 beepSFX = new Audio("assets/sounds/beep.wav");
 endGameSFX = new Audio("assets/sounds/sad.mp3");
@@ -60,7 +61,7 @@ function draw() {
     displayGame();
     break;
 
-    case "END GAME":
+    case "GAME OVER":
     displayEndGame();
     break;
   }
@@ -76,7 +77,7 @@ function draw() {
     textSize(10);
     text("PRESS SPACE TO PLAY",width/2,3*height/4);
     imageMode(CENTER);
-    image(heartImage, windowWidth / 2, 290,random(200,225),random(200,225));
+    image(heartImage, windowWidth / 2, windowHeight/2,random(200,225),random(200,225));
     pop();
 
     if (keyIsPressed && key === ' ') {
@@ -105,7 +106,7 @@ function displayGame() {
   rightPaddle.display();
   score.display();
 
-  if (this.scoreTotal > 3) {
+  if (score.leftScore === 1 || score.rightScore === 1) {
    state = "GAME OVER";
  }
 }
@@ -117,5 +118,5 @@ function displayEndGame() {
   textFont(myFont);
   fill(255);
   text("YOUR PING WANS'T ENOUGH FOR MY PONG",width/2,height/2);
-
+  endGameSFX.play();
 }
