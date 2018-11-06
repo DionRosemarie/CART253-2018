@@ -13,7 +13,7 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
-var state = "TITLE";
+var state = "START";
 // setup()
 //
 // Creates the ball and paddles
@@ -35,6 +35,36 @@ function setup() {
 function draw() {
   background(0);
 
+  switch (state) {
+    case "START":
+    displayStart();
+    break;
+
+    case "GAME":
+    displayGame();
+    break;
+
+    case "END GAME":
+    displayEndGame();
+    break;
+  }
+
+  function displayStart() {
+    push();
+    textAlign(CENTER);
+    textSize(20);
+    fill(250);
+    text("YOU ARE THE PING TO MY PONG",width/2,height/2);
+    textSize(10);
+    text("PRESS SPACE TO PLAY",width/2,3*height/4);
+    pop();
+
+    if (keyIsPressed && key === '') {
+      state = "GAME";
+    }
+  }
+
+function displayGame() {
   leftPaddle.handleInput();
   rightPaddle.handleInput();
 
@@ -52,33 +82,6 @@ function draw() {
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
-
-  switch (state) {
-    case "START":
-    displayStart();
-    break;
-
-    case "GAME":
-    displayGame();
-    break;
-
-    case "END GAME":
-    displayEndGame();
-    break;
-  }
 }
 
-function displayStart() {
-  push();
-  textAlign(CENTER);
-  textSize(20);
-  fill(250);
-  text("YOU ARE THE PING TO MY PONG",width/2,height/2);
-  textSize(10);
-  text("PRESS SPACE TO PLAY");
-  pop();
-
-  if (keyIsPressed && key === '') {
-    state = "GAME";
-  }
 }
