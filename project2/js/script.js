@@ -13,6 +13,7 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
+var score;
 var state = "START";
 // setup()
 //
@@ -26,6 +27,8 @@ function setup() {
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+
+  score = new Score();
 }
 
 // draw()
@@ -72,6 +75,7 @@ function displayGame() {
   ball.update();
   leftPaddle.update();
   rightPaddle.update();
+  score.update();
 
   if (ball.isOffScreen()) {
     ball.reset();
@@ -83,4 +87,9 @@ function displayGame() {
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
+  score.display();
+
+  if (this.leftScore> 2|| this.rightScore >2) {
+   state = "GAME OVER";
+ }
 }
