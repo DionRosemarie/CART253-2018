@@ -52,4 +52,18 @@ function draw() {
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
+
+  switch (state) {
+    case "START"
+    displayStart();
+    break;
+
+    case "GAME"
+    displayGame();
+    break;
+
+    case "END GAME"
+    displayEndGame();
+    break;
+  }
 }
