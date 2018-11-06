@@ -24,10 +24,10 @@ Score.prototype.display = function() {
   // Displaying the text of the player 2
   push();
   textFont(myFont);
-  textSize(15);
+  textSize(10);
   fill(80);
-  text("PRESS UP ARROW TO GO UP\n", windowWidth-230, 85);
-  text("PRESS DOWN ARROW TO GO DOWN\n", windowWidth-288, 103);
+  text("PRESS UP ARROW TO GO UP\n", windowWidth-165, 85);
+  text("PRESS DOWN ARROW TO GO DOWN\n", windowWidth-195, 103);
   text("PRESS W TO GO UP\n", 40, 85);
   text("PRESS S TO GO DOWN\n", 40, 103);
   pop();
