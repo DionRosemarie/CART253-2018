@@ -47,6 +47,9 @@ function setup() {
 // and displays everything.
 function draw() {
   background(0);
+  imageMode(CENTER);
+  image(heartImage, windowWidth / 2, windowHeight / 2);
+
 
   switch (state) {
     case "START":
@@ -69,9 +72,11 @@ function draw() {
     textSize(20);
     textFont(myFont);
     fill(250);
-    text("YOU ARE THE PING TO MY PONG",width/2,height/2);
+    text("YOU ARE THE PING TO MY PONG",width/2,height/4);
     textSize(10);
     text("PRESS SPACE TO PLAY",width/2,3*height/4);
+    imageMode(CENTER);
+    image(heartImage, windowWidth / 2, 290,random(200,225));
     pop();
 
     if (keyIsPressed && key === ' ') {
@@ -112,4 +117,5 @@ function displayEndGame() {
   textFont(myFont);
   fill(255);
   text("YOUR PING WANS'T ENOUGH FOR MY PONG",width/2,height/2);
+
 }
