@@ -72,11 +72,11 @@ function draw() {
     textSize(20);
     textFont(myFont);
     fill(250);
-    text("YOU ARE THE PING TO MY PONG",width/2,height/4);
+    text("MY HEART MAKE A FEW PING PONG\nWHEN I SEE YOU",width/2,height/4.5);
     textSize(10);
     text("PRESS SPACE TO PLAY",width/2,3*height/4);
     imageMode(CENTER);
-    image(heartImage, windowWidth / 2, 290,random(200,225));
+    image(heartImage, windowWidth / 2, 290,random(200,225),random(200,225));
     pop();
 
     if (keyIsPressed && key === ' ') {
