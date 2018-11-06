@@ -41,7 +41,7 @@ Score.prototype.display = function() {
 
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
-  if (this.scoreTotal > 2) {
+  if (this.scoreTotal > 5) {
     image(heartTextureImage, random(0,windowWidth), random(0, windowHeight));
     push();
     textFont(myFont);
@@ -61,7 +61,7 @@ Score.prototype.display = function() {
     rect(0, 0, scoreWidth, 15);
     pop();
   }
-  if (this.leftScore > 6) {
+  if (this.leftScore > 15) {
     gameOver = true;
   }
 
@@ -73,7 +73,7 @@ Score.prototype.display = function() {
     pop();
 
   }
-  if (this.rightScore > 6) {
+  if (this.rightScore > 15) {
     gameOver = true;
   }
 

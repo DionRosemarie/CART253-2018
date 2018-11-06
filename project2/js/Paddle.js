@@ -34,6 +34,14 @@ Paddle.prototype.handleInput = function() {
   }
 }
 
+Paddle.prototype.sizeReduce = function() {
+  if (ball.x + ball.size > this.x && ball.x < this.x + this.w) {
+  if (ball.y + ball.size > this.y && this.y < this.y + this.h) {
+    this.h/2
+    }
+  }
+}
+
 // update()
 // Update y position based on velocity
 // Constrain the resulting position to be within the canvas

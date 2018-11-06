@@ -37,7 +37,7 @@ function setup() {
   // Create a ball
   ball = new Ball(width/2,height/2,5,5,20,5);
 
-  meanBall = new meanBall(width/2,height/2,5,5,20,5);
+  meanBall = new meanBall(width/2,height/2,5,5,40,5);
   // Create the right paddle with UP and DOWN as controls
   rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,60,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
@@ -102,10 +102,9 @@ function displayGame() {
   if (ball.isOffScreen()) {
     ball.reset();
   }
-  if (meanBall.isOffScreen()) {
-    meanBall.reset();
-  }
 
+  rightPaddle.sizeReduce();
+  leftPaddle.sizeReduce();
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
 
@@ -116,13 +115,16 @@ function displayGame() {
   score.display();
 
   if (score.leftScore > 10 || score.rightScore > 10) {
+    if (meanBall.isOffScreen()) {
+      meanBall.reset();
+    }
    meanBall.update();
    meanBall.display();
    meanBall.handleCollision(leftPaddle);
    meanBall.handleCollision(rightPaddle);
   }
-  
-  if (score.leftScore === 15 || score.rightScore === 15) {
+
+  if (score.leftScore === 20 || score.rightScore === 20) {
    state = "GAME OVER";
  }
 }
