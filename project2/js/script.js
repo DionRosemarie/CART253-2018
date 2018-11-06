@@ -15,6 +15,7 @@ var leftPaddle;
 var rightPaddle;
 var score;
 var state = "START";
+var meanBall;
 
 
 function preload(){
@@ -26,6 +27,7 @@ heartImage = loadImage("assets/images/heart.png");
 heartBrokenImage = loadImage("assets/images/heartbroken.png");
 heartTextureImage = loadImage("assets/images/heartTexture.png");
 ballImage = loadImage("assets/images/ball.png");
+breakUpBall = loadImage("assets/images/breakUp.png");
 }
 // setup()
 //
@@ -34,6 +36,8 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
   // Create a ball
   ball = new Ball(width/2,height/2,5,5,20,5);
+
+  meanBall = new meanBall(width/2,height/2,5,5,20,5);
   // Create the right paddle with UP and DOWN as controls
   rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,60,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
@@ -91,6 +95,7 @@ function displayGame() {
   rightPaddle.handleInput();
 
   ball.update();
+  meanBall.update();
   leftPaddle.update();
   rightPaddle.update();
   score.update();
@@ -98,11 +103,17 @@ function displayGame() {
   if (ball.isOffScreen()) {
     ball.reset();
   }
+  if (meanBall.isOffScreen()) {
+    meanBall.reset();
+  }
 
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
+  meanBall.handleCollision(leftPaddle);
+  meanBall.handleCollision(rightPaddle);
 
   ball.display();
+  meanBall.display();
   leftPaddle.display();
   rightPaddle.display();
   score.display();
