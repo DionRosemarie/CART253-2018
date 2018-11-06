@@ -67,3 +67,18 @@ function draw() {
     break;
   }
 }
+
+function displayStart() {
+  push();
+  textAlign(CENTER);
+  textSize(20);
+  fill(250);
+  text("YOU ARE THE PING TO MY PONG",width/2,height/2);
+  textSize(10);
+  text("PRESS SPACE TO PLAY");
+  pop();
+
+  if (keyIsPressed && key === '') {
+    state = "GAME";
+  }
+}
