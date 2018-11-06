@@ -63,7 +63,7 @@ function draw() {
     text("PRESS SPACE TO PLAY",width/2,3*height/4);
     pop();
 
-    if (keyIsPressed && key === '') {
+    if (keyIsPressed && key === ' ') {
       state = "GAME";
     }
   }
@@ -92,4 +92,12 @@ function displayGame() {
   if (this.leftScore> 2|| this.rightScore >2) {
    state = "GAME OVER";
  }
+}
+
+function displayEndGame() {
+  push();
+  textAlign(CENTER);
+  textSize(20);
+  fill(255);
+  text("YOUR PING WANS'T ENOUGH FOR MY PONG",width/2,height/2);
 }
