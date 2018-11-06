@@ -73,9 +73,9 @@ function draw() {
     textSize(20);
     textFont(myFont);
     fill(250);
-    text("MY HEART MAKE A FEW PING PONG\nWHEN I SEE YOU",width/2,height/4.5);
+    text("MY HEART MAKE A FEW PING PONG\nWHEN I SEE YOU",windowWidth/2,windowHeight/4.5);
     textSize(10);
-    text("PRESS SPACE TO PLAY",width/2,3*height/4);
+    text("PRESS SPACE TO PLAY",windowWidth/2,3*windowHeight/4);
     imageMode(CENTER);
     image(heartImage, windowWidth / 2, windowHeight/2,random(200,225),random(200,225));
     pop();
@@ -113,10 +113,18 @@ function displayGame() {
 
 function displayEndGame() {
   push();
+  background(0);
   textAlign(CENTER);
   textSize(20);
   textFont(myFont);
   fill(255);
-  text("YOUR PING WANS'T ENOUGH FOR MY PONG",width/2,height/2);
+  imageMode(CENTER);
+  image(heartBrokenImage, windowWidth / 2, windowHeight / 2);
+  var gameOverText = "YOUR PING WASN'T ENOUGH FOR MY PONG\n";
+  gameOverText += "it's not you, it's me, it's over\n\n";
+  var gameOverTextScore = "PLAYER 1 SCORED " + score.leftScore + " POINT\n";
+  gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n";
+  text(gameOverText, windowWidth / 2, windowHeight/4);
+  text(gameOverTextScore, windowWidth/2,3*windowHeight/4);
   endGameSFX.play();
 }
