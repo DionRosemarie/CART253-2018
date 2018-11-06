@@ -123,13 +123,13 @@ function displayGame() {
    meanBall.handleCollision(rightPaddle);
   }
 
-  if (score.leftScore === 10 || score.rightScore === 10) {
+  if (score.leftScore === 1|| score.rightScore === 10) {
    state = "GAME OVER";
  }
 }
 
 function displayEndGame() {
-  push();
+  // push();
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -150,6 +150,11 @@ function displayEndGame() {
   if (keyIsPressed && key === 'b') {
     score.leftScore=0;
     score.rightScore=0;
+    rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,100,10,DOWN_ARROW,UP_ARROW);
+    // Create the left paddle with W and S as controls
+    // Keycodes 83 and 87 are W and S respectively
+    leftPaddle = new Paddle(40,windowHeight/2,10,100,10,83,87);
+endGameSFX.pause();
     state = "GAME";
   }
 }

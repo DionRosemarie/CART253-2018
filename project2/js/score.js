@@ -1,7 +1,5 @@
 //////////////// NEW CODE ///////////////////
-function Score(x, y) {
-  this.x = x;
-  this.y = y;
+function Score() {
   this.leftScore = 0;
   this.rightScore = 0;
   this.scoreTotal = 0;
@@ -22,7 +20,6 @@ Score.prototype.update = function() {
 
 Score.prototype.display = function() {
   // Displaying the text of the player 2
-  push();
   textFont(myFont);
   textSize(10);
   fill(80);
@@ -30,14 +27,14 @@ Score.prototype.display = function() {
   text("PRESS DOWN ARROW TO GO DOWN\n", windowWidth-195, 103);
   text("PRESS W TO GO UP\n", 40, 85);
   text("PRESS S TO GO DOWN\n", 40, 103);
-  pop();
+
 
   fill(255, 255, 255);
   textFont(myFont);
   textSize(20);
   text("PLAYER 1", 40, 55);
   text("PLAYER 2", windowWidth-120, 55);
-  push();
+  // push();
 
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
