@@ -35,12 +35,9 @@ Paddle.prototype.handleInput = function() {
 }
 
 Paddle.prototype.sizeReduce = function() {
-  if (ball.x + ball.size > this.x && ball.x < this.x + this.w) {
-  if (ball.y + ball.size > this.y && this.y < this.y + this.h) {
-    this.h/2;
-    this.w/2;
-    }
-  }
+    this.h = this.h/2;
+    this.w = this.w/2;
+
 }
 
 // update()

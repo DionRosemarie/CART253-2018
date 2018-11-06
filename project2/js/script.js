@@ -103,8 +103,7 @@ function displayGame() {
     ball.reset();
   }
 
-  rightPaddle.sizeReduce();
-  leftPaddle.sizeReduce();
+
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
 
@@ -149,6 +148,9 @@ function displayEndGame() {
   endGameSFX.play();
 
   if (keyIsPressed && key === 'b') {
-    state = "START";
+    score.leftScore=0;
+    score.rightScore=0;
+    reset();
+    state = "GAME";
   }
 }
