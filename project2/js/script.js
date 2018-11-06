@@ -39,10 +39,10 @@ function setup() {
 
   meanBall = new meanBall(width/2,height/2,5,5,40,5);
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,60,10,DOWN_ARROW,UP_ARROW);
+  rightPaddle = new Paddle(windowWidth-50,windowHeight/2,10,80,10,DOWN_ARROW,UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(40,windowHeight/2,10,60,10,83,87);
+  leftPaddle = new Paddle(40,windowHeight/2,10,80,10,83,87);
 
   score = new Score();
 }
