@@ -20,6 +20,7 @@ var state = "START";
 function preload(){
 beepSFX = new Audio("assets/sounds/beep.wav");
 endGameSFX = new Audio("assets/sounds/sad.mp3");
+saxSFX = new Audio("assets/sounds/saxSound.mp3");
 myFont = loadFont("assets/font/ChakraPetch-Light.ttf");
 heartImage = loadImage("assets/images/heart.png");
 heartBrokenImage = loadImage("assets/images/heartbroken.png");
@@ -106,7 +107,7 @@ function displayGame() {
   rightPaddle.display();
   score.display();
 
-  if (score.leftScore === 1 || score.rightScore === 1) {
+  if (score.leftScore === 6 || score.rightScore === 6) {
    state = "GAME OVER";
  }
 }
@@ -126,5 +127,6 @@ function displayEndGame() {
   gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n";
   text(gameOverText, windowWidth / 2, windowHeight/4);
   text(gameOverTextScore, windowWidth/2,3*windowHeight/4);
+  saxSFX.pause();
   endGameSFX.play();
 }

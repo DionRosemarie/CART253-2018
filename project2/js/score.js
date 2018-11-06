@@ -41,7 +41,7 @@ Score.prototype.display = function() {
 
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
-  if (this.scoreTotal > 1) {
+  if (this.scoreTotal > 2) {
     image(heartTextureImage, random(0,windowWidth), random(0, windowHeight));
     push();
     textFont(myFont);
@@ -49,6 +49,7 @@ Score.prototype.display = function() {
     fill(70);
     textAlign(CENTER);
     text("SO MUCH LOVE IN THE AIR", windowWidth/2, 1.5*windowHeight/2);
+    saxSFX.play();
     pop();
   }
 
@@ -60,7 +61,7 @@ Score.prototype.display = function() {
     rect(0, 0, scoreWidth, 15);
     pop();
   }
-  if (this.leftScore > 2) {
+  if (this.leftScore > 6) {
     gameOver = true;
   }
 
@@ -72,7 +73,7 @@ Score.prototype.display = function() {
     pop();
 
   }
-  if (this.rightScore > 2) {
+  if (this.rightScore > 6) {
     gameOver = true;
   }
 
