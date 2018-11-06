@@ -89,7 +89,7 @@ function displayGame() {
   rightPaddle.display();
   score.display();
 
-  if (this.leftScore> 2|| this.rightScore >2) {
+  if (this.scoreTotal > 3) {
    state = "GAME OVER";
  }
 }
