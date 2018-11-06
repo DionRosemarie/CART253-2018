@@ -36,7 +36,7 @@ Score.prototype.display = function() {
   text("PLAYER 1", 40, 55);
   text("PLAYER 2", windowWidth-120, 55);
   pop();
-  
+
 
   // Changing the difficulty of the game
   this.scoreTotal = this.leftScore + this.rightScore;
@@ -44,7 +44,7 @@ Score.prototype.display = function() {
     image(heartTextureImage, random(0,windowWidth), random(0, windowHeight));
     push();
     textFont(myFont);
-    textSize(25);
+    textSize(15);
     fill(70);
     textAlign(CENTER);
     text("SO MUCH LOVE IN THE AIR", windowWidth/2, 1.5*windowHeight/2);

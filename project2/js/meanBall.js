@@ -75,6 +75,13 @@ meanBall.prototype.handleCollision = function(paddle) {
       this.vx = -this.vx;
       rightPaddle.sizeReduce();
       leftPaddle.sizeReduce();
+      push();
+      textFont(myFont);
+      textSize(25);
+      fill(70);
+      textAlign(CENTER);
+      text("LOOK OUT FOR THE BREAKUP\n YOU WON'T BE ABLE TO CATCH THE LOVE",windowWidth / 2, 400);
+      pop();
     }
     }
   }
@@ -85,5 +92,5 @@ meanBall.prototype.handleCollision = function(paddle) {
 // Set position back to the middle of the screen
 meanBall.prototype.reset = function () {
   this.x = width/2;
-  this.y = height/2;
+  this.y = random(0,windowHeight);
 }

@@ -116,10 +116,15 @@ function displayGame() {
   rightPaddle.display();
   score.display();
 
-  if (score.leftScore > 1 || score.rightScore > 1) {
-  console.log("check");
+  if (score.leftScore > 8 || score.rightScore > 8) {
     for (var i = 0; i < meanBalls.length; i++) {
-
+      push();
+      textFont(myFont);
+      textSize(15);
+      fill(70);
+      textAlign(CENTER);
+      text("LOOK OUT FOR THE BREAKUP\n YOU WON'T BE ABLE TO CATCH THE LOVE",windowWidth / 2, 500);
+      pop();
       meanBalls[i].update();
       if (meanBalls[i].isOffScreen()) {
         meanBalls[i].reset();
@@ -132,7 +137,7 @@ function displayGame() {
 
   }
 
-  if (score.leftScore === 5 || score.rightScore === 5) {
+  if (score.leftScore === 20 || score.rightScore === 20) {
     state = "GAME OVER";
   }
 }
@@ -161,6 +166,8 @@ function displayEndGame() {
     state = "GAME";
     score.leftScore = 0;
     score.rightScore = 0;
+    rightPaddle = new Paddle(windowWidth - 50, windowHeight / 2, 10, 100, 10, DOWN_ARROW, UP_ARROW);
+    leftPaddle = new Paddle(40, windowHeight / 2, 10, 100, 10, 83, 87);
     endGameSFX.pause();
   }
 }
