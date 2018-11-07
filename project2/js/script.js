@@ -19,7 +19,6 @@ var score;
 var state = "START";
 // VARIABLES FOR THE DIFFERENT BALLS (ARRAYS)
 var meanBalls = [];
-var meanBall;
 var numMeanBall = 3;
 // VARIABLES FOR THE DIFFERENT ELLIPSES AT THE START STATE (ARRAYS)
 var setMoods = [];
