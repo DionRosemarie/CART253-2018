@@ -84,6 +84,6 @@ meanBall.prototype.handleCollision = function(paddle) {
 //
 // Set position back to the middle of the screen
 meanBall.prototype.reset = function () {
-  this.x = width/2;
+  this.x = random(0,windowHeight);
   this.y = random(0,windowHeight);
 }
