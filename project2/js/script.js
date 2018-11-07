@@ -101,6 +101,7 @@ function displayStart() {
   text("DEAR PING, DO YOU WANT TO BE MY PONG?", windowWidth / 2, windowHeight / 4.5);
   textSize(20);
   text("PRESS SPACE KEY TO ENTER\n THE RELATIONSHIP", windowWidth / 2, 3 * windowHeight / 4);
+  text("TOUCH THE RED BUTTON TO SET THE MOOD", windowWidth / 2, 4 * windowHeight /4.5);
   imageMode(CENTER);
   image(heartImage, windowWidth / 2, windowHeight / 2, random(200, 220), random(200, 220));
   pop();
@@ -120,6 +121,7 @@ function displayGame() {
   leftPaddle.handleInput();
   rightPaddle.handleInput();
 
+
   ball.update();
   leftPaddle.update();
   rightPaddle.update();
@@ -133,11 +135,14 @@ function displayGame() {
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
 
+
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
   score.display();
   lightSwitch.display();
+
+  lightSwitch.mouseClicked();
 
   if (score.leftScore > 10 || score.rightScore > 10) {
     for (var i = 0; i < meanBalls.length; i++) {
