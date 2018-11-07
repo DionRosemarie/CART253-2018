@@ -29,7 +29,8 @@ LightSwitch.prototype.update = function() {
 
 LightSwitch.prototype.mouseClicked = function() {
     console.log("show");
-    // THIS IS GOING TO TURN OFF THE LIGHT IF THE PLAYERS WANT MORE DIFFICULTE,
+    // THIS IS GOING TO TURN OFF THE LIGHT IF THE PLAYERS WANT MORE DIFFICULTE
+    // THE SWITCH STOP TO MAKE THE PLAYER CONTROL IF THEY WANT TO SET THE MOOD OR NO
 if (dist(mouseX,mouseY,this.x,this.y) < this.size/2) {
     this.speed=0;
     this.vx=0;
@@ -37,8 +38,12 @@ if (dist(mouseX,mouseY,this.x,this.y) < this.size/2) {
     fill(0, 0, 0, 120);
     rectMode(CORNER);
     rect(0, 0, windowWidth, windowHeight);
-  }
+    saxSFX.play();
+} else {
+  saxSFX.pause();
 }
+  }
+
 
 LightSwitch.prototype.display = function() {
   noStroke();

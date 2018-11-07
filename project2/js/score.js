@@ -48,7 +48,6 @@ Score.prototype.display = function() {
     fill(70);
     textAlign(CENTER);
     text("SO MANY FISH IN THE SEA, STAY FAITHFUL ", windowWidth/2, 1.5*windowHeight/2);
-    saxSFX.play();
     pop();
   }
 
