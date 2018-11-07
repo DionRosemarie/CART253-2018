@@ -14,14 +14,20 @@ var ball;
 var leftPaddle;
 var rightPaddle;
 var score;
+////////////////// NEW CODE ////////////////////////
+// VARIABLE FOR THE STATE
 var state = "START";
+// VARIABLES FOR THE DIFFERENT BALLS (ARRAYS)
 var meanBalls = [];
 var numMeanBall = 3;
+// VARIABLES FOR THE DIFFERENT ELLIPSES AT THE START STATE (ARRAYS)
 var setMoods = [];
 var numSetMood = 100;
+// VARIABLE FOR THE OBJECT
 var lightSwitch;
+////////////////// END NEW CODE ////////////////////////
 
-
+// ALL THE ELEMENT OF THE PRELOAD
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
   endGameSFX = new Audio("assets/sounds/sad.mp3");
@@ -34,8 +40,7 @@ function preload() {
   breakUpBall = loadImage("assets/images/breakUp.png");
 }
 // setup()
-//
-// Creates the ball and paddles
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // Create a ball
@@ -46,30 +51,32 @@ function setup() {
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(40, windowHeight / 2.5, 10, 140, 10, 83, 87);
-
+//////////////////  NEW CODE ////////////////////////
+// CREATING THE CLASS FOR THE SCORE
   score = new Score();
-
+// CREATING THE CLASS FOR THE NEW OBJECT
   lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,20,20,20,5,100);
-
+// CREATING THE CLASS FOR THE ELLIPSES AT THE BEGINNING OF THE GAME
   for (var i = 0; i < numSetMood; i++) {
     setMoods.push(new SetMood(width/2,height/2,5,5,10,5));
   }
-
+// CREATING THE CLASS FOR THE MEAN BALLS
   for (var i = 0; i < numMeanBall; i++) {
     meanBalls.push(new meanBall(width / 2, height / 2, 5, 5, 40, 5));
   }
 }
-
+////////////////// END NEW CODE ////////////////////////
 // draw()
 //
 // Handles input, updates all the elements, checks for collisions
 // and displays everything.
 function draw() {
   background(0);
+  ////////////////// NEW CODE ////////////////////////
   imageMode(CENTER);
   image(heartImage, windowWidth / 2, windowHeight / 2);
 
-
+// CHANGING STATE TO CREATE AN INTRO AND AN ENDING
   switch (state) {
     case "START":
       displayStart();
@@ -186,3 +193,4 @@ function displayEndGame() {
     endGameSFX.pause();
   }
 }
+////////////////// END NEW CODE ////////////////////////

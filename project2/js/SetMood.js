@@ -1,3 +1,6 @@
+// This is the part for the start state
+// the arrays add a fun element to the intro
+
 function SetMood(x,y,vx,vy,size,speed) {
   this.x = x;
   this.y = y;
