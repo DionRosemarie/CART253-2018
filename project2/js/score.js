@@ -54,7 +54,7 @@ Score.prototype.display = function() {
 
   // Displaying the score in as a red bar on the top of the screen
   for (var i = 0; i < this.leftScore; i++) {
-    var scoreWidth = map(this.leftScore, 0, 2, 0, 50);
+    var scoreWidth = map(this.leftScore, 0, 6, 0, 50);
     push();
     fill(255, 0, 0);
     rect(0, 0, scoreWidth, 15);
@@ -65,7 +65,7 @@ Score.prototype.display = function() {
   }
 
   for (var i = 0; i < this.rightScore; i++) {
-    var scoreWidth = map(this.rightScore, 0, 2, 0, 50);
+    var scoreWidth = map(this.rightScore, 0, 6, 0, 50);
     push();
     fill(255, 0, 0);
     rect(width - 0, 0, -scoreWidth, 15);
