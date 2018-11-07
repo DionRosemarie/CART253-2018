@@ -29,7 +29,6 @@ var lightSwitch;
 
 // ALL THE ELEMENT OF THE PRELOAD
 function preload() {
-  beepSFX = new Audio("assets/sounds/beep.wav");
   endGameSFX = new Audio("assets/sounds/sad.mp3");
   saxSFX = new Audio("assets/sounds/saxSound.mp3");
   myFont = loadFont("assets/font/ChakraPetch-Light.ttf");
