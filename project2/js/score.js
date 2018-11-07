@@ -9,12 +9,12 @@ Score.prototype.update = function() {
   // Keeping track of the score in the javascript console
   if (ball.x > width) {
     this.leftScore = this.leftScore + 1
-    console.log(this.leftScore + " POINT FOR PLAYER 1")
+    console.log(this.leftScore + " POINT FOR PING")
   }
 
   if (ball.x + ball.size < 0) {
     this.rightScore = this.rightScore + 1
-    console.log(this.rightScore + " POINT FOR PLAYER 2")
+    console.log(this.rightScore + " POINT FOR PONG")
   }
 }
 
@@ -33,8 +33,8 @@ Score.prototype.display = function() {
   fill(255, 255, 255);
   textFont(myFont);
   textSize(20);
-  text("PLAYER 1", 40, 55);
-  text("PLAYER 2", windowWidth-120, 55);
+  text("PING", 40, 55);
+  text("PONG", windowWidth-90, 55);
   pop();
 
 
@@ -47,7 +47,7 @@ Score.prototype.display = function() {
     textSize(15);
     fill(70);
     textAlign(CENTER);
-    text("SO MUCH LOVE IN THE AIR", windowWidth/2, 1.5*windowHeight/2);
+    text("SO MANY FISH IN THE SEA, STAY FAITHFUL ", windowWidth/2, 1.5*windowHeight/2);
     saxSFX.play();
     pop();
   }

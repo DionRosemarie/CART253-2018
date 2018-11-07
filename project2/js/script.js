@@ -39,10 +39,10 @@ function setup() {
   ball = new Ball(width / 2, height / 2, 5, 5, 20, 5);
 
   // Create the right paddle with UP and DOWN as controls
-  rightPaddle = new Paddle(windowWidth - 50, windowHeight / 2, 10, 100, 10, DOWN_ARROW, UP_ARROW);
+  rightPaddle = new Paddle(windowWidth - 50, windowHeight / 2.5, 10, 140, 10, DOWN_ARROW, UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(40, windowHeight / 2, 10, 100, 10, 83, 87);
+  leftPaddle = new Paddle(40, windowHeight / 2.5, 10, 140, 10, 83, 87);
 
   score = new Score();
 
@@ -83,8 +83,8 @@ function displayStart() {
   textFont(myFont);
   fill(250);
   text("DEAR PING, DO YOU WANT TO BE MY PONG?", windowWidth / 2, windowHeight / 4.5);
-  textSize(10);
-  text("PRESS SPACE TO BEGIN YOUR RELATIONSHIP", windowWidth / 2, 3 * windowHeight / 4);
+  textSize(20);
+  text("PRESS SPACE KEY TO ENTER\n THE RELATIONSHIP", windowWidth / 2, 3 * windowHeight / 4);
   imageMode(CENTER);
   image(heartImage, windowWidth / 2, windowHeight / 2, random(200, 225), random(200, 225));
   pop();
@@ -146,16 +146,15 @@ function displayEndGame() {
   push();
   background(0);
   textAlign(CENTER);
-  textSize(20);
+  textSize(25);
   textFont(myFont);
   fill(255);
   imageMode(CENTER);
   image(heartBrokenImage, windowWidth / 2, windowHeight / 2);
-  var gameOverText = "PING, IT'S NOT YOU, IT'S ME\n";
-  gameOverText += "relationships are so complicated\n\n";
+  var gameOverText = "IT'S NOT YOU, IT'S ME";
   textSize(15);
-  var gameOverTextScore = "PLAYER 1 SCORED " + score.leftScore + " POINT\n";
-  gameOverTextScore += "PLAYER 2 SCORED " + score.rightScore + " POINT \n\nFOR A SECOND CHANCE AT LOVE, PRESS B";
+  var gameOverTextScore = "PING SCORED " + score.leftScore + " POINT\n";
+  gameOverTextScore += "PONG SCORED " + score.rightScore + " POINT \n\nFOR A SECOND CHANCE AT LOVE, PRESS B";
   text(gameOverText, windowWidth / 2, windowHeight / 4);
   text(gameOverTextScore, windowWidth / 2, 3 * windowHeight / 4.5);
   saxSFX.pause();
