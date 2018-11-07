@@ -55,7 +55,7 @@ function setup() {
 // CREATING THE CLASS FOR THE SCORE
   score = new Score();
 // CREATING THE CLASS FOR THE NEW OBJECT
-  lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,20,20,20,5,100);
+  lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,2,2,50,5);
 // CREATING THE CLASS FOR THE ELLIPSES AT THE BEGINNING OF THE GAME
   for (var i = 0; i < numSetMood; i++) {
     setMoods.push(new SetMood(width/2,height/2,5,5,10,5));
