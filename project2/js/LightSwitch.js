@@ -1,13 +1,12 @@
+//////////////// NEW CODE ///////////////////
+
 function LightSwitch(x, y, vx, vy, size, speed) {
   this.x = x;
   this.y = y;
   this.vx = vx;
   this.vy = vy;
   this.size = size;
-  this.speed
-  this.tx += 0.05;
-  this.ty += 0.05;
-
+  this.speed;
 }
 
 LightSwitch.prototype.update = function() {
@@ -44,7 +43,7 @@ if (dist(mouseX,mouseY,this.x,this.y) < this.size/2) {
 }
   }
 
-
+// DISPLAYING THE LIGTH SWITCH
 LightSwitch.prototype.display = function() {
   noStroke();
   fill(255, 0, 0, 100);

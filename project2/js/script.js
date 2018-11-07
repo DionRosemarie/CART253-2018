@@ -62,7 +62,7 @@ function setup() {
   }
 // CREATING THE CLASS FOR THE MEAN BALLS
   for (var i = 0; i < numMeanBall; i++) {
-    meanBalls.push(new meanBall(width / 2, height / 2, 5, 5, 40, 5));
+    meanBalls.push(new MeanBall(width / 2, height / 2, 5, 5, 40, 5));
   }
 }
 ////////////////// END NEW CODE ////////////////////////

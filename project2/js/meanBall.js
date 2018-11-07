@@ -1,7 +1,7 @@
 //////////////////  NEW CODE ////////////////////////
 // THIS IS THE MEAN BALL class
 
-function meanBall(x,y,vx,vy,size,speed) {
+function MeanBall(x,y,vx,vy,size,speed) {
   this.x = x;
   this.y = y;
   this.vx = random(0,vx);
@@ -12,7 +12,7 @@ function meanBall(x,y,vx,vy,size,speed) {
 }
 
 
-meanBall.prototype.update = function () {
+MeanBall.prototype.update = function () {
   // UPDATE POSITION WITH VELOCITY
   this.x += this.vx;
   this.y += this.vy;
@@ -26,7 +26,7 @@ meanBall.prototype.update = function () {
   }
 }
 
-meanBall.prototype.isOffScreen = function () {
+MeanBall.prototype.isOffScreen = function () {
   // CHECK IF THE BALL WENT OFF SCREEN
   if (this.x + this.size < 0 || this.x > width) {
     return true;
@@ -37,13 +37,13 @@ meanBall.prototype.isOffScreen = function () {
 }
 
 // DISPLAYING THE BALL
-meanBall.prototype.display = function () {
+MeanBall.prototype.display = function () {
   fill(255);
   image(this.image,this.x,this.y,this.size,this.size);
 }
 
 // CHECKING THE COLLISION OF THE BALL AND PADDLES
-meanBall.prototype.handleCollision = function(paddle) {
+MeanBall.prototype.handleCollision = function(paddle) {
   //console.log("see");
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
@@ -62,7 +62,7 @@ meanBall.prototype.handleCollision = function(paddle) {
 
 
 // RESET THE MEAN BALL RANDOMLY
-meanBall.prototype.reset = function () {
+MeanBall.prototype.reset = function () {
   this.x = random(0,windowHeight);
   this.y = random(0,windowHeight);
 }
