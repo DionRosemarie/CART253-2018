@@ -49,7 +49,7 @@ function setup() {
 
   score = new Score();
 
-  lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,10,10,20,5);
+  lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,20,20,20,5,100);
 
   for (var i = 0; i < numSetMood; i++) {
     setMoods.push(new SetMood(width/2,height/2,5,5,10,5));
