@@ -9,31 +9,9 @@ function SetMood(x,y,vx,vy,size,speed) {
 }
 
 SetMood.prototype.update = function() {
-  this.x += this.vx;
-  this.y += this.vy;
-
-  // Constrain y position to be on screen
-  this.y = constrain(this.y,0,height-this.size);
+  this.x = random(windowWidth,0);
+  this.y = random(0,windowHeight);
   }
-
-
-SetMood.prototype.isOffScreen = function () {
-  // Check for going off screen and reset if so
-  if (this.x + this.size < 0 || this.x > width) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-SetMood.prototype.mouseClicked = function() {
-  if (dist(mouseX,mouseY,this.x,this.y) < this.Size/2) {
-    fill(0,0,0);
-    rectMode(CORNER)
-    rect(0,0,windowWidth,windowWidth)
-}
-}
 
 SetMood.prototype.display = function() {
   noStroke();

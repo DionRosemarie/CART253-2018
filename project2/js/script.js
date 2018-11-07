@@ -18,7 +18,7 @@ var state = "START";
 var meanBalls = [];
 var numMeanBall = 3;
 var setMoods = [];
-var numSetMood = 20;
+var numSetMood = 100;
 
 
 function preload() {
@@ -49,7 +49,7 @@ function setup() {
   score = new Score();
 
   for (var i = 0; i < numSetMood; i++) {
-    setMoods.push(new SetMood(windowWidth/2,windowHeight/2,1,1,20,5));
+    setMoods.push(new SetMood(width/2,height/2,5,5,10,5));
   }
 
   for (var i = 0; i < numMeanBall; i++) {
@@ -92,8 +92,13 @@ function displayStart() {
   textSize(20);
   text("PRESS SPACE KEY TO ENTER\n THE RELATIONSHIP", windowWidth / 2, 3 * windowHeight / 4);
   imageMode(CENTER);
-  image(heartImage, windowWidth / 2, windowHeight / 2, random(200, 225), random(200, 225));
+  image(heartImage, windowWidth / 2, windowHeight / 2, random(200, 220), random(200, 220));
   pop();
+
+    for (var i = 0; i < setMoods.length; i++) {
+      setMoods[i].display();
+      setMoods[i].update();
+    }
 
   if (keyIsPressed && key === ' ') {
     state = "GAME";
@@ -121,16 +126,6 @@ function displayGame() {
   leftPaddle.display();
   rightPaddle.display();
   score.display();
-
-  for (var i = 0; i < setMoods.length; i++) {
-    if (setMoods[i].isOffScreen()) {
-      setMoods[i].reset();
-    }
-    setMoods[i].update();
-    setMoods[i].display();
-    setMoods[i].mouseClicked();
-
-  }
 
   if (score.leftScore > 10 || score.rightScore > 10) {
     for (var i = 0; i < meanBalls.length; i++) {
