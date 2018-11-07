@@ -17,6 +17,7 @@ var score;
 var state = "START";
 var meanBalls = [];
 var numMeanBall = 3;
+var setMood;
 
 
 function preload() {
@@ -45,6 +46,8 @@ function setup() {
   leftPaddle = new Paddle(40, windowHeight / 2.5, 10, 140, 10, 83, 87);
 
   score = new Score();
+
+  setMood = new SetMood();
 
   for (var i = 0; i < numMeanBall; i++) {
     meanBalls.push(new meanBall(width / 2, height / 2, 5, 5, 40, 5));
