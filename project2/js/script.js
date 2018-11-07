@@ -19,6 +19,7 @@ var meanBalls = [];
 var numMeanBall = 3;
 var setMoods = [];
 var numSetMood = 100;
+var lightSwitch;
 
 
 function preload() {
@@ -47,6 +48,8 @@ function setup() {
   leftPaddle = new Paddle(40, windowHeight / 2.5, 10, 140, 10, 83, 87);
 
   score = new Score();
+
+  lightSwitch = new LightSwitch(windowWidth/2,windowHeight/2,10,10,20,5);
 
   for (var i = 0; i < numSetMood; i++) {
     setMoods.push(new SetMood(width/2,height/2,5,5,10,5));
@@ -114,6 +117,7 @@ function displayGame() {
   leftPaddle.update();
   rightPaddle.update();
   score.update();
+  lightSwitch.update();
 
   if (ball.isOffScreen()) {
     ball.reset();
@@ -126,6 +130,7 @@ function displayGame() {
   leftPaddle.display();
   rightPaddle.display();
   score.display();
+  lightSwitch.display();
 
   if (score.leftScore > 10 || score.rightScore > 10) {
     for (var i = 0; i < meanBalls.length; i++) {
