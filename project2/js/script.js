@@ -116,7 +116,7 @@ function displayGame() {
   rightPaddle.display();
   score.display();
 
-  if (score.leftScore > 8 || score.rightScore > 8) {
+  if (score.leftScore > 10 || score.rightScore > 10) {
     for (var i = 0; i < meanBalls.length; i++) {
       push();
       textFont(myFont);
@@ -137,7 +137,7 @@ function displayGame() {
 
   }
 
-  if (score.leftScore === 20 || score.rightScore === 20) {
+  if (score.leftScore === 15 || score.rightScore === 15) {
     state = "GAME OVER";
   }
 }
