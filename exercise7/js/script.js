@@ -22,6 +22,8 @@ var ennemyImage;
 var state = "START";
 // variable for the player
 var player;
+// variable for the ennemy
+var enemy;
 // preload()
 //
 // Description of preload
@@ -31,7 +33,7 @@ function preload() {
   myFont = loadFont("assets/fonts/VT323-Regular.ttf");
   playerImage = loadImage("assets/images/player.png");
   bulletImage = loadImage("assets/images/bullet.png");
-  ennemyImage = loadImage("assets/images/Ennemy.png");
+  enemyImage = loadImage("assets/images/Enemy.png");
 
 }
 
@@ -49,7 +51,7 @@ function setup() {
   player = new Player(4*width/4,400,0,0,50,20,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
 
   // information for the Ennemy.js
-  ennemy = new Ennemy(random(0,width),0,24,13,10,);
+  enemy = new Enemy(random(0,width),0,10);
 
 }
 
@@ -101,15 +103,14 @@ function displayGameOne() {
   background(0);
 
   player.update();
-  ennemy.update();
+  enemy.update();
 
   player.handleInput();
 
   player.display();
-  ennemy.display();
+  enemy.display();
 
   player.updateBullets();
 
-  ennemy.reset();
 
 }
