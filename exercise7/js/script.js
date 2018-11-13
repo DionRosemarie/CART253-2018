@@ -43,7 +43,7 @@ function setup() {
   background(0);
 
   //
-  player = new Player(4*width/4,400,0,0,50,10,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
+  player = new Player(4*width/4,400,0,0,50,20,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
 
 }
 

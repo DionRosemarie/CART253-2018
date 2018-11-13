@@ -24,6 +24,9 @@ function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shoo
   this.playerImage = playerImage;
   this.bullets = [];
   this.bulletImage = bulletImage;
+  // Bullets variables
+  this.bulletShoot = 0;
+  this.bulletShootMax = 20;
 
 }
 
@@ -62,20 +65,34 @@ Player.prototype.handleInput = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
   }
+  
   // Let the player go down
   else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
   }
+
   // Let the player go left
   else if (keyIsDown(this.leftKey)) {
     this.vx = -this.speed;
   }
+
   // Let the player go right
   else if (keyIsDown(this.rightKey)) {
     this.vx = this.speed;
   }
+
+  // If the player doesn't press any key, the player doesn't move
+  else {
+    this.vy = 0;
+    this.vx = 0;
+  }
+
   // Let the player shoot
-  else if (keyIsDown(this.shootKey)) {
+  // Make the player shot only one bullet at the time
+  this.bulletShoot -= 1;
+  this.bulletShoot = constrain(this.bulletShoot - 1, 0, this.bulletShootMax);
+  // If Z is down, the player can shoot
+  if (keyIsDown(this.shootKey) && this.bulletShoot === 0) {
     var newBullet = {
       x: this.x,
       y: this.y,
@@ -83,12 +100,9 @@ Player.prototype.handleInput = function() {
       vy: -this.maxSpeed
     }
     this.bullets.push(newBullet);
+    this.bulletShoot = this.bulletShootMax;
   }
-  // If the player doesn't press any key, the player doesn't move
-  else {
-    this.vy = 0;
-    this.vx = 0;
-  }
+
 }
 
 // Update bullet to allow the player to shoot
