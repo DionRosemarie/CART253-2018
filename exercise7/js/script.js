@@ -50,7 +50,7 @@ function setup() {
 
   // information for the Ennemy.js
   ennemy = new Ennemy();
-  
+
 }
 
 
@@ -99,9 +99,17 @@ function displayStart() {
 function displayGameOne() {
   createCanvas(1000,500);
   background(0);
+
   player.update();
+  ennemy.update();
+
   player.handleInput();
+  
   player.display();
+  ennemy.display();
+
   player.updateBullets();
+
+  ennemy.reset();
 
 }
