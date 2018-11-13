@@ -49,5 +49,20 @@ function setup() {
 // Description of draw()
 
 function draw() {
+// This is where each state of the game are establish
+// this is the intro to the game
+  switch (state) {
+  case "START":
+    displayStart();
+    break;
+// This is the first level of the game, i'm going to add more
+  case "LEVEL ONE":
+    displayGameOne();
+    break;
+// This is the end game state where the score of the player is going to be display at the end
+  case "GAME OVER":
+    displayEndGame();
+    break;
+}
 
 }
