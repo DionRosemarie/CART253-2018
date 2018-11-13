@@ -16,6 +16,7 @@ At one point, I would like to add another level which would be the last one. The
 // Description of preload
 
 function preload() {
+  // Preloading my images and my font to start creating the visual of my game
   myFont = loadFont("assets/fonts/VT323-Regular.ttf");
   playerImage = loadImage("assets/images/player.png");
   bulletImage = loadImage("assets/images/bullet.png");
