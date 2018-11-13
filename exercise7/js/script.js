@@ -66,3 +66,19 @@ function draw() {
 }
 
 }
+
+function displayStart() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(250);
+  text("in outer space",width/2,80);
+  text("press space bar to start",width/2,450);
+  pop();
+
+  if (keyIsPressed && key === ' ') {
+  state = "LEVEL ONE";
+}
+}
