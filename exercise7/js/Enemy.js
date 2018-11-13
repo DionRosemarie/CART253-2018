@@ -8,7 +8,7 @@ function Enemy (x,y,speed) {
   this.y =y;
   this.vy =0;
   this.vx =0;
-  this.size = 12;
+  this.size = 15;
   this.speed =speed;
   this.image = enemyImage;
 }
@@ -16,10 +16,21 @@ function Enemy (x,y,speed) {
 // Update of the enemy
 Enemy.prototype.update = function() {
   this.vy = this.speed;
+  this.y = this.y + this.vy;
 // Displaying the enemy from the top of the screen
   if (this.y > height) {
     this.y = 0;
-    this.x = (random(0,width));
+    this.x = 250;
+  }
+}
+
+Enemy.prototype.handleCollision = function() {
+  if (this.x + this.size > bullet.x && this.x < bullet.x ) {
+    if (this.y + this.size > bullet.y && this.y < bullet.y ) {
+      this.size =0;
+
+    }
+
   }
 }
 
