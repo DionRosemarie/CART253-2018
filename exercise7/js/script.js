@@ -28,6 +28,9 @@ function preload() {
 // Description of setup
 
 function setup() {
+  // Creating the canvas
+  createCanvas(500,500);
+  background(0);
 
 }
 
