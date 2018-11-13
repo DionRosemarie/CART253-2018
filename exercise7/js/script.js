@@ -19,7 +19,8 @@ var playerImage;
 var bulletImage;
 // displaying the different state of the game
 var state = "START";
-
+// variable for the player
+var player;
 // preload()
 //
 // Description of preload
@@ -89,5 +90,9 @@ function displayStart() {
 function displayGameOne() {
   createCanvas(1000,500);
   background(0);
+  player.update();
+  player.handleInput();
+  player.display();
+  player.updateBullets();
 
 }
