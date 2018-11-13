@@ -17,6 +17,7 @@ At one point, I would like to add another level which would be the last one. The
 // displaying the images
 var playerImage;
 var bulletImage;
+var ennemyImage;
 // displaying the different state of the game
 var state = "START";
 // variable for the player
@@ -30,6 +31,8 @@ function preload() {
   myFont = loadFont("assets/fonts/VT323-Regular.ttf");
   playerImage = loadImage("assets/images/player.png");
   bulletImage = loadImage("assets/images/bullet.png");
+  ennemyImage = loadImage("assets/images/Ennemy.png");
+
 }
 
 
