@@ -49,7 +49,7 @@ function setup() {
   player = new Player(4*width/4,400,0,0,50,20,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
 
   // information for the Ennemy.js
-  ennemy = new Ennemy();
+  ennemy = new Ennemy(random(0,width),0,24,13,10,);
 
 }
 
@@ -104,7 +104,7 @@ function displayGameOne() {
   ennemy.update();
 
   player.handleInput();
-  
+
   player.display();
   ennemy.display();
 
