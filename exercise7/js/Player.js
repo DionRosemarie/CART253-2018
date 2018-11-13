@@ -43,8 +43,8 @@ Player.prototype.display = function () {
   imageMode(CENTER,CENTER);
   image(this.playerImage,this.x,this.y,this.size,this.size);
 // Displaying the bullet to allow the player to shot
-  for (var i = 0; i < this.bullets.length; i++) {
   push();
+  for (var i = 0; i < this.bullets.length; i++) {
   image(this.bulletImage,this.bullets[i].x,this.bullets[i].y,10,10);
   pop();
 }
@@ -76,10 +76,20 @@ else if (keyIsDown(this.shootKey)) {
   vx: this.maxSpeed * cos(this.angle),
   vy: this.maxSpeed * sin(this.angle)
 }
+this.bullets.push(newBullet);
 }
 // If the player doesn't press any key, the player doesn't move
 else {
   this.vy = 0;
   this.vx = 0;
 }
+}
+
+// Update bullet to allow the player to shoot
+Player.prototype.updateBullets = function() {
+  for (var i = 0 ; i < this.bullets.lenght; i++) {
+    var bullet = this.bullets[i];
+    bullet.x += bullet.vx;
+    bullet.y += bullet.vy;
+  }
 }
