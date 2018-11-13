@@ -42,6 +42,9 @@ function setup() {
   createCanvas(500,500);
   background(0);
 
+  //
+  player = new Player(4*width/4,400,0,0,50,10,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,91);
+
 }
 
 
