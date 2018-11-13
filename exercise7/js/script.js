@@ -96,6 +96,5 @@ function displayGameOne() {
   player.update();
   player.handleInput();
   player.display();
-  player.updateBullets();
 
 }
