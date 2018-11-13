@@ -10,6 +10,15 @@ When the player is going to reach a certain level, asteroids are going to come i
 At one point, I would like to add another level which would be the last one. There would be a bigger alien that would be more diffuclt to destroy. It would be kind of a battle between the spaceship and the alien. He would be able to destroy the player. The player would win if he destroy the alien first.
 
 ******************/
+// variables
+//
+// This is all the variables I need for the game to work
+
+// displaying the images
+var playerImage;
+var bulletImage;
+// displaying the different state of the game
+var state = "START";
 
 // preload()
 //
