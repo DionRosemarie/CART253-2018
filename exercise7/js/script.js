@@ -67,6 +67,7 @@ function draw() {
 
 }
 
+// This is the first state of the game
 function displayStart() {
   push();
   background(0);
@@ -78,7 +79,15 @@ function displayStart() {
   text("press space bar to start",width/2,450);
   pop();
 
+// To start the game, we only have to press the space bar to access the level one of the game
   if (keyIsPressed && key === ' ') {
   state = "LEVEL ONE";
 }
+}
+
+// This is the second state of the game or the level one
+function displayGameOne() {
+  createCanvas(1000,500);
+  background(0);
+
 }
