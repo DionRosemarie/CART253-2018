@@ -21,7 +21,7 @@ Enemy.prototype.update = function() {
   // Displaying the enemy from the top of the screen
   if (this.y > height) {
     this.y = 0;
-    this.x = 250;
+    this.x = random(0,width);
   }
 }
 
