@@ -109,6 +109,7 @@ function displayGameOne() {
 
   player.display();
   enemy.display();
+  enemy.handleCollision(player.bullets);
 
   player.updateBullets();
 

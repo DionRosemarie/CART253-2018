@@ -47,14 +47,13 @@ Player.prototype.update = function() {
 // Displaying the player
 Player.prototype.display = function() {
   // Displaying the bullet to allow the player to shot
-  push();
+imageMode(CENTER);
   for (var i = 0; i < this.bullets.length; i++) {
     image(this.bulletImage, this.bullets[i].x, this.bullets[i].y, 10, 10);
-    pop();
+
   }
   // Displaying the player witht the image
   fill(255);
-  imageMode(CENTER, CENTER);
   image(this.playerImage, this.x, this.y, this.size, this.size);
 
 }
@@ -65,7 +64,7 @@ Player.prototype.handleInput = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
   }
-  
+
   // Let the player go down
   else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
@@ -97,7 +96,8 @@ Player.prototype.handleInput = function() {
       x: this.x,
       y: this.y,
       vx: 0,
-      vy: -this.maxSpeed
+      vy: -this.maxSpeed,
+      size: 25
     }
     this.bullets.push(newBullet);
     this.bulletShoot = this.bulletShootMax;
