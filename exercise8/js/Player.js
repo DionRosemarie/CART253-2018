@@ -42,9 +42,7 @@ Player.prototype.update = function() {
   // This part allows the player to move from the left to the right of the canvas
   this.x += this.vx;
   this.x = constrain(this.x, 0, width - this.w);
-  // Calcute the velocity based on speed and trig
-  var vy = this.speed * cos(this.angle);
-  var vx = this.speed * sin(this.angle);
+
 
 }
 
