@@ -105,6 +105,18 @@ Player.prototype.handleInput = function() {
 
 }
 
+Player.prototype.handleCollision = function() {
+
+  // See if the bullet and the enemy are at the same place in the screen
+    if (enemy.x - enemy.size / 2 < this.x + this.size / 2 && enemy.x + enemy.size / 2 > this.x - this.size / 2) {
+      if (enemy.y - enemy.size / 2 < this.y + this.size / 2 && enemy.y + enemy.size / 2 > this.y - this.size / 2) {
+  // If they are at the same place, the enemy disapear
+        this.size -= 5;
+      }
+    }
+  }
+
+
 // Update bullet to allow the player to shoot
 Player.prototype.updateBullets = function() {
   for (var i = 0; i < this.bullets.length; i++) {

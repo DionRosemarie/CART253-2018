@@ -66,6 +66,7 @@ function draw() {
   player.display();
   enemy.display();
   enemy.handleCollision(player.bullets);
+  player.handleCollision();
 
   player.updateBullets();
 }
