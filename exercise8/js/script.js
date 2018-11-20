@@ -1,11 +1,9 @@
 /*****************
 
-Title of Project
-Author Name
+Outer space - Project 3 prototype
+Rose-Marie Dion
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
-
+This is the prototype for the second part of the game. The first part is going to allow the player to win life so when he arrives to the second part, he have more chance to kill the big alien. This particular alien is going to move around and be bigger. 
 ******************/
 
 // preload()
