@@ -8,7 +8,7 @@ function Enemy(x, y, speed) {
   this.y = y;
   this.vy = 0;
   this.vx = 0;
-  this.size = 25;
+  this.size = 150;
   this.speed = speed;
   this.image = enemyImage;
   this.alive = true;

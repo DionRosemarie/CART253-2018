@@ -39,14 +39,14 @@ function preload() {
 
 function setup() {
   // Creating the canvas
-  createCanvas(800,800);
+  createCanvas(500,500);
   background(0);
 
   // information for the Player.js
-  player = new Player(4*width/4,400,0,0,50,5,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
+  player = new Player(250,250,0,0,50,5,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
 
   // information for the Ennemy.js
-  enemy = new Enemy(random(0,width),-15,5);
+  enemy = new Enemy(250,150,0);
 
 
 }
@@ -57,5 +57,14 @@ function setup() {
 // Description of draw()
 
 function draw() {
+  player.update();
+  enemy.update();
 
+  player.handleInput();
+
+  player.display();
+  enemy.display();
+  enemy.handleCollision(player.bullets);
+
+  player.updateBullets();
 }
