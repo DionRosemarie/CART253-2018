@@ -110,6 +110,9 @@ function displayGame() {
   }
 }
 
+// GameOver state
+
+// If the player loses, this state is going to appear
 function displayGameOver() {
   push();
   background(0);
@@ -123,6 +126,9 @@ function displayGameOver() {
 
 }
 
+// Win state
+
+// If the player wins, this state is going to appear
 function displayWin() {
   push();
   background(0);

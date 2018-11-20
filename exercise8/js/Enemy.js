@@ -19,6 +19,7 @@ function Enemy(x, y, speed) {
 
 // Update of the enemy
 Enemy.prototype.update = function() {
+// Make the enemy move in a random way
 this.vx = map(noise(this.tx),0,1,-this.maxSpeed,this.maxSpeed);
 this.vy = map(noise(this.ty),0,1,-this.maxSpeed,this.maxSpeed);
 
@@ -29,7 +30,7 @@ this.ty += 0.01;
 this.x += this.vx;
 this.y += this.vy;
 
-// wrap for the enemy
+// wrap for the enemy so it doesn't go off screen
 if (this.x < 0) {
   this.x += width;
 }
@@ -51,7 +52,7 @@ Enemy.prototype.handleCollision = function(bullets) {
   // See if the bullet and the enemy are at the same place in the screen
     if (bullet.x - bullet.size / 2 < this.x + this.size / 2 && bullet.x + bullet.size / 2 > this.x - this.size / 2) {
       if (bullet.y - bullet.size / 2 < this.y + this.size / 2 && bullet.y + bullet.size / 2 > this.y - this.size / 2) {
-  // If they are at the same place, the enemy disapear
+  // If they are at the same place, the enemy goes smaller and faster
         this.size -= 5;
         this.speed +=10;
       }
