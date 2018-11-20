@@ -34,7 +34,7 @@ if (this.x < 0) {
   this.x += width;
 }
 else if (this.x > width) {
-  this.y -= width;
+  this.x -= width;
 }
 if (this.y < 0) {
   this.y += height;
