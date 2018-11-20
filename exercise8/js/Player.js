@@ -29,6 +29,8 @@ function Player(x, y, h, w,speed, downKey, upKey, leftKey, rightKey, shootKey) {
   this.bulletShootMax = 20;
   // Updating the score
   this.life = 3;
+  this.canCollide = true;
+  this.timer = 60;
 
 }
 
@@ -108,7 +110,7 @@ Player.prototype.handleInput = function() {
 }
 
 Player.prototype.handleCollision = function() {
-
+ if (this.canCollide) {
   // See if the bullet and the enemy are at the same place in the screen
     if (enemy.x - enemy.size / 2 < this.x + this.size / 2 && enemy.x + enemy.size / 2 > this.x - this.size / 2) {
       if (enemy.y - enemy.size / 2 < this.y + this.size / 2 && enemy.y + enemy.size / 2 > this.y - this.size / 2) {
@@ -116,14 +118,22 @@ Player.prototype.handleCollision = function() {
 
         this.life -= 1;
         console.log("you have" + this.life + " left");
-        if (this.life === 0) {
-        console.log("you lost");
-        this.size -= 0;
+        this.canCollide = false;
+        if (this.life < 0) {
+          this.size = 0;
 
         }
       }
     }
   }
+  else {
+    this.timer -=1;
+  if (this.timer === 0) {
+    this.canCollide = true;
+    this.timer =60;
+  }
+  }
+}
 
 
 // Update bullet to allow the player to shoot
