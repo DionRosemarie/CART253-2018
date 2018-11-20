@@ -27,6 +27,8 @@ function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shoo
   // Bullets variables
   this.bulletShoot = 0;
   this.bulletShootMax = 20;
+  // Updating the score
+  this.life = 3;
 
 }
 
@@ -111,7 +113,10 @@ Player.prototype.handleCollision = function() {
     if (enemy.x - enemy.size / 2 < this.x + this.size / 2 && enemy.x + enemy.size / 2 > this.x - this.size / 2) {
       if (enemy.y - enemy.size / 2 < this.y + this.size / 2 && enemy.y + enemy.size / 2 > this.y - this.size / 2) {
   // If they are at the same place, the enemy disapear
+
+        this.life -= 1;
         this.size -= 5;
+        console.log("you have" + this.life + " left");
       }
     }
   }
