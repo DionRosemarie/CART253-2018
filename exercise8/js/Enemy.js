@@ -11,7 +11,7 @@ function Enemy(x, y, speed) {
   this.tx = random(0,100);
   this.ty = random(0,100);
   this.maxSpeed = 10;
-  this.size = 150;
+  this.size = 75;
   this.speed = speed;
   this.image = enemyImage;
   this.alive = true;
@@ -52,7 +52,7 @@ Enemy.prototype.handleCollision = function(bullets) {
     if (bullet.x - bullet.size / 2 < this.x + this.size / 2 && bullet.x + bullet.size / 2 > this.x - this.size / 2) {
       if (bullet.y - bullet.size / 2 < this.y + this.size / 2 && bullet.y + bullet.size / 2 > this.y - this.size / 2) {
   // If they are at the same place, the enemy disapear
-        this.alive = false;
+        this.size -= 5;
       }
     }
   }

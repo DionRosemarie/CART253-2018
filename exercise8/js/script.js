@@ -57,7 +57,7 @@ function setup() {
 // Description of draw()
 
 function draw() {
-    background(0);
+  background(0);
   player.update();
   enemy.update();
 
