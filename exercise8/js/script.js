@@ -93,7 +93,7 @@ function displayGame() {
 
   player.updateBullets();
 
-  if (player.life < 0) {
+  if (player.life === 0) {
     state = "GAME OVER";
   }
 
@@ -107,6 +107,7 @@ function displayGameOver() {
   background(0);
   textAlign(CENTER);
   textSize(20);
+  textFont(myFont);
   fill(255);
   var gameOverText = "busted";
   text(gameOverText,width/2,height/2);
@@ -119,6 +120,7 @@ function displayWin() {
   background(0);
   textAlign(CENTER);
   textSize(20);
+  textFont(myFont);
   fill(255);
   var winText = "you win";
   text(winText,width/2,height/2);
