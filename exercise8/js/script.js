@@ -65,6 +65,10 @@ function draw() {
     displayGame();
     break;
 
+    case "WIN":
+    displayWin();
+    break;
+
     case "GAME OVER":
     displayGameOver();
     break;
@@ -88,6 +92,10 @@ function displayGame() {
   if (player.life < 0) {
     state = "GAME OVER";
   }
+  
+  else if (enemy.size < 10) {
+    state = "WIN";
+  }
 }
 
 function displayGameOver() {
@@ -100,4 +108,15 @@ function displayGameOver() {
   text(gameOverText,width/2,height/2);
   pop();
 
+}
+
+function displayWin() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  fill(255);
+  var winText = "you win";
+  text(winText,width/2,height/2);
+  pop();
 }
