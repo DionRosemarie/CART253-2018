@@ -21,6 +21,9 @@ var player;
 // variable for the ennemy
 var enemy;
 
+// variable for the state
+var state="GAME";
+
 
 // preload()
 //
@@ -57,6 +60,18 @@ function setup() {
 // Description of draw()
 
 function draw() {
+  switch (state) {
+    case "GAME":
+    displayGame();
+    break;
+
+    case "GAME OVER":
+    displayGameOver();
+    break;
+  }
+}
+
+function displayGame() {
   background(0);
   player.update();
   enemy.update();
@@ -69,4 +84,20 @@ function draw() {
   player.handleCollision();
 
   player.updateBullets();
+
+  if (player.life < 0) {
+    state = "GAME OVER";
+  }
+}
+
+function displayGameOver() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  fill(255);
+  var gameOverText = "busted";
+  text(gameOverText,width/2,height/2);
+  pop();
+
 }

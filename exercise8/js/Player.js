@@ -118,7 +118,7 @@ Player.prototype.handleCollision = function() {
       if (enemy.y - enemy.size / 2 < this.y + this.size / 2 && enemy.y + enemy.size / 2 > this.y - this.size / 2) {
         // If they have collide, the player lose one life
         this.life -= 1;
-        console.log("you have" + this.life + " left");
+        console.log("you have " + this.life + " life left");
         // If it has collide, the player can't collide anymore
         this.canCollide = false;
         if (this.life < 0) {
@@ -132,7 +132,7 @@ Player.prototype.handleCollision = function() {
   else {
     this.timer -= 1;
     if (this.timer === 0) {
-      // Reset the timer and possibility to collide 
+      // Reset the timer and possibility to collide
       this.canCollide = true;
       this.timer = 60;
     }
