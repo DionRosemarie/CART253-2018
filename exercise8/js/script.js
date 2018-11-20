@@ -81,6 +81,14 @@ function draw() {
 
 function displayGame() {
   background(0);
+  push();
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(100);
+  var scoreText = "you have " + player.life + " life left";
+  text(scoreText,width/2,height/2);
+  pop();
   player.update();
   enemy.update();
 
