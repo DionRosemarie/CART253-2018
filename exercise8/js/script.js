@@ -96,7 +96,7 @@ function displayGame() {
   if (player.life === 0) {
     state = "GAME OVER";
   }
-
+// The value 10 for the size equals 3 hits
   else if (enemy.size < 10) {
     state = "WIN";
   }
