@@ -16,6 +16,9 @@ var playerImage;
 var bulletImage;
 var ennemyImage;
 
+// variable for the font
+var myFont;
+
 // variable for the player
 var player;
 // variable for the ennemy
@@ -33,6 +36,7 @@ function preload() {
   playerImage = loadImage("assets/images/player.png");
   bulletImage = loadImage("assets/images/bullet.png");
   enemyImage = loadImage("assets/images/Enemy.png");
+  myFont = loadFont("assets/fonts/VT323-Regular.ttf");
 }
 
 
@@ -92,7 +96,7 @@ function displayGame() {
   if (player.life < 0) {
     state = "GAME OVER";
   }
-  
+
   else if (enemy.size < 10) {
     state = "WIN";
   }
