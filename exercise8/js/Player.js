@@ -3,7 +3,7 @@
 
 
 // Variables for the player
-function Player(x, y, h, w,speed, downKey, upKey, leftKey, rightKey, shootKey) {
+function Player(x, y, h, w, speed, downKey, upKey, leftKey, rightKey, shootKey) {
   this.x = x;
   this.y = y;
   this.vx = 0;
@@ -51,7 +51,7 @@ Player.prototype.update = function() {
 // Displaying the player
 Player.prototype.display = function() {
   // Displaying the bullet to allow the player to shot
-imageMode(CENTER);
+  imageMode(CENTER);
   for (var i = 0; i < this.bullets.length; i++) {
     image(this.bulletImage, this.bullets[i].x, this.bullets[i].y, 10, 10);
 
@@ -110,14 +110,16 @@ Player.prototype.handleInput = function() {
 }
 
 Player.prototype.handleCollision = function() {
- if (this.canCollide) {
-  // See if the bullet and the enemy are at the same place in the screen
+  // This allow the player to collide with the enemy only one time
+  // This check if the player has collide or not
+  if (this.canCollide) {
+    // See if the bullet and the enemy are at the same place in the screen
     if (enemy.x - enemy.size / 2 < this.x + this.size / 2 && enemy.x + enemy.size / 2 > this.x - this.size / 2) {
       if (enemy.y - enemy.size / 2 < this.y + this.size / 2 && enemy.y + enemy.size / 2 > this.y - this.size / 2) {
-  // If they are at the same place, the enemy disapear
-
+        // If they have collide, the player lose one life
         this.life -= 1;
         console.log("you have" + this.life + " left");
+        // If it has collide, the player can't collide anymore
         this.canCollide = false;
         if (this.life < 0) {
           this.size = 0;
@@ -126,12 +128,14 @@ Player.prototype.handleCollision = function() {
       }
     }
   }
+  // This set a timer to let the player go away instead of keeping losing life
   else {
-    this.timer -=1;
-  if (this.timer === 0) {
-    this.canCollide = true;
-    this.timer =60;
-  }
+    this.timer -= 1;
+    if (this.timer === 0) {
+      // Reset the timer and possibility to collide 
+      this.canCollide = true;
+      this.timer = 60;
+    }
   }
 }
 
