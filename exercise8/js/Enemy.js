@@ -8,6 +8,9 @@ function Enemy(x, y, speed) {
   this.y = y;
   this.vy = 0;
   this.vx = 0;
+  this.tx = random(0,100);
+  this.ty = random(0,100);
+  this.maxSpeed = 10;
   this.size = 150;
   this.speed = speed;
   this.image = enemyImage;
@@ -16,13 +19,29 @@ function Enemy(x, y, speed) {
 
 // Update of the enemy
 Enemy.prototype.update = function() {
-  this.vy = this.speed;
-  this.y = this.y + this.vy;
-  // Displaying the enemy from the top of the screen
-  if (this.y > height) {
-    this.y = 0;
-    this.x = random(0,width);
-  }
+this.vx = map(noise(this.tx),0,1,-this.maxSpeed,this.maxSpeed);
+this.vy = map(noise(this.ty),0,1,-this.maxSpeed,this.maxSpeed);
+
+this.tx += 0.01;
+this.ty += 0.01;
+
+// move
+this.x += this.vx;
+this.y += this.vy;
+
+// wrap for the enemy
+if (this.x < 0) {
+  this.x += width;
+}
+else if (this.x > width) {
+  this.y -= width;
+}
+if (this.y < 0) {
+  this.y += height;
+}
+else if (this.y > height) {
+  this.y -= height;
+}
 }
 
 Enemy.prototype.handleCollision = function(bullets) {
