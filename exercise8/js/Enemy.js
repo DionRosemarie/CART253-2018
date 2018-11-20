@@ -53,6 +53,7 @@ Enemy.prototype.handleCollision = function(bullets) {
       if (bullet.y - bullet.size / 2 < this.y + this.size / 2 && bullet.y + bullet.size / 2 > this.y - this.size / 2) {
   // If they are at the same place, the enemy disapear
         this.size -= 5;
+        this.speed +=10;
       }
     }
   }
