@@ -3,12 +3,12 @@
 
 
 // Variables for the player
-function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shootKey) {
+function Player(x, y, h, w,speed, downKey, upKey, leftKey, rightKey, shootKey) {
   this.x = x;
   this.y = y;
   this.vx = 0;
   this.vy = 0;
-  this.size = size;
+  this.size = 50;
   this.h = h;
   this.w = w;
   this.speed = speed;
@@ -115,8 +115,12 @@ Player.prototype.handleCollision = function() {
   // If they are at the same place, the enemy disapear
 
         this.life -= 1;
-        this.size -= 5;
         console.log("you have" + this.life + " left");
+        if (this.life === 0) {
+        console.log("you lost");
+        this.size -= 0;
+
+        }
       }
     }
   }

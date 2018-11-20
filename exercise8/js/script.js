@@ -43,7 +43,7 @@ function setup() {
   background(0);
 
   // information for the Player.js
-  player = new Player(250,250,0,0,50,5,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
+  player = new Player(250,250,0,0,5,DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW,90);
 
   // information for the Ennemy.js
   enemy = new Enemy(250,150,5);
