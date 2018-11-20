@@ -86,7 +86,7 @@ function displayGame() {
   textSize(20);
   textFont(myFont);
   fill(100);
-  var scoreText = "you have " + player.life + " life left";
+  var scoreText = "you have " + player.life + " life left\n press Z to shoot";
   text(scoreText,width/2,height/2);
   pop();
   player.update();
