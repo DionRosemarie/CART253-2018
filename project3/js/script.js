@@ -99,6 +99,11 @@ function draw() {
       displayStart();
       break;
 
+      // This is the instruction for the game
+case "INSTRUCTION":
+  displayInstruction();
+  break;
+
       // This is the first level of the game, i'm going to add one more
     case "LEVEL ONE":
       displayGameOne();
@@ -161,6 +166,38 @@ function displayStart() {
 
   // To start the game, we only have to press the space bar to access the level one of the game
   if (keyIsPressed && key === 'x') {
+    state = "INSTRUCTION";
+  }
+}
+
+// This is the intro for the game
+function displayInstruction() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(250);
+  text("You need the save earth from the alien invasion", width / 2, 150);
+  text("With the Z key, shoot the aliens before\n they reach our planet", width / 2, 250);
+  text("Press the space bar to begin your mission", width / 2, 400);
+  translate(width / 2, height / 2);
+  translate(p5.Vector.fromAngle(millis() / 1000, 40));
+  pop();
+
+  // information for the stars in the background
+  push();
+  translate(width / 2, height / 2);
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
+  pop();
+
+
+
+  // To start the game, we only have to press the space bar to access the level one of the game
+  if (keyIsPressed && key === ' ') {
     state = "LEVEL ONE";
   }
 }
@@ -183,7 +220,7 @@ function displayGameOne() {
 
   if (enemy.isOffScreen()) {
     enemyCounter += 1;
-    console.log(enemyCounter);
+    console.log("enemy counter " + enemyCounter);
   }
 
   player.updateBullets();
