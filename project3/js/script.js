@@ -177,6 +177,7 @@ function displayStart() {
 
 // This is the intro for the game
 function displayInstruction() {
+  introSFX.pause();
   push();
   background(0);
   textAlign(CENTER);
