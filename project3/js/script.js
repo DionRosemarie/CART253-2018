@@ -19,6 +19,7 @@ var playerImage;
 var enemyImage;
 var bulletImage;
 var enemyKingImage;
+var cometImage;
 
 // displaying the different state of the game
 var state = "START";
@@ -29,6 +30,9 @@ var player;
 // variable for the enemy
 var enemy;
 var enemyKing;
+
+// variable for the comet
+var comet;
 
 // variable for the background stars
 var stars = [];
@@ -51,6 +55,7 @@ function preload() {
   enemyImage = loadImage("assets/images/Enemy.png");
   bulletImage = loadImage("assets/images/bullet.png");
   enemyKingImage = loadImage("assets/images/enemyKing.png");
+  cometImage = loadImage("assets/images/comet.png");
 }
 
 // setup()
@@ -70,6 +75,9 @@ function setup() {
 
   // information for the EnemyKing.js
   enemyKing = new EnemyKing(250,150,5);
+
+  // information for the Comet.js
+  comet = new Comet(550,350,1,50);
 
   // information for the Stars.js
   for (var i = 0; i < numStars; i++) {
