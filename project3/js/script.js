@@ -18,6 +18,7 @@ At one point, I would like to add another level which would be the last one. The
 var playerImage;
 var enemyImage;
 var bulletImage;
+var enemyKingImage;
 
 // displaying the different state of the game
 var state = "START";
@@ -25,8 +26,9 @@ var state = "START";
 // variable for the player
 var player;
 
-// variable for the ennemy
+// variable for the enemy
 var enemy;
+var enemyKing;
 
 // variable for the background stars
 var stars = [];
@@ -48,6 +50,7 @@ function preload() {
   playerImage = loadImage("assets/images/player.png");
   enemyImage = loadImage("assets/images/Enemy.png");
   bulletImage = loadImage("assets/images/bullet.png");
+  enemyKingImage = loadImage("assets/images/enemyKing.png");
 }
 
 // setup()
@@ -64,6 +67,9 @@ function setup() {
 
   // information for the Enemy.js
   enemy = new Enemy(random(0, width), -15, 5);
+
+  // information for the EnemyKing.js
+  enemyKing = new EnemyKing(250,150,5);
 
   // information for the Stars.js
   for (var i = 0; i < numStars; i++) {
@@ -98,6 +104,11 @@ function draw() {
       // This is the second level of the game
     case "START TWO":
       displayStartTwo();
+      break;
+
+      // This is the second level of the game
+    case "LEVEL TWO":
+      displayGameTwo();
       break;
 
   }
@@ -228,4 +239,35 @@ function displayStartTwo() {
   if (keyIsPressed && key === ' ') {
     state = "LEVEL TWO";
   }
+}
+
+// LEVEL TWO STATE
+
+// This is the second level of the game and the final one
+function displayGameTwo() {
+  push();
+  createCanvas(1000, 500);
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(100);
+  var scoreText = "you have " + player.life + " life left\n press Z to shoot";
+  text(scoreText, width / 2, height / 2);
+  pop();
+
+  player.update();
+  enemyKing.update();
+  comet.update();
+
+  player.handleInput();
+
+  player.display();
+  enemyKing.display();
+  comet.display();
+  enemyKing.handleCollision(player.bullets);
+  player.handleCollision();
+  comet.handleCollision();
+
+  player.updateBullets();
 }
