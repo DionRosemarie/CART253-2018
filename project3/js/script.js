@@ -32,6 +32,10 @@ var enemy;
 var stars = [];
 var numStars = 1000;
 
+// variables to count the number of enemy of the state 2
+var enemyCounter =0;
+var killCounter = 0;
+
 
 
 // preload()
@@ -142,5 +146,38 @@ function displayGameOne() {
   player.display();
   enemy.display();
   enemy.handleCollision(player.bullets);
+
+  if (enemy.isOffScreen()) {
+    enemyCounter +=1;
+    console.log(enemyCounter);
+  }
+
+  player.updateBullets();
+
+  if (enemy.alive === false) {
+  enemy.reset();
+  enemy = new Enemy(random(0, width), -15, 5)
+  killCounter += 1;
+  console.log("kill counter "+ killCounter);
+  }
+
+  // information for the stars in the background
+  push();
+  translate(width / 2, height / 2);
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
+
+  // To end the state
+  if (killCounter === 5) {
+  state = "START TWO"
+  }
+
+  else if (enemyCounter === 5) {
+  state = "GAME OVER ONE"
+  enemyCounter = 0;
+  killCounter = 0;
+  }
 
 }
