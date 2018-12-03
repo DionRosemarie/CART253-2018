@@ -28,6 +28,10 @@ var player;
 // variable for the ennemy
 var enemy;
 
+// variable for the background stars
+var stars = [];
+var numStars = 1000;
+
 
 
 // preload()
@@ -57,6 +61,12 @@ function setup() {
   // information for the Enemy.js
   enemy = new Enemy(random(0, width), -15, 5);
 
+  // information for the Stars.js
+  for (var i = 0; i < numStars; i++) {
+    stars.push(new Star());
+  }
+
+
 }
 
 // draw()
@@ -71,12 +81,12 @@ function draw() {
       displayStart();
       break;
 
-    // This is the first level of the game, i'm going to add one more
+      // This is the first level of the game, i'm going to add one more
     case "LEVEL ONE":
       displayGameOne();
       break;
 
-    // This is the first level of the game, i'm going to add one more
+      // This is the first level of the game, i'm going to add one more
     case "GAME OVER ONE":
       displayGameOverOne();
       break;
@@ -96,7 +106,19 @@ function displayStart() {
   fill(250);
   text("to infinity and beyond!", width / 2, 80);
   text("press X to start to see the instructions", width / 2, 450);
+  imageMode(CENTER);
+  translate(width / 2, height / 2);
+  translate(p5.Vector.fromAngle(millis() / 1000, 40));
+  image(playerImage, 5, 5);
+  pop();
 
+  // information for the stars in the background
+  push();
+  translate(width / 2, height / 2);
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
   pop();
 
   // To start the game, we only have to press the space bar to access the level one of the game
