@@ -23,6 +23,8 @@ function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shoo
   // Displaying the player and the bullets
   this.playerImage = playerImage;
 
+}
+
   // Update of the player
 Player.prototype.update = function() {}
 // Displaying the player
