@@ -1,0 +1,24 @@
+/*********************************************
+
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+so the canvas is flush with the top left corner.
+
+**********************************************/
+
+html, body {
+  height: 100%;
+}
+
+/* I want my canvas to be center in the middle of the window*/
+
+body {
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+ align-items: center;
+}
