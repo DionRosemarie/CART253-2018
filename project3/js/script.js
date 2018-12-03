@@ -33,7 +33,7 @@ var stars = [];
 var numStars = 1000;
 
 // variables to count the number of enemy of the state 2
-var enemyCounter =0;
+var enemyCounter = 0;
 var killCounter = 0;
 
 
@@ -95,6 +95,11 @@ function draw() {
       displayGameOverOne();
       break;
 
+      // This is the second level of the game
+    case "START TWO":
+      displayStartTwo();
+      break;
+
   }
 }
 
@@ -148,17 +153,17 @@ function displayGameOne() {
   enemy.handleCollision(player.bullets);
 
   if (enemy.isOffScreen()) {
-    enemyCounter +=1;
+    enemyCounter += 1;
     console.log(enemyCounter);
   }
 
   player.updateBullets();
 
   if (enemy.alive === false) {
-  enemy.reset();
-  enemy = new Enemy(random(0, width), -15, 5)
-  killCounter += 1;
-  console.log("kill counter "+ killCounter);
+    enemy.reset();
+    enemy = new Enemy(random(0, width), -15, 5)
+    killCounter += 1;
+    console.log("kill counter " + killCounter);
   }
 
   // information for the stars in the background
@@ -171,13 +176,56 @@ function displayGameOne() {
 
   // To end the state
   if (killCounter === 5) {
-  state = "START TWO"
+    state = "START TWO"
+  } else if (enemyCounter === 5) {
+    state = "GAME OVER ONE"
+    enemyCounter = 0;
+    killCounter = 0;
   }
 
-  else if (enemyCounter === 5) {
-  state = "GAME OVER ONE"
-  enemyCounter = 0;
-  killCounter = 0;
+}
+
+function displayGameOverOne() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(250);
+  text("The planet earth put his faith on you\n and you did not succed", width / 2, 250);
+  text("The refill your space ship, press X", width / 2, 400);
+  pop();
+
+  if (keyIsPressed && key === 'x') {
+    state = "INSTRUCTION";
   }
 
+}
+
+// This is the second intro to make a transition between the first and second level
+function displayStartTwo() {
+  push();
+  createCanvas(500, 500);
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(250);
+  text("You have suceed!! \n\n\nbut wait\nwhat is coming in our direction?", width / 2, 80);
+  text("press space bar to see", width / 2, 450);
+  pop();
+
+  // information for the stars in the background
+  push();
+  translate(width / 2, height / 2);
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
+  pop();
+
+  // To start the game, we only have to press the space bar to access the level one of the game
+  if (keyIsPressed && key === ' ') {
+    state = "LEVEL TWO";
+  }
 }
