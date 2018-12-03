@@ -270,4 +270,28 @@ function displayGameTwo() {
   comet.handleCollision();
 
   player.updateBullets();
+
+  // information for the stars in the background
+push();
+translate(width / 2, height / 2);
+for (var i = 0; i < stars.length; i++) {
+  stars[i].update();
+  stars[i].display();
+}
+pop();
+
+// information to end the state
+if (player.life === 0) {
+  state = "GAME OVER";
+}
+
+// If the player collide with the comet, the game stop
+else if (comet.gameOver === true) {
+  state = "GAME OVER";
+}
+
+// The value 10 for the size equals 3 hits
+else if (enemy.size < 10) {
+  state = "WIN";
+}
 }
