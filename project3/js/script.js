@@ -35,6 +35,11 @@ var enemyKing;
 
 // variable for the comet
 var comet;
+var cometSFX;
+
+// variable for the sounds of each level
+var gameOneSFX;
+var gameTwoSFX;
 
 // variable for the background stars
 var stars = [];
@@ -60,6 +65,9 @@ function preload() {
   cometImage = loadImage("assets/images/comet.png");
   laserSFX = new Audio("assets/sounds/laser.mp3");
   introSFX = new Audio("assets/sounds/intro.mp3");
+  cometSFX = new Audio("assets/sounds/explosion.mp3");
+  gameOneSFX = new Audio("assets/sounds/gameOne.mp3");
+  gameTwoSFX = new Audio("assets/sounds/gameTwo.mp3");
 }
 
 // setup()
@@ -177,7 +185,6 @@ function displayStart() {
 
 // This is the intro for the game
 function displayInstruction() {
-  introSFX.pause();
   push();
   background(0);
   textAlign(CENTER);
@@ -212,6 +219,8 @@ function displayInstruction() {
 
 // This is the first level of the game
 function displayGameOne() {
+  introSFX.pause();
+  gameOneSFX.play();
   createCanvas(700, 500);
   background(0);
   push();
@@ -257,6 +266,7 @@ function displayGameOne() {
   // To end the state
   if (killCounter === 5) {
     state = "START TWO"
+
   } else if (enemyCounter === 5) {
     state = "GAME OVER ONE"
     enemyCounter = 0;
@@ -266,6 +276,7 @@ function displayGameOne() {
 }
 
 function displayGameOverOne() {
+  gameOneSFX.pause();
   push();
   background(0);
   textAlign(CENTER);
@@ -314,6 +325,8 @@ function displayStartTwo() {
 
 // This is the second level of the game and the final one
 function displayGameTwo() {
+  gameOneSFX.pause();
+  gameTwoSFX.play();
   push();
   createCanvas(1000, 500);
   background(0);
@@ -369,6 +382,7 @@ function displayGameTwo() {
 
 // This part is display if the player loses
 function displayGameOver() {
+  gameTwoSFX.pause();
   push();
   background(0);
   textAlign(CENTER);
@@ -385,6 +399,7 @@ function displayGameOver() {
 
 // This part is display if the player wins
 function displayWin() {
+  gameTwoSFX.pause();
   push();
   background(0);
   textAlign(CENTER);
@@ -394,4 +409,8 @@ function displayWin() {
   var winText = "you win";
   text(winText,width/2,height/2);
   pop();
+
+  if (keyIsPressed && key === ' ') {
+    state = "INSTRUCTION";
+  }
 }
