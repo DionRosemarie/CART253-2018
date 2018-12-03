@@ -22,6 +22,11 @@ function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shoo
   this.shootKey = shootKey;
   // Displaying the player and the bullets
   this.playerImage = playerImage;
+  this.bullets = [];
+  this.bulletImage = bulletImage;
+  // Bullets variables
+  this.bulletShoot = 0;
+  this.bulletShootMax = 20;
 
 }
 
@@ -33,17 +38,22 @@ this.y = constrain(this.y, 0, height - this.h);
 // This part allows the player to move from the left to the right of the canvas
 this.x += this.vx;
 this.x = constrain(this.x, 0, width - this.w);
-// Calcute the velocity based on speed and trig
-var vy = this.speed * cos(this.angle);
-var vx = this.speed * sin(this.angle);
+
 }
 // Displaying the player
 Player.prototype.display = function() {
+  // Displaying the bullet to allow the player to shot
+  imageMode(CENTER);
+  for (var i = 0; i < this.bullets.length; i++) {
+  image(this.bulletImage, this.bullets[i].x, this.bullets[i].y, 10, 10);
+  }
+
   // Displaying the player witht the image
   fill(255);
   image(this.playerImage, this.x, this.y, this.size, this.size);
 
 }
+
 // handleInput of the player
 Player.prototype.handleInput = function() {
   // Let the player go up
@@ -71,6 +81,34 @@ Player.prototype.handleInput = function() {
     this.vy = 0;
     this.vx = 0;
   }
+
+  // Let the player shoot
+// Make the player shot only one bullet at the time
+this.bulletShoot -= 1;
+this.bulletShoot = constrain(this.bulletShoot - 1, 0, this.bulletShootMax);
+// If Z is down, the player can shoot
+if (keyIsDown(this.shootKey) && this.bulletShoot === 0) {
+  var newBullet = {
+    x: this.x,
+    y: this.y,
+    vx: 0,
+    vy: -this.maxSpeed,
+    size: 25
+  }
+  this.bullets.push(newBullet);
+  this.bulletShoot = this.bulletShootMax;
+
 }
+}
+
 // handleCollision of the player
 Player.prototype.handleCollision = function() {}
+
+// Update bullet to allow the player to shoot
+Player.prototype.updateBullets = function() {
+  for (var i = 0; i < this.bullets.length; i++) {
+    var bullet = this.bullets[i];
+    bullet.x += bullet.vx;
+    bullet.y += bullet.vy;
+  }
+}
