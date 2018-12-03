@@ -20,8 +20,24 @@ Enemy.prototype.update = function() {
   this.vy = this.speed;
   this.y = this.y + this.vy;
 }
+
 // handleCollision of the enemy
-Enemy.prototype.handleCollision = function() {}
+Enemy.prototype.handleCollision = function(bullets) {
+  // This is the information about the bullets
+  for (var i = 0; i < bullets.length; i++) {
+    var bullet = bullets[i];
+    // See if the bullet and the enemy are at the same place in the screen
+    if (bullet.x - bullet.size / 2 < this.x + this.size / 2 && bullet.x + bullet.size / 2 > this.x - this.size / 2) {
+      if (bullet.y - bullet.size / 2 < this.y + this.size / 2 && bullet.y + bullet.size / 2 > this.y - this.size / 2) {
+        // If they are at the same place, the enemy disapear
+        this.alive = false; {
+
+        }
+      }
+    }
+  }
+}
+
 // Reset the position of the enemy after going oft screen
 Enemy.prototype.reset = function() {
     this.vy = this.speed;
@@ -40,8 +56,11 @@ else {
   return false;
 }
 }
+
 // Displaying the enemy
 Enemy.prototype.display = function() {
-
+  if (this.alive === false) {
+    return;
+  }
 image(this.image, this.x, this.y, this.size, this.size);
 }
