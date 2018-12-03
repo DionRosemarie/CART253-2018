@@ -27,6 +27,10 @@ function Player(x, y, h, w, size, speed, downKey, upKey, leftKey, rightKey, shoo
   // Bullets variables
   this.bulletShoot = 0;
   this.bulletShootMax = 20;
+  // Updating the score
+  this.life = 3;
+  this.canCollide = true;
+  this.timer = 60;
 
 }
 
