@@ -74,10 +74,10 @@ function setup() {
   enemy = new Enemy(random(0, width), -15, 5);
 
   // information for the EnemyKing.js
-  enemyKing = new EnemyKing(250,150,5);
+  enemyKing = new EnemyKing(250, 150, 5);
 
   // information for the Comet.js
-  comet = new Comet(550,350,1,50);
+  comet = new Comet(550, 350, 1, 50);
 
   // information for the Stars.js
   for (var i = 0; i < numStars; i++) {
@@ -117,6 +117,16 @@ function draw() {
       // This is the second level of the game
     case "LEVEL TWO":
       displayGameTwo();
+      break;
+
+      // This state is for when the player wins
+    case "WIN":
+      displayWin();
+      break;
+
+      // This state is for when the player loses
+    case "GAME OVER":
+      displayGameOver();
       break;
 
   }
@@ -280,26 +290,57 @@ function displayGameTwo() {
   player.updateBullets();
 
   // information for the stars in the background
-push();
-translate(width / 2, height / 2);
-for (var i = 0; i < stars.length; i++) {
-  stars[i].update();
-  stars[i].display();
-}
-pop();
+  push();
+  translate(width / 2, height / 2);
+  for (var i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
+  pop();
 
-// information to end the state
-if (player.life === 0) {
-  state = "GAME OVER";
+  // information to end the state
+  if (player.life === 0) {
+    state = "GAME OVER";
+  }
+
+  // If the player collide with the comet, the game stop
+  else if (comet.gameOver === true) {
+    state = "GAME OVER";
+  }
+
+  // The value 10 for the size equals 3 hits
+  else if (enemy.size < 10) {
+    state = "WIN";
+  }
 }
 
-// If the player collide with the comet, the game stop
-else if (comet.gameOver === true) {
-  state = "GAME OVER";
+// GAME OVER STATE
+
+// This part is display if the player loses
+function displayGameOver() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(255);
+  var gameOverText = "The alien have take over our planet";
+  text(gameOverText,width/2,height/2);
+  pop();
+
 }
 
-// The value 10 for the size equals 3 hits
-else if (enemy.size < 10) {
-  state = "WIN";
-}
+// WIN STATE
+
+// This part is display if the player wins
+function displayWin() {
+  push();
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(255);
+  var winText = "you win";
+  text(winText,width/2,height/2);
+  pop();
 }
