@@ -214,6 +214,14 @@ function displayInstruction() {
 function displayGameOne() {
   createCanvas(700, 500);
   background(0);
+  push();
+  textAlign(LEFT);
+  textSize(15);
+  textFont(myFont);
+  fill(250);
+  text("You have killed " + killCounter + " enemy", 50,50);
+  text(enemyCounter + " enemy have gone to earth", 500,50);
+  pop();
 
   player.update();
   enemy.update();
