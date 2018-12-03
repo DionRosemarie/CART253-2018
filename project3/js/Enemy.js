@@ -16,12 +16,32 @@ function Enemy(x, y, speed) {
 }
 
 // Update of the enemy
-Enemy.prototype.update = function() {}
+Enemy.prototype.update = function() {
+  this.vy = this.speed;
+  this.y = this.y + this.vy;
+}
 // handleCollision of the enemy
 Enemy.prototype.handleCollision = function() {}
 // Reset the position of the enemy after going oft screen
-Enemy.prototype.reset = function() {}
+Enemy.prototype.reset = function() {
+    this.vy = this.speed;
+    this.y = this.y + this.vy;
+    this.y = 0;
+    this.x = random(0, width);
+    image(this.image, this.x, this.y, this.size, this.size);
+}
 // Off Screen
-Enemy.prototype.isOffScreen = function() {}
+Enemy.prototype.isOffScreen = function() {
+  if (this.y > height) {
+  this.reset();
+  return true;
+}
+else {
+  return false;
+}
+}
 // Displaying the enemy
-Enemy.prototype.display = function() {}
+Enemy.prototype.display = function() {
+
+image(this.image, this.x, this.y, this.size, this.size);
+}
