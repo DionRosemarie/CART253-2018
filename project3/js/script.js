@@ -23,9 +23,11 @@ var cometImage;
 
 // displaying the different state of the game
 var state = "START";
+var introSFX;
 
 // variable for the player
 var player;
+var laserSFX;
 
 // variable for the enemy
 var enemy;
@@ -56,6 +58,8 @@ function preload() {
   bulletImage = loadImage("assets/images/bullet.png");
   enemyKingImage = loadImage("assets/images/enemyKing.png");
   cometImage = loadImage("assets/images/comet.png");
+  laserSFX = new Audio("assets/sounds/laser.mp3");
+  introSFX = new Audio("assets/sounds/intro.mp3");
 }
 
 // setup()
@@ -141,6 +145,7 @@ case "INSTRUCTION":
 
 // This is the intro for the game
 function displayStart() {
+  introSFX.play();
   push();
   background(0);
   textAlign(CENTER);
