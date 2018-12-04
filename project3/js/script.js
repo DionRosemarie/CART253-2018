@@ -185,6 +185,7 @@ function displayStart() {
 
 // This is the intro for the game
 function displayInstruction() {
+  introSFX.play();
   push();
   background(0);
   textAlign(CENTER);
@@ -263,14 +264,19 @@ function displayGameOne() {
     stars[i].display();
   }
 
+  if (killCounter >= 3) {
+    enemy.speed += 0.05;
+  }
+
   // To end the state
-  if (killCounter === 5) {
+  if (killCounter === 10) {
     state = "START TWO"
 
   } else if (enemyCounter === 5) {
     state = "GAME OVER ONE"
     enemyCounter = 0;
     killCounter = 0;
+    enemy.speed =5;
   }
 
 }
@@ -392,6 +398,10 @@ function displayGameOver() {
   var gameOverText = "The alien have take over our planet";
   text(gameOverText,width/2,height/2);
   pop();
+
+  if (keyIsPressed && key === 'x') {
+    state = "INSTRUCTION";
+  }
 
 }
 
