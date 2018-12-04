@@ -51,6 +51,7 @@ var killCounter = 0;
 
 // variables for the end game
 var winSFX;
+var laughSFX;
 
 
 
@@ -72,6 +73,7 @@ function preload() {
   gameOneSFX = new Audio("assets/sounds/gameOne.mp3");
   gameTwoSFX = new Audio("assets/sounds/gameTwo.mp3");
   winSFX = new Audio("assets/sounds/win.mp3");
+  laughSFX = new Audio("assets/sounds/laugh.mp3");
 }
 
 // setup()
@@ -93,7 +95,7 @@ function setup() {
   enemyKing = new EnemyKing(250, 150, 5);
 
   // information for the Comet.js
-  comet = new Comet(550, 350, 1, 50);
+  comet = new Comet(500, 300, 1, 50);
 
   // information for the Stars.js
   for (var i = 0; i < numStars; i++) {
@@ -148,11 +150,6 @@ case "INSTRUCTION":
       // This state is for when the player loses by colliding with the enemyKing
     case "GAME OVER TWO":
       displayGameOverTwo();
-      break;
-
-      // This state is for when the player loses by colliding with the comet
-    case "GAME OVER THREE":
-      displayGameOverThree();
       break;
 
   }
@@ -282,6 +279,9 @@ function displayGameOne() {
   // To end the state
   if (killCounter === 5) {
     state = "START TWO"
+    enemyCounter = 0;
+    killCounter = 0;
+    enemy.speed =5;
 
   } else if (enemyCounter === 5) {
     state = "GAME OVER ONE"
@@ -294,6 +294,7 @@ function displayGameOne() {
 
 function displayGameOverOne() {
   gameOneSFX.pause();
+  laughSFX.play();
   push();
   createCanvas(700,500);
   background(0);
@@ -389,7 +390,7 @@ function displayGameTwo() {
 
   // If the player collide with the comet, the game stop
   else if (comet.gameOver === true) {
-    state = "GAME OVER THREE";
+      state = "GAME OVER TWO";
   }
 
   // The value 10 for the size equals 3 hits
@@ -420,25 +421,6 @@ function displayGameOverTwo() {
 
 }
 
-// This part is display if the player loses
-function displayGameOverThree() {
-  gameTwoSFX.pause();
-  push();
-  createCanvas(1000, 500);
-  background(0);
-  textAlign(CENTER);
-  textSize(20);
-  textFont(myFont);
-  fill(255);
-  var gameOverText = "Told you to watch the comet\n\n press X to return on earth to take a brand new ship";
-  text(gameOverText,width/2,height/2);
-  pop();
-
-  if (keyIsPressed && key === 'x') {
-    state = "INSTRUCTION";
-  }
-
-}
 
 // WIN STATE
 
