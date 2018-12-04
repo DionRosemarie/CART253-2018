@@ -168,7 +168,7 @@ function displayStart() {
   textFont(myFont);
   fill(250);
   text("to infinity and beyond!", width / 2, 80);
-  text("press X to start to see the instructions", width / 2, 450);
+  text("press X to start your adventure", width / 2, 450);
   imageMode(CENTER);
   translate(width / 2, height / 2);
   translate(p5.Vector.fromAngle(millis() / 1000, 40));
@@ -200,9 +200,9 @@ function displayInstruction() {
   textSize(20);
   textFont(myFont);
   fill(250);
-  text("You need the save earth from the alien invasion", width / 2, 150);
-  text("With the Z key, shoot the aliens before\n they reach our planet", width / 2, 250);
-  text("Press the space bar to begin your mission", width / 2, 400);
+  text("you need the save earth from the alien's invasion", width / 2, 150);
+  text("press the Z key to shoot the them before\nthey reach our planet", width / 2, 250);
+  text("your spaceship is ready to go,\npress space bar to take off", width / 2, 350);
   translate(width / 2, height / 2);
   translate(p5.Vector.fromAngle(millis() / 1000, 40));
   pop();
@@ -237,8 +237,8 @@ function displayGameOne() {
   textSize(15);
   textFont(myFont);
   fill(250);
-  text("You have killed " + killCounter + " enemy", 50,50);
-  text(enemyCounter + " enemy have gone to earth", 500,50);
+  text("You have killed " + killCounter + " alien", 40,50);
+  text(enemyCounter + " alien have reach the earth", 490,50);
   pop();
 
   player.update();
@@ -302,8 +302,8 @@ function displayGameOverOne() {
   textSize(20);
   textFont(myFont);
   fill(250);
-  text("The planet earth put his faith on you\n and you did not succed", width / 2, 250);
-  text("The refill your space ship, press X", width / 2, 400);
+  text("the humanity had faith in you\nbut you did not succeeded", width / 2, 200);
+  text("The refill your spaceship, press X",width / 2, 320);
   pop();
 
   if (keyIsPressed && key === 'x') {
@@ -321,7 +321,7 @@ function displayStartTwo() {
   textSize(20);
   textFont(myFont);
   fill(250);
-  text("You have suceed!! \n\n\nbut wait\nwhat is coming in our direction?", width / 2, 80);
+  text("you made it!! \n\n\nbut wait\n but what do I see coming?", width / 2, 80);
   text("press b to see", width / 2, 450);
   pop();
 
@@ -385,12 +385,14 @@ function displayGameTwo() {
 
   // information to end the state
   if (player.life === 0) {
-    state = "GAME OVER TWO";
+    state = "GAME OVER TWO"
+    player.life =3;
   }
 
   // If the player collide with the comet, the game stop
   else if (comet.gameOver === true) {
-      state = "GAME OVER TWO";
+      state = "GAME OVER TWO"
+      comet.gameOver === false;
   }
 
   // The value 10 for the size equals 3 hits
@@ -411,7 +413,7 @@ function displayGameOverTwo() {
   textSize(20);
   textFont(myFont);
   fill(255);
-  var gameOverText = "The alien have take over our planet\n\npress X to reload your ship";
+  var gameOverText = "The alien have taken over our planet\n\npress X to reload your spaceship";
   text(gameOverText,width/2,height/2);
   pop();
 
@@ -435,7 +437,7 @@ function displayWin() {
   textSize(20);
   textFont(myFont);
   fill(255);
-  var winText = "you win";
+  var winText = "you saved planet earth!!\n the humanity will be forever grateful\n\n\n press the space bar to relive your adventure";
   text(winText,width/2,height/2);
   pop();
 
