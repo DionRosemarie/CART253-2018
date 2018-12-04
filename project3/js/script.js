@@ -67,13 +67,13 @@ function preload() {
   bulletImage = loadImage("assets/images/bullet.png");
   enemyKingImage = loadImage("assets/images/enemyKing.png");
   cometImage = loadImage("assets/images/comet.png");
-  laserSFX = new Audio("assets/sounds/laser.mp3");
-  introSFX = new Audio("assets/sounds/intro.mp3");
-  cometSFX = new Audio("assets/sounds/explosion.mp3");
-  gameOneSFX = new Audio("assets/sounds/gameOne.mp3");
-  gameTwoSFX = new Audio("assets/sounds/gameTwo.mp3");
-  winSFX = new Audio("assets/sounds/win.mp3");
-  laughSFX = new Audio("assets/sounds/laugh.mp3");
+  laserSFX = loadSound("assets/sounds/laser.mp3");
+  introSFX = loadSound("assets/sounds/intro.mp3");
+  cometSFX = loadSound("assets/sounds/explosion.mp3");
+  gameOneSFX = loadSound("assets/sounds/gameOne.mp3");
+  gameTwoSFX = loadSound("assets/sounds/gameTwo.mp3");
+  winSFX = loadSound("assets/sounds/win.mp3");
+  laughSFX = loadSound("assets/sounds/laugh.mp3");
 }
 
 // setup()
@@ -84,6 +84,7 @@ function setup() {
   // Creating the canvas
   createCanvas(500, 500);
   background(0);
+
 
 
   // information for the Player.js
@@ -160,7 +161,6 @@ case "INSTRUCTION":
 
 // This is the intro for the game
 function displayStart() {
-  introSFX.setVolume(0.1);
   introSFX.play();
   push();
   createCanvas(500, 500);
@@ -230,7 +230,7 @@ function displayInstruction() {
 
 // This is the first level of the game
 function displayGameOne() {
-  introSFX.pause();
+  introSFX.stop();
   gameOneSFX.play();
   createCanvas(700, 500);
   background(0);
