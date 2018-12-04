@@ -141,9 +141,14 @@ case "INSTRUCTION":
       displayWin();
       break;
 
-      // This state is for when the player loses
-    case "GAME OVER":
-      displayGameOver();
+      // This state is for when the player loses by colliding with the enemyKing
+    case "GAME OVER TWO":
+      displayGameOverTwo();
+      break;
+
+      // This state is for when the player loses by colliding with the comet
+    case "GAME OVER THREE":
+      displayGameOverThree();
       break;
 
   }
@@ -343,8 +348,10 @@ function displayGameTwo() {
   textSize(20);
   textFont(myFont);
   fill(100);
-  var scoreText = "you have " + player.life + " life left\n press Z to shoot";
-  text(scoreText, width / 2, height / 2);
+  var scoreText = "you have " + player.life + " life left";
+  var noticeText = "watchout for the comet";
+  text(scoreText, 100, 50);
+  text(noticeText, 850, 50);
   pop();
 
   player.update();
@@ -373,12 +380,12 @@ function displayGameTwo() {
 
   // information to end the state
   if (player.life === 0) {
-    state = "GAME OVER";
+    state = "GAME OVER TWO";
   }
 
   // If the player collide with the comet, the game stop
   else if (comet.gameOver === true) {
-    state = "GAME OVER";
+    state = "GAME OVER THREE";
   }
 
   // The value 10 for the size equals 3 hits
@@ -390,7 +397,7 @@ function displayGameTwo() {
 // GAME OVER STATE
 
 // This part is display if the player loses
-function displayGameOver() {
+function displayGameOverTwo() {
   gameTwoSFX.pause();
   push();
   createCanvas(1000, 500);
@@ -399,7 +406,27 @@ function displayGameOver() {
   textSize(20);
   textFont(myFont);
   fill(255);
-  var gameOverText = "The alien have take over our planet";
+  var gameOverText = "The alien have take over our planet\n\npress X to reload your ship";
+  text(gameOverText,width/2,height/2);
+  pop();
+
+  if (keyIsPressed && key === 'x') {
+    state = "INSTRUCTION";
+  }
+
+}
+
+// This part is display if the player loses
+function displayGameOverThree() {
+  gameTwoSFX.pause();
+  push();
+  createCanvas(1000, 500);
+  background(0);
+  textAlign(CENTER);
+  textSize(20);
+  textFont(myFont);
+  fill(255);
+  var gameOverText = "Told you to watch the comet\n\n press X to return on earth to take a brand new ship";
   text(gameOverText,width/2,height/2);
   pop();
 
