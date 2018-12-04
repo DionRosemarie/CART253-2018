@@ -322,6 +322,7 @@ function displayStartTwo() {
   textFont(myFont);
   fill(250);
   text("you made it!! \n\n\nbut wait\n but what do I see coming?", width / 2, 80);
+  text("shoot the alien king\n but watchout for the comet", width / 2, 300);
   text("press b to see", width / 2, 450);
   pop();
 
