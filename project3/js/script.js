@@ -295,6 +295,7 @@ function displayGameOne() {
 function displayGameOverOne() {
   gameOneSFX.pause();
   laughSFX.play();
+  noLoop();
   push();
   createCanvas(700,500);
   background(0);
