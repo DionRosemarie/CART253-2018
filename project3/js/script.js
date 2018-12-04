@@ -49,6 +49,9 @@ var numStars = 1000;
 var enemyCounter = 0;
 var killCounter = 0;
 
+// variables for the end game
+var winSFX;
+
 
 
 // preload()
@@ -68,6 +71,7 @@ function preload() {
   cometSFX = new Audio("assets/sounds/explosion.mp3");
   gameOneSFX = new Audio("assets/sounds/gameOne.mp3");
   gameTwoSFX = new Audio("assets/sounds/gameTwo.mp3");
+  winSFX = new Audio("assets/sounds/win.mp3");
 }
 
 // setup()
@@ -317,7 +321,7 @@ function displayStartTwo() {
   textFont(myFont);
   fill(250);
   text("You have suceed!! \n\n\nbut wait\nwhat is coming in our direction?", width / 2, 80);
-  text("press space bar to see", width / 2, 450);
+  text("press b to see", width / 2, 450);
   pop();
 
   // information for the stars in the background
@@ -330,7 +334,7 @@ function displayStartTwo() {
   pop();
 
   // To start the game, we only have to press the space bar to access the level one of the game
-  if (keyIsPressed && key === ' ') {
+  if (keyIsPressed && key === 'b') {
     state = "LEVEL TWO";
   }
 }
@@ -441,6 +445,7 @@ function displayGameOverThree() {
 // This part is display if the player wins
 function displayWin() {
   gameTwoSFX.pause();
+  winSFX.play();
   push();
   createCanvas(1000, 500);
   background(0);
