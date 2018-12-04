@@ -108,8 +108,36 @@ if (keyIsDown(this.shootKey) && this.bulletShoot === 0) {
 }
 }
 
-// handleCollision of the player
-Player.prototype.handleCollision = function() {}
+Player.prototype.handleCollision = function() {
+  // This allow the player to collide with the enemy only one time
+  // This check if the player has collide or not
+  if (this.canCollide) {
+    // See if the bullet and the enemy are at the same place in the screen
+    if (enemyKing.x - enemyKing.size / 2 < this.x + this.size / 2 && enemyKing.x + enemyKing.size / 2 > this.x - this.size / 2) {
+      if (enemyKing.y - enemy.size / 2 < this.y + this.size / 2 && enemyKing.y + enemyKing.size / 2 > this.y - this.size / 2) {
+        // If they have collide, the player lose one life
+        this.life -= 1;
+        console.log("you have " + this.life + " life left");
+        // If it has collide, the player can't collide anymore
+        this.canCollide = false;
+        if (this.life < 0) {
+          this.size = 0;
+
+        }
+      }
+    }
+  }
+  // This set a timer to let the player go away instead of keeping losing life
+  else {
+    this.timer -= 1;
+    if (this.timer === 0) {
+      // Reset the timer and possibility to collide
+      this.canCollide = true;
+      this.timer = 60;
+    }
+  }
+}
+
 
 // Update bullet to allow the player to shoot
 Player.prototype.updateBullets = function() {
