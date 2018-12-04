@@ -393,7 +393,7 @@ function displayGameTwo() {
 
   // The value 10 for the size equals 3 hits
   else if (enemyKing.size < 10) {
-    console.log("size is 20");
+    enemyKing.size =  100;
     state = "WIN";
   }
 }
@@ -436,6 +436,6 @@ function  displayWin() {
   pop();
 
   if (keyIsPressed && key === 'x') {
-    state = "INSTRUCTION";
+    state = "START";
   }
 }
