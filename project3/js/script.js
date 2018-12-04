@@ -85,6 +85,7 @@ function setup() {
   createCanvas(500, 500);
   background(0);
 
+
   // information for the Player.js
   player = new Player(4 * width / 4, 400, 0, 0, 75, 5, DOWN_ARROW, UP_ARROW, LEFT_ARROW, RIGHT_ARROW, 90);
 
@@ -159,6 +160,7 @@ case "INSTRUCTION":
 
 // This is the intro for the game
 function displayStart() {
+  introSFX.setVolume(0.1);
   introSFX.play();
   push();
   createCanvas(500, 500);
