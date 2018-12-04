@@ -38,8 +38,8 @@ var comet;
 var cometSFX;
 
 // variable for the sounds of each level
-var gameOneSFX;
-var gameTwoSFX;
+var gameSFX;
+
 
 // variable for the background stars
 var stars = [];
@@ -189,7 +189,7 @@ function displayStart() {
 
 // This is the intro for the game
 function displayInstruction() {
-  introSFX.setVolume(0.3);
+  introSFX.setVolume(0.5);
   introSFX.play();
   push();
   createCanvas(500, 500);
@@ -274,7 +274,7 @@ function displayGameOne() {
   }
 
   // To end the state
-  if (killCounter === 1) {
+  if (killCounter === 5) {
     state = "START TWO"
     enemyCounter = 0;
     killCounter = 0;
@@ -290,7 +290,6 @@ function displayGameOne() {
 }
 
 function displayGameOverOne() {
-  noLoop();
   push();
   createCanvas(700,500);
   background(0);
@@ -303,7 +302,7 @@ function displayGameOverOne() {
   pop();
 
   if (keyIsPressed && key === 'x') {
-    state = "INSTRUCTION";
+    state = "START";
   }
 
 }
