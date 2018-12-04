@@ -69,11 +69,6 @@ function preload() {
   cometImage = loadImage("assets/images/comet.png");
   laserSFX = loadSound("assets/sounds/laser.mp3");
   introSFX = loadSound("assets/sounds/intro.mp3");
-  cometSFX = loadSound("assets/sounds/explosion.mp3");
-  gameOneSFX = loadSound("assets/sounds/gameOne.mp3");
-  gameTwoSFX = loadSound("assets/sounds/gameTwo.mp3");
-  winSFX = loadSound("assets/sounds/win.mp3");
-  laughSFX = loadSound("assets/sounds/laugh.mp3");
 }
 
 // setup()
@@ -194,6 +189,7 @@ function displayStart() {
 
 // This is the intro for the game
 function displayInstruction() {
+  introSFX.setVolume(0.3);
   introSFX.play();
   push();
   createCanvas(500, 500);
@@ -231,7 +227,6 @@ function displayInstruction() {
 // This is the first level of the game
 function displayGameOne() {
   introSFX.stop();
-  gameOneSFX.play();
   createCanvas(700, 500);
   background(0);
   push();
@@ -295,8 +290,6 @@ function displayGameOne() {
 }
 
 function displayGameOverOne() {
-  gameOneSFX.pause();
-  laughSFX.play();
   noLoop();
   push();
   createCanvas(700,500);
@@ -348,8 +341,6 @@ function displayStartTwo() {
 
 // This is the second level of the game and the final one
 function displayGameTwo() {
-  gameOneSFX.pause();
-  gameTwoSFX.play();
   push();
   createCanvas(1000, 500);
   background(0);
@@ -412,7 +403,6 @@ function displayGameTwo() {
 
 // This part is display if the player loses
 function displayGameOverTwo() {
-  gameTwoSFX.pause();
   push();
   createCanvas(1000, 500);
   background(0);
@@ -435,9 +425,6 @@ function displayGameOverTwo() {
 
 // This part is display if the player wins
 function  displayWin() {
-  console.log("win state");
-  gameTwoSFX.pause();
-  winSFX.play();
   push();
   createCanvas(1000, 500);
   background(0);
@@ -445,11 +432,11 @@ function  displayWin() {
   textSize(20);
   textFont(myFont);
   fill(255);
-  var winText = "you saved planet earth!!\n the humanity will be forever grateful\n\n\n press the space bar to relive your adventure";
+  var winText = "you saved planet earth!!\n the humanity will be forever grateful\n\n\n press the X to relive your adventure";
   text(winText,width/2,height/2);
   pop();
 
-  if (keyIsPressed && key === ' ') {
+  if (keyIsPressed && key === 'x') {
     state = "INSTRUCTION";
   }
 }

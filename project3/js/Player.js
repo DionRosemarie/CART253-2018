@@ -102,6 +102,7 @@ if (keyIsDown(this.shootKey) && this.bulletShoot === 0) {
   this.bullets.push(newBullet);
   this.bulletShoot = this.bulletShootMax;
   // sound when the player shots
+  laserSFX.setVolume(1);
   laserSFX.play();
   laserSFX.currentTime = 0;
 

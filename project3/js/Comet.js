@@ -52,7 +52,6 @@ Comet.prototype.handleCollision = function() {
     if (player.x - player.size / 2 < this.x + this.size / 2 && player.x + player.size / 2 > this.x - this.size / 2) {
       if (player.y - player.size / 2 < this.y + this.size / 2 && player.y + player.size / 2 > this.y - this.size / 2) {
         this.gameOver = true;
-        cometSFX.play();
       }
     }
   }
