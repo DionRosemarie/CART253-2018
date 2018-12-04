@@ -277,7 +277,7 @@ function displayGameOne() {
   }
 
   // To end the state
-  if (killCounter === 5) {
+  if (killCounter === 1) {
     state = "START TWO"
     enemyCounter = 0;
     killCounter = 0;
@@ -388,16 +388,19 @@ function displayGameTwo() {
   if (player.life === 0) {
     state = "GAME OVER TWO"
     player.life =3;
+    enemyKing.size = 100;
   }
 
   // If the player collide with the comet, the game stop
   else if (comet.gameOver === true) {
       state = "GAME OVER TWO"
-      comet.gameOver === false;
+      comet.gameOver = false;
+      enemyKing.size =  100;
   }
 
   // The value 10 for the size equals 3 hits
-  else if (enemy.size < 10) {
+  else if (enemyKing.size < 10) {
+    console.log("size is 20");
     state = "WIN";
   }
 }
@@ -428,7 +431,8 @@ function displayGameOverTwo() {
 // WIN STATE
 
 // This part is display if the player wins
-function displayWin() {
+function  displayWin() {
+  console.log("win state");
   gameTwoSFX.pause();
   winSFX.play();
   push();
