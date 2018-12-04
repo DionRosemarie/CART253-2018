@@ -389,11 +389,13 @@ function displayGameTwo() {
       state = "GAME OVER TWO"
       comet.gameOver = false;
       enemyKing.size =  100;
+      player.life =3;
   }
 
   // The value 10 for the size equals 3 hits
   else if (enemyKing.size < 10) {
     enemyKing.size =  100;
+    player.life =3;
     state = "WIN";
   }
 }
