@@ -155,6 +155,7 @@ case "INSTRUCTION":
 function displayStart() {
   introSFX.play();
   push();
+  createCanvas(500, 500);
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -187,6 +188,7 @@ function displayStart() {
 function displayInstruction() {
   introSFX.play();
   push();
+  createCanvas(500, 500);
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -269,7 +271,7 @@ function displayGameOne() {
   }
 
   // To end the state
-  if (killCounter === 10) {
+  if (killCounter === 5) {
     state = "START TWO"
 
   } else if (enemyCounter === 5) {
@@ -284,6 +286,7 @@ function displayGameOne() {
 function displayGameOverOne() {
   gameOneSFX.pause();
   push();
+  createCanvas(700,500);
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -390,6 +393,7 @@ function displayGameTwo() {
 function displayGameOver() {
   gameTwoSFX.pause();
   push();
+  createCanvas(1000, 500);
   background(0);
   textAlign(CENTER);
   textSize(20);
@@ -411,6 +415,7 @@ function displayGameOver() {
 function displayWin() {
   gameTwoSFX.pause();
   push();
+  createCanvas(1000, 500);
   background(0);
   textAlign(CENTER);
   textSize(20);
